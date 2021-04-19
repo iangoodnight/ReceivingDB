@@ -1,0 +1,39 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "plugins": ["prettier"],
+    "rules": {
+        "arrow-body-style": "off",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "no-unused-vars": [
+          2,
+          {
+            "args": "all",
+            "argsIgnorePattern": "^(next|err|res|req)"
+          }
+        ],
+        "prefer-arrow-callback": "off",
+        "prettier/prettier": "error",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
+}
