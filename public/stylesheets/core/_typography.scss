@@ -1,0 +1,17 @@
+body {
+  color: $primaryColor;
+  font-size: 100%;
+  line-height: 1.4283;
+  font-family: "Segoe UI", Roboto, Verdana, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+a {
+  color: $secondaryColor;
+  text-decoration: none;
+}

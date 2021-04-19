@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body class="{{bodyClass}}">
+    {{> header }}
+    <main role="main">
+      {{{ body }}}
+    </main>
+    {{> footer }}
+    {{!-- workaround for chrome bug that fires CSS transitions on load --}}
+    <script> </script>
+  </body>
+</html>
