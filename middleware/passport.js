@@ -5,14 +5,14 @@
 'use strict';
 
 const session = require('express-session');
-const cookieParse = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const { Strategy: LocalStrategy } = require('passport-local');
 const { User } = require('../models');
 
 module.exports = (app) => {
   // dependencies for managing sessions
-  app.use(cookieParse());
+  app.use(cookieParser());
   app.use(
     session({
       resave: false,
@@ -46,7 +46,7 @@ module.exports = (app) => {
     try {
       const user = await User.findOne({ username }).select('+password');
       if (!user) return done(null, false, { message: badUsername });
-      const isMatch = await user.validatePassword(password);
+      const isMatch = user.validatePassword(password);
       if (!isMatch) return done(null, false, { message: badPassword });
       return done(null, user, null);
     } catch (err) {
