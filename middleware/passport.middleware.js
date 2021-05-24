@@ -5,6 +5,7 @@
 'use strict';
 
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const { Strategy: LocalStrategy } = require('passport-local');
@@ -15,15 +16,21 @@ module.exports = (app) => {
   app.use(cookieParser());
   app.use(
     session({
-      resave: false,
-      rolling: true,
-      secret: process.env.COOKIE_SECRET,
-      saveUninitialized: false,
       cookie: {
         maxAge: 1 * 24 * 60 * 60 * 1_000,
         secure: false /* requires https */,
       },
       name: 'speak_and_spell',
+      resave: false,
+      rolling: true,
+      saveUninitialized: false,
+      secret: process.env.COOKIE_SECRET,
+      store: MongoStore.create({
+        mongoUrl:
+          process.env.NODE_ENV === 'production'
+            ? process.env.MONGODB_URI
+            : process.env.DEV_URI,
+      }),
     })
   );
 

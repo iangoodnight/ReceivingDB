@@ -5,5 +5,7 @@
 'use strict';
 
 module.exports = {
-  passport: require('./passport'),
+  passport: require('./passport.middleware'),
+  // Role-Based Access Control
+  rbac: require('./auth.middleware'),
 };

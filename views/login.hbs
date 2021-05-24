@@ -1,0 +1,46 @@
+<form action="/api/auth" id="login-form" method="post">
+  <h2>Welcome</h2>
+  <label for="username">Username</label>
+  <input id="username" name="username" type="text" />
+  <p class="errors"></p>
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" />
+  <p class="errors"></p>
+  <input type="submit" value="Log in" />
+</form>
+
+<script defer>
+  const form = document.querySelector('#login-form');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const { target: { elements } } = e;
+    const username = elements['username'].value || null;
+    const password = elements['password'].value || null;
+    if (!username) handleErrors(['* Username required']);
+    if (!password) handleErrors([null ,'* Password required']);
+    const data = { username, password };
+    const postLogin = await fetch('/api/auth', {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const response = await postLogin.json();
+    console.log(response);
+  }
+
+  function handleErrors(errors) {
+    const [
+      userWarning,
+      passwordWarning
+    ] = document.querySelectorAll('p.errors');
+    const [ usernameError, passwordError ] = errors;
+    userWarning.textContent = usernameError ? usernameError : '';
+    passwordWarning.textContent = passwordError ? passwordError : '';
+  }
+
+  form.addEventListener('submit', handleSubmit, false);
+</script>

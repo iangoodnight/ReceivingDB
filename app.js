@@ -5,25 +5,12 @@ const path = require('path');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const { passport: passportMiddleware } = require('./middleware');
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 require('dotenv').config();
 
 const app = express();
-
 // db setup
-const mongoose = require('mongoose');
-const dev_uri = encodeURI(process.env.DEV_URI);
-const mongoDb = process.env.MONGODB_URI || dev_uri;
-mongoose.connect(mongoDb, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+const db = require('./services/db.service');
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 db.once('open', () => {
   console.log('\nSuccessfully connected to Mongo!\n');
@@ -59,8 +46,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 passportMiddleware(app);
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+const routes = require('./routes');
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

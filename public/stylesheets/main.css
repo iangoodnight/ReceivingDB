@@ -34,6 +34,12 @@ header {
 main {
   grid-area: main;
   grid-column: 2 / span 10; }
+  main.login {
+    place-self: center; }
+    @media (min-width: 900px) {
+      main.login {
+        place-self: unset;
+        margin: 20vh auto auto; } }
 
 footer {
   grid-area: footer;
@@ -114,5 +120,46 @@ footer {
   margin: auto; }
   footer div {
     text-align: right; }
+
+form {
+  background-color: #f6f4f2;
+  border: 2px solid #bb3e14;
+  border-radius: 1em;
+  box-shadow: 3px 2em 6em 10px rgba(0, 0, 0, 0.33);
+  padding: 2em;
+  margin: 1em;
+  width: 70vw;
+  min-height: 50%;
+  grid-template-columns: repeat(12, auto);
+  grid-template-rows: auto auto auto 1em auto auto 1em 2fr; }
+  @media (min-width: 900px) {
+    form {
+      width: 50vw; } }
+  form h2 {
+    text-align: center; }
+  form label {
+    display: block;
+    margin-bottom: .3em; }
+  form input {
+    display: block;
+    height: 2em;
+    padding: .5em;
+    width: 100%;
+    margin-bottom: .3em; }
+    form input[type="submit"] {
+      margin: auto 0;
+      background-color: #bb3e14;
+      font-size: 1em;
+      font-weight: 400;
+      color: #fff; }
+  form p.errors {
+    color: red;
+    margin: 0;
+    padding: 0;
+    height: 1.4em;
+    margin-bottom: .4em;
+    font-size: .75em;
+    text-align: right;
+    width: 100%; }
 
 /*# sourceMappingURL=main.css.map */

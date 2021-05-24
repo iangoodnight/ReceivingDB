@@ -34,11 +34,20 @@ const userSchema = new Schema(
         'Please use a valid email address',
       ],
     },
+    enabled: {
+      type: Boolean,
+      default: true,
+    },
     password: {
       required: true,
       type: String,
       select: false,
       maxLength: 32,
+    },
+    roles: {
+      type: [String],
+      enum: ['ADMIN', 'READ', 'WRITE'],
+      default: ['READ'],
     },
     username: {
       lowercase: true,

@@ -6,15 +6,16 @@
 
 const router = require('express').Router();
 const { user } = require('../../controllers');
+const { rbac } = require('../../middleware');
 
 // CREATE
-router.post('/', user.create);
+router.post('/', rbac.isAdmin, user.create);
 // READ
-router.get('/', user.findAll);
+router.get('/', rbac.isAdmin, user.findAll);
 router.get('/:id', user.findById);
 // UPDATE
 router.put('/:id', user.update);
 // DELETE
-router.delete('/:id', user.delete);
+router.delete('/:id', rbac.isAdmin, user.delete);
 
 module.exports = router;

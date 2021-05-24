@@ -29,6 +29,7 @@ module.exports = {
   },
   findAll: async (req, res, next) => {
     try {
+      console.log(req.user);
       const users = await User.find({});
       res.json({ success: true, data: users });
     } catch (err) {
@@ -44,8 +45,11 @@ module.exports = {
     };
     const operation = { $set: req.body };
     try {
-      const updated =
-        await User.findByIdAndUpdate(id, operation, updateOptions);
+      const updated = await User.findByIdAndUpdate(
+        id,
+        operation,
+        updateOptions
+      );
       res.json({ success: true, data: updated });
     } catch (err) {
       next(err);
@@ -57,9 +61,9 @@ module.exports = {
     try {
       const deleted = await User.deleteOne({ _id: id });
       const { deletedCount } = deleted;
-      res.json({ success: true, data: { deletedCount }});
+      res.json({ success: true, data: { deletedCount } });
     } catch (err) {
       next(err);
     }
   },
-}
+};
