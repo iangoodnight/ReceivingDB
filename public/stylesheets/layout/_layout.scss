@@ -24,7 +24,7 @@ main {
   &.login {
     place-self: center;
 
-    @include tablet {
+    @include desktop {
       place-self: unset;
       margin: 20vh auto auto;
     }

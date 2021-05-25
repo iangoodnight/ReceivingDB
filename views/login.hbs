@@ -7,6 +7,7 @@
   <input id="password" name="password" type="password" />
   <p class="errors"></p>
   <input type="submit" value="Log in" />
+  <p class="errors"></p>
 </form>
 
 <script defer>
@@ -17,8 +18,8 @@
     const { target: { elements } } = e;
     const username = elements['username'].value || null;
     const password = elements['password'].value || null;
-    if (!username) handleErrors(['* Username required']);
-    if (!password) handleErrors([null ,'* Password required']);
+    if (!username) return handleErrors(['* Username required']);
+    if (!password) return handleErrors([null ,'* Password required']);
     const data = { username, password };
     const postLogin = await fetch('/api/auth', {
       method: 'POST',
@@ -29,17 +30,21 @@
       },
     });
     const response = await postLogin.json();
-    console.log(response);
+    const { success, message } = response;
+    if (!success) return handleErrors([null, null, message]);
+    window.location.replace('/');
   }
 
   function handleErrors(errors) {
     const [
       userWarning,
-      passwordWarning
+      passwordWarning,
+      genericWarning
     ] = document.querySelectorAll('p.errors');
-    const [ usernameError, passwordError ] = errors;
+    const [ usernameError, passwordError, genericError ] = errors;
     userWarning.textContent = usernameError ? usernameError : '';
     passwordWarning.textContent = passwordError ? passwordError : '';
+    genericWarning.textContent = genericError ? genericError : '';
   }
 
   form.addEventListener('submit', handleSubmit, false);

@@ -5,16 +5,28 @@
 'use strict';
 
 const passport = require('passport');
+const {
+  route: { unauthorized },
+} = require('../utils');
 
 module.exports = {
-  info: (req, res) => {},
+  info: (req, res) => {
+    const { user } = req;
+    if (user) return res.json(user);
+    unauthorized(res);
+  },
   login: (req, res, next) => {
     passport.authenticate('local', (err, user) => {
       if (err) return next(err);
-      if (!user) return res.status(401).send('Unauthorized\n');
+      if (!user) return unauthorized(res, 'user not found');
+      const { enabled = false } = user;
+      if (!enabled) return unauthorized(res, 'user is disabled');
       req.logIn(user, (err) => {
         if (err) return next(err);
-        return res.status(200).json(user);
+        const { _id, email, roles, username } = user;
+        const userDetails = { _id, email, roles, username };
+        const response = { success: true, data: userDetails };
+        return res.status(200).json(response);
       });
     })(req, res, next);
   },

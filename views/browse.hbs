@@ -1,0 +1,39 @@
+<h2>Browse</h2>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Vendor</th>
+        <th class="lg-only" scope="col">Carrier</th>
+        <th scope="col">PO #</th>
+        <th class="lg-only" scope="col">Received</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Qty</th>
+        <th scope="col">For</th>
+        <th scope="col">NEP #</th>
+        <th class="lg-only" scope="col">Vendor #</th>
+        <th class="lg-only" scope="col">Lot #</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each data}}
+      <tr>
+        <td>{{item}}</td>
+        <td>{{vendor}}</td>
+        <td class="lg-only">{{carrier}}</td>
+        <td>{{purchaseOrder}}</td>
+        <td class="lg-only">{{receivedBy}}</td>
+        <td>{{day}}</td>
+        <td>{{time}}</td>
+        <td>{{qty}}</td>
+        <td>{{intendedFor}}</td>
+        <td>{{nepNumber}}</td>
+        <td class="lg-only">{{vendorLot}}</td>
+        <td class="lg-only">{{lot}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

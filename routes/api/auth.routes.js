@@ -9,5 +9,7 @@ const { auth } = require('../../controllers');
 
 // LOGIN
 router.post('/', auth.login);
+// LOGOUT
+router.delete('/', auth.logout);
 
 module.exports = router;

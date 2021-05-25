@@ -5,5 +5,6 @@
 'use strict';
 
 module.exports = {
+  Entry: require('./Entry'),
   User: require('./User'),
 };

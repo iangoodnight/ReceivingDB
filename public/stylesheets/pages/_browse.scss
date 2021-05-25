@@ -1,0 +1,34 @@
+@import "../abstracts/all";
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid $secondaryColor;
+
+  th,
+  td {
+    padding: .5em;
+
+    &.lg-only {
+      display: none;
+
+      @media screen and (min-width: 1025px){
+        display: revert;
+      }
+    }
+  }
+  thead {
+    text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  tbody {
+    td {
+      font-size: .8em;
+      min-width: 4em;
+    }
+  }
+}

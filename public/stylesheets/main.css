@@ -121,6 +121,30 @@ footer {
   footer div {
     text-align: right; }
 
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #bb3e14; }
+  table th,
+  table td {
+    padding: .5em; }
+    table th.lg-only,
+    table td.lg-only {
+      display: none; }
+      @media screen and (min-width: 1025px) {
+        table th.lg-only,
+        table td.lg-only {
+          display: revert; } }
+  table thead {
+    text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 600;
+    text-align: left; }
+  table tbody td {
+    font-size: .8em;
+    min-width: 4em; }
+
 form {
   background-color: #f6f4f2;
   border: 2px solid #bb3e14;
@@ -131,7 +155,7 @@ form {
   width: 70vw;
   min-height: 50%;
   grid-template-columns: repeat(12, auto);
-  grid-template-rows: auto auto auto 1em auto auto 1em 2fr; }
+  grid-template-rows: auto auto auto 1em auto auto 1em auto 1em; }
   @media (min-width: 900px) {
     form {
       width: 50vw; } }

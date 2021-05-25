@@ -10,9 +10,33 @@
       <li><a href="#">Browse</a></li>
       <li><a href="#">Search</a></li>
       <li><a href="#">New</a></li>
-      <li><a href="#">Approvals</a></li>
-      <li><a href="#">Users</a></li>
-      <li><a href="/login">Login</a></li>
+      {{#if admin}}
+          <li><a href="#">Users</a></li>
+      {{/if}}
+      <li>
+        {{#if user}}
+          <a href="#" id="logout">Logout</a>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
+      </li>
     </ul>
   </nav>
 </header>
+
+<script defer>
+  const logout = document.querySelector('#logout');
+
+  async function handleLogout(e) {
+    e.preventDefault();
+    const logoutRequest = await fetch('/api/auth', {
+      method: 'DELETE',
+      credentials: 'same-origin',
+    });
+    const response = await logoutRequest.json();
+    const { success } = response;
+    if (success) window.location.reload();
+  }
+
+  if (logout) logout.addEventListener('click', handleLogout, false);
+</script>

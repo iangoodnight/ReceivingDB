@@ -5,10 +5,11 @@
 'use strict';
 
 module.exports = {
-  unauthorized: (res) => {
+  unauthorized: (res, msg = null) => {
+    const message = 'Unauthorized' + (msg ? `: ${msg.toString()}` : '');
     return res.status(401).json({
       success: false,
-      message: 'Unauthorized',
+      message,
     });
   },
   success: (res) => {

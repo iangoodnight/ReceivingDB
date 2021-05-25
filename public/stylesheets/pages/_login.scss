@@ -9,9 +9,9 @@ form {
   width: 70vw;
   min-height: 50%;
   grid-template-columns: repeat(12, auto);
-  grid-template-rows: auto auto auto 1em auto auto 1em 2fr;
+  grid-template-rows: auto auto auto 1em auto auto 1em auto 1em;
   
-  @include tablet {
+  @include desktop {
     width: 50vw;
   }
 
