@@ -3,6 +3,13 @@
  */
 
 module.exports = {
+  browse: {
+    bodyClass: '',
+    mainClass: 'browse',
+    path: '/browse',
+    page: 'browse',
+    title: 'Browse | Receving Log | BANE',
+  },
   index: {
     bodyClass: '',
     mainClass: 'home',

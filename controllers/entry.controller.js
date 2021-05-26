@@ -9,6 +9,9 @@ const {
   date: { subtractDaysFromToday },
   entry: { flatten },
 } = require('../utils');
+const {
+  page: { browse },
+} = require('../utils');
 
 module.exports = {
   // CREATE
@@ -38,7 +41,19 @@ module.exports = {
     try {
       const entries = await Entry.find(query);
       const data = flatten(entries);
-      res.render('browse', { success: true, data });
+      const { bodyClass, mainClass, page, title } = browse;
+      const { user } = req;
+      const admin = user.roles.indexOf('ADMIN') !== -1;
+      const success = true;
+      res.render(page, {
+        admin,
+        bodyClass,
+        data,
+        mainClass,
+        success,
+        title,
+        user,
+      });
     } catch (err) {
       next(err);
     }

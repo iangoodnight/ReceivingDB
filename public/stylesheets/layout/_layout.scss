@@ -4,7 +4,7 @@ body {
 	display: grid;
 	height: 100vh;
   margin: 0 auto;
-  grid-template-columns: 10vw repeat(10, auto) 10vw;
+  grid-template-columns: 5vw repeat(10, auto) 5vw;
 	grid-template-rows: auto 1fr auto;
 	grid-template-areas:
 		"header"
@@ -24,7 +24,7 @@ main {
   &.login {
     place-self: center;
 
-    @include desktop {
+    @include for-desktop-up {
       place-self: unset;
       margin: 20vh auto auto;
     }

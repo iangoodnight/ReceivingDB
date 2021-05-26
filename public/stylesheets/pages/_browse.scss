@@ -1,34 +1,145 @@
 @import "../abstracts/all";
 
-table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  border: 2px solid $secondaryColor;
+.table-container {
+  $table-radius: .5em;  
 
-  th,
-  td {
-    padding: .5em;
+  table {
+    table-layout: fixed;
+    width: 100%;
+    /* border-spacing: 0; */
+    /* border: 2px solid $secondaryColor; */
+    border-collapse: collapse;
+    border-style: hidden;
+    border-radius: $table-radius;
+    box-shadow:
+      0 0 0 2px $secondaryColor,
+      3px 2em 6em 10px rgba(0,0,0,.33);
 
-    &.lg-only {
-      display: none;
+    thead {
+      background-color: $primaryColor;
+      color: $betterWhite;
 
-      @media screen and (min-width: 1025px){
-        display: revert;
+      tr th:first-child {
+        border-top-left-radius: $table-radius;
+      }
+
+      @include for-phone-only {
+        tr th:nth-child(6) {
+          border-top-right-radius: $table-radius;
+        }
+      }
+      @include for-tablet-portrait-up {
+        tr th:nth-child(6) {
+          border-top-right-radius: unset;
+        }
+        tr th:nth-child(10) {
+          border-top-right-radius: $table-radius;
+        }
+      }
+      @include for-desktop-up {
+        tr th:nth-child(10) {
+          border-top-right-radius: unset;
+        }
+        tr th:last-child {
+          border-top-right-radius: $table-radius;
+        }
       }
     }
-  }
-  thead {
-    text-transform: uppercase;
-    font-size: .9em;
-    font-weight: 600;
-    text-align: left;
-  }
 
-  tbody {
+    tr {
+      &:nth-child(odd) {
+        background-color: rgba(0,0,0,0.2);
+      }
+      &:focus {
+        background-color: rgba(251, 255, 0, 0.5);
+        color: #000;
+      }
+    }
+
+    th,
     td {
-      font-size: .8em;
-      min-width: 4em;
+      padding: .3em;
+
+      &:nth-child(1) {
+        width: 64%;
+      }
+
+      &.priority-2,
+      &.priority-3,
+      &.priority-4,
+      &.priority-5 {
+        display: none;
+      }
+
+      @include for-phone-only {
+        font-size: .8em;
+        padding: .1em;
+
+        &.priority-1 {
+          display: none;
+        }
+        &:nth-child(1) {
+          width: 72%;
+        }
+      }
+
+      @include for-tablet-portrait-up {
+        padding: .4em;
+
+        &:nth-child(1) {
+          width: 54%;
+        }
+
+        &.priority-2 {
+          display: revert;
+        }
+      }
+
+      @include for-tablet-landscape-up {
+        padding: .5em;
+
+        &:nth-child(1) {
+          width: 40%;
+        }
+
+        &.priority-3 {
+          display: revert;
+        }
+      }
+
+      @include for-desktop-up {
+        &:nth-child(1) {
+          width: 38%;
+        }
+
+        &.priority-4 {
+          display: revert;
+        }
+      }
+
+      @include for-big-desktop-up {
+        &:nth-child(1) {
+          width: 30%;
+        }
+
+        &.priority-5 {
+          display: revert;
+        }
+      }
+    }
+    
+    thead {
+      text-transform: uppercase;
+      font-size: .9em;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    tbody {
+      td {
+        font-size: .8em;
+        min-width: 4em;
+      }
     }
   }
 }

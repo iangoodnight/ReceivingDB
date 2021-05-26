@@ -1,5 +1,16 @@
-@mixin desktop {
-  @media (min-width: 900px) {
-    @content;
-  }
+/* Generic breakpoints */
+@mixin for-phone-only {
+  @media all and (max-width: 500px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media all and (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media all and (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media all and (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media all and (min-width: 1800px) { @content; }
 }

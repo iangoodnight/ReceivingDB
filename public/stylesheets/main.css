@@ -1,3 +1,4 @@
+/* Generic breakpoints */
 * {
   box-sizing: border-box; }
 
@@ -19,11 +20,12 @@ a {
   color: #bb3e14;
   text-decoration: none; }
 
+/* Generic breakpoints */
 body {
   display: grid;
   height: 100vh;
   margin: 0 auto;
-  grid-template-columns: 10vw repeat(10, auto) 10vw;
+  grid-template-columns: 5vw repeat(10, auto) 5vw;
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "header" "main" "footer"; }
 
@@ -36,7 +38,7 @@ main {
   grid-column: 2 / span 10; }
   main.login {
     place-self: center; }
-    @media (min-width: 900px) {
+    @media all and (min-width: 1200px) {
       main.login {
         place-self: unset;
         margin: 20vh auto auto; } }
@@ -121,30 +123,106 @@ footer {
   footer div {
     text-align: right; }
 
-table {
+/* Generic breakpoints */
+.table-container table {
   table-layout: fixed;
   width: 100%;
+  /* border-spacing: 0; */
+  /* border: 2px solid $secondaryColor; */
   border-collapse: collapse;
-  border: 2px solid #bb3e14; }
-  table th,
-  table td {
-    padding: .5em; }
-    table th.lg-only,
-    table td.lg-only {
+  border-style: hidden;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0 2px #bb3e14, 3px 2em 6em 10px rgba(0, 0, 0, 0.33); }
+  .table-container table thead {
+    background-color: #464646;
+    color: #f6f4f2; }
+    .table-container table thead tr th:first-child {
+      border-top-left-radius: 0.5em; }
+    @media all and (max-width: 500px) {
+      .table-container table thead tr th:nth-child(6) {
+        border-top-right-radius: 0.5em; } }
+    @media all and (min-width: 600px) {
+      .table-container table thead tr th:nth-child(6) {
+        border-top-right-radius: unset; }
+      .table-container table thead tr th:nth-child(10) {
+        border-top-right-radius: 0.5em; } }
+    @media all and (min-width: 1200px) {
+      .table-container table thead tr th:nth-child(10) {
+        border-top-right-radius: unset; }
+      .table-container table thead tr th:last-child {
+        border-top-right-radius: 0.5em; } }
+  .table-container table tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2); }
+  .table-container table tr:focus {
+    background-color: rgba(251, 255, 0, 0.5);
+    color: #000; }
+  .table-container table th,
+  .table-container table td {
+    padding: .3em; }
+    .table-container table th:nth-child(1),
+    .table-container table td:nth-child(1) {
+      width: 64%; }
+    .table-container table th.priority-2, .table-container table th.priority-3, .table-container table th.priority-4, .table-container table th.priority-5,
+    .table-container table td.priority-2,
+    .table-container table td.priority-3,
+    .table-container table td.priority-4,
+    .table-container table td.priority-5 {
       display: none; }
-      @media screen and (min-width: 1025px) {
-        table th.lg-only,
-        table td.lg-only {
+    @media all and (max-width: 500px) {
+      .table-container table th,
+      .table-container table td {
+        font-size: .8em;
+        padding: .1em; }
+        .table-container table th.priority-1,
+        .table-container table td.priority-1 {
+          display: none; }
+        .table-container table th:nth-child(1),
+        .table-container table td:nth-child(1) {
+          width: 72%; } }
+    @media all and (min-width: 600px) {
+      .table-container table th,
+      .table-container table td {
+        padding: .4em; }
+        .table-container table th:nth-child(1),
+        .table-container table td:nth-child(1) {
+          width: 54%; }
+        .table-container table th.priority-2,
+        .table-container table td.priority-2 {
           display: revert; } }
-  table thead {
+    @media all and (min-width: 900px) {
+      .table-container table th,
+      .table-container table td {
+        padding: .5em; }
+        .table-container table th:nth-child(1),
+        .table-container table td:nth-child(1) {
+          width: 40%; }
+        .table-container table th.priority-3,
+        .table-container table td.priority-3 {
+          display: revert; } }
+    @media all and (min-width: 1200px) {
+      .table-container table th:nth-child(1),
+      .table-container table td:nth-child(1) {
+        width: 38%; }
+      .table-container table th.priority-4,
+      .table-container table td.priority-4 {
+        display: revert; } }
+    @media all and (min-width: 1800px) {
+      .table-container table th:nth-child(1),
+      .table-container table td:nth-child(1) {
+        width: 30%; }
+      .table-container table th.priority-5,
+      .table-container table td.priority-5 {
+        display: revert; } }
+  .table-container table thead {
     text-transform: uppercase;
     font-size: .9em;
     font-weight: 600;
     text-align: left; }
-  table tbody td {
+  .table-container table tbody td {
     font-size: .8em;
     min-width: 4em; }
 
+/* Generic breakpoints */
 form {
   background-color: #f6f4f2;
   border: 2px solid #bb3e14;
@@ -156,7 +234,7 @@ form {
   min-height: 50%;
   grid-template-columns: repeat(12, auto);
   grid-template-rows: auto auto auto 1em auto auto 1em auto 1em; }
-  @media (min-width: 900px) {
+  @media all and (min-width: 1200px) {
     form {
       width: 50vw; } }
   form h2 {

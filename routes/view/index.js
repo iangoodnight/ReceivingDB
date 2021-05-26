@@ -15,7 +15,6 @@ router.get('/', (req, res, next) => {
   const { bodyClass, mainClass, page, title } = index;
   const { user } = req;
   const admin = user.roles.indexOf('ADMIN') !== -1;
-  console.log(user);
   res.render(page, { admin, bodyClass, mainClass, title, user });
 });
 

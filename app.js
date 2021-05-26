@@ -25,7 +25,19 @@ app.engine(
     extname: 'hbs',
     defaultLayout: 'main',
     partialsDir: __dirname + '/views/partials/',
-    helpers: {},
+    helpers: {
+      math: function (lvalue, operator, rvalue) {
+        lvalue = parseFloat(lvalue);
+        rvalue = parseFloat(rvalue);
+        return {
+          '+': lvalue + rvalue,
+          '-': lvalue - rvalue,
+          '*': lvalue * rvalue,
+          '/': lvalue / rvalue,
+          '%': lvalue % rvalue,
+        }[operator];
+      },
+    },
   })
 );
 app.set('view engine', 'hbs');

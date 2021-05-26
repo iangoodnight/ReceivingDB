@@ -1,39 +1,76 @@
-<h2>Browse</h2>
-<div class="table-container">
+<div
+  aria-labelledby="table-caption"
+  class="table-container"
+  role="region"
+>
   <table>
+    <caption id="table-caption">
+      Bulk Apothecary/Natural Essentials receiving
+    </caption>
     <thead>
       <tr>
         <th scope="col">Item</th>
-        <th scope="col">Vendor</th>
-        <th class="lg-only" scope="col">Carrier</th>
-        <th scope="col">PO #</th>
-        <th class="lg-only" scope="col">Received</th>
+        <th class="priority-3" scope="col">Vendor</th>
+        <th class="priority-5" scope="col">Carrier</th>
+        <th class="priority-1" scope="col">PO #</th>
+        <th class="priority-5" scope="col">Received</th>
         <th scope="col">Date</th>
-        <th scope="col">Time</th>
-        <th scope="col">Qty</th>
-        <th scope="col">For</th>
-        <th scope="col">NEP #</th>
-        <th class="lg-only" scope="col">Vendor #</th>
-        <th class="lg-only" scope="col">Lot #</th>
+        <th class="priority-5" scope="col">Time</th>
+        <th class="priority-3" scope="col">Qty</th>
+        <th class="priority-4" scope="col">For</th>
+        <th class="priority-2" scope="col">NEP #</th>
+        <th class="priority-5" scope="col">Vendor #</th>
+        <th class="priority-4" scope="col">Lot #</th>
       </tr>
     </thead>
     <tbody>
     {{#each data}}
-      <tr>
+      <tr tabindex="{{math @index "+" 8}}">
         <td>{{item}}</td>
-        <td>{{vendor}}</td>
-        <td class="lg-only">{{carrier}}</td>
-        <td>{{purchaseOrder}}</td>
-        <td class="lg-only">{{receivedBy}}</td>
+        <td class="priority-3">{{vendor}}</td>
+        <td class="priority-5">{{carrier}}</td>
+        <td class="priority-1">{{purchaseOrder}}</td>
+        <td class="priority-5">{{receivedBy}}</td>
         <td>{{day}}</td>
-        <td>{{time}}</td>
-        <td>{{qty}}</td>
-        <td>{{intendedFor}}</td>
-        <td>{{nepNumber}}</td>
-        <td class="lg-only">{{vendorLot}}</td>
-        <td class="lg-only">{{lot}}</td>
+        <td class="priority-5">{{time}}</td>
+        <td class="priority-3">{{qty}}</td>
+        <td class="priority-4">{{intendedFor}}</td>
+        <td class="priority-2">{{nepNumber}}</td>
+        <td class="priority-5">{{vendorLot}}</td>
+        <td class="priority-4">{{lot}}</td>
       </tr>
     {{/each}}
     </tbody>
   </table>
 </div>
+
+<script defer>
+  const table = document.querySelector('div.table-container table');
+  const firstRow = document.querySelector('tbody').firstElementChild;
+
+  table.addEventListener('click', function (e) {
+    firstRow.focus();
+  }, { once: true });
+
+  table.addEventListener('keydown', dispatchNavigation, false);
+
+  function dispatchNavigation(event) {
+    if (!event) return;
+    const { code, srcElement } = event;
+    const { nextElementSibling, previousElementSibling } = srcElement;
+    const keys = {
+      ArrowDown: nextElementSibling,
+      ArrowUp: previousElementSibling,
+    };
+    const siblingElem = keys[code];
+    const siblingQualifier = 'tr';
+    navigateRow(siblingElem, siblingQualifier);
+  }
+
+  function navigateRow(siblingElem, matchElemType) {
+    if (!siblingElem) return;
+    const { localName = null } = siblingElem;
+    if (localName === matchElemType) siblingElem.focus();
+  }
+
+</script>
