@@ -24,4 +24,11 @@ module.exports = {
     page: 'login',
     title: 'Login | Receiving Log | BANE',
   },
+  view: {
+    bodyClass: 'view',
+    mainClass: 'view',
+    path: '/view',
+    page: 'view',
+    title: 'View | Receiving Log | BANE',
+  },
 };

@@ -16,6 +16,10 @@ h2,
 h3 {
   font-weight: 400; }
 
+h2 {
+  font-size: 2em;
+  text-transform: uppercase; }
+
 a {
   color: #bb3e14;
   text-decoration: none; }
@@ -123,16 +127,51 @@ footer {
   footer div {
     text-align: right; }
 
+main h2 {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  font-weight: 500;
+  padding: .5em;
+  text-transform: uppercase;
+  font-size: 2em; }
+
 /* Generic breakpoints */
+.browse {
+  padding-bottom: 4em; }
+  .browse h2 {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    font-weight: 500;
+    padding: .5em; }
+  .browse nav {
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: normal; }
+    .browse nav ul {
+      list-style: none;
+      text-align: right;
+      margin-bottom: 0; }
+      .browse nav ul li {
+        display: inline-block;
+        margin-left: 2em;
+        margin-right: .4em; }
+        .browse nav ul li a.disabled {
+          pointer-events: none;
+          color: grey; }
+        .browse nav ul li a:hover {
+          text-decoration: underline; }
+
 .table-container table {
   table-layout: fixed;
   width: 100%;
-  /* border-spacing: 0; */
-  /* border: 2px solid $secondaryColor; */
   border-collapse: collapse;
   border-style: hidden;
   border-radius: 0.5em;
   box-shadow: 0 0 0 2px #bb3e14, 3px 2em 6em 10px rgba(0, 0, 0, 0.33); }
+  .table-container table caption {
+    width: 100%;
+    padding-bottom: 1em;
+    letter-spacing: .1em;
+    font-weight: 500;
+    font-size: 1.1em; }
   .table-container table thead {
     background-color: #464646;
     color: #f6f4f2; }
@@ -155,7 +194,8 @@ footer {
     background-color: rgba(0, 0, 0, 0.2); }
   .table-container table tr:focus {
     background-color: rgba(251, 255, 0, 0.5);
-    color: #000; }
+    color: #000;
+    outline: auto; }
   .table-container table th,
   .table-container table td {
     padding: .3em; }
@@ -263,5 +303,38 @@ form {
     font-size: .75em;
     text-align: right;
     width: 100%; }
+
+/* Generic breakpoints */
+section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 1em; }
+  section.header-label {
+    background-color: #bb3e14;
+    border-radius: 0 1em;
+    color: #f6f4f2;
+    letter-spacing: .1em; }
+  section.date-label {
+    padding: 0 1em;
+    font-weight: 500; }
+    section.date-label button {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 1em;
+      color: #bb3e14;
+      text-decoration: underline;
+      cursor: pointer; }
+
+div.items {
+  margin: 1em;
+  padding: 0 2em;
+  background-color: #f6f4f2; }
+  div.items h3 {
+    text-transform: uppercase;
+    font-weight: 500; }
 
 /*# sourceMappingURL=main.css.map */

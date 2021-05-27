@@ -8,13 +8,15 @@ const router = require('express').Router();
 const { page } = require('../../utils');
 const { index, login } = page;
 const {
-  entry: { findLastNDays },
+  entry: { findLastNDays, findByIdAndRender },
 } = require('../../controllers');
 
 router.get('/', (req, res, next) => {
   const { bodyClass, mainClass, page, title } = index;
   const { user } = req;
-  const admin = user.roles.indexOf('ADMIN') !== -1;
+  const { roles } = user || { roles: [] };
+  const admin = roles.indexOf('ADMIN') !== -1;
+  console.log(admin);
   res.render(page, { admin, bodyClass, mainClass, title, user });
 });
 
@@ -25,5 +27,7 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/browse', findLastNDays);
+
+router.get('/view/:id', findByIdAndRender);
 
 module.exports = router;

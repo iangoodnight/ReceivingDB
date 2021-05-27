@@ -5,6 +5,9 @@ const path = require('path');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const { passport: passportMiddleware } = require('./middleware');
+const { date: {
+  subtractDaysFromToday, friendlyTimeAndDate
+}} = require('./utils');
 
 require('dotenv').config();
 
@@ -19,12 +22,13 @@ db.once('open', () => {
 // view engine setup
 const exphbs = require('express-handlebars');
 
+app.set('views', path.join(__dirname, 'views'));
 app.engine(
   'hbs',
   exphbs({
     extname: 'hbs',
     defaultLayout: 'main',
-    partialsDir: __dirname + '/views/partials/',
+    partialsDir: path.join(__dirname, 'views', 'partials'),
     helpers: {
       math: function (lvalue, operator, rvalue) {
         lvalue = parseFloat(lvalue);
@@ -36,6 +40,24 @@ app.engine(
           '/': lvalue / rvalue,
           '%': lvalue % rvalue,
         }[operator];
+      },
+      dateRange: function (start, end) {
+        const startDate = new Date(subtractDaysFromToday(parseInt(start)));
+        const endDate = new Date(subtractDaysFromToday(parseInt(end)));
+        const sMonth = startDate.getMonth() + 1;
+        const sDay = startDate.getDate();
+        const sYear = startDate.getFullYear();
+        const eMonth = endDate.getMonth() + 1;
+        const eDay = endDate.getDate();
+        const eYear = endDate.getFullYear();
+        return `${sMonth}/${sDay}/${sYear} - ${eMonth}/${eDay}/${eYear}`;
+      },
+      friendlyDateTime: function (date) {
+        const [
+          friendlyDate,
+          friendlyTime
+        ] = friendlyTimeAndDate(new Date(date));
+        return `${friendlyDate} @ ${friendlyTime}`;
       },
     },
   })

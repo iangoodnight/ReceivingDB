@@ -10,7 +10,8 @@ const {
   entry: { flatten },
 } = require('../utils');
 const {
-  page: { browse },
+  page: { browse, view },
+  role: { isAdmin },
 } = require('../utils');
 
 module.exports = {
@@ -32,9 +33,29 @@ module.exports = {
       next(err);
     }
   },
+  findByIdAndRender: async (req, res, next) => {
+    try {
+      const entry = await Entry.findById(req.params.id).lean();
+      console.log(entry);
+      const { user } = req;
+      const admin = isAdmin(user);
+      const { bodyClass, mainClass, page, title } = view;
+      res.render('entry', {
+        admin,
+        bodyClass,
+        data: entry,
+        mainClass,
+        success: true,
+        title,
+        user,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
   findLastNDays: async (req, res, next) => {
     const start = req.query.start || 1;
-    const end = req.query.end || 0;
+    const end = +req.query.end || 0;
     const startDate = subtractDaysFromToday(start);
     const endDate = end === 0 ? Date.now() : subtractDaysFromToday(end - 1);
     const query = { date: { $gte: startDate, $lte: endDate } };
@@ -43,7 +64,7 @@ module.exports = {
       const data = flatten(entries);
       const { bodyClass, mainClass, page, title } = browse;
       const { user } = req;
-      const admin = user.roles.indexOf('ADMIN') !== -1;
+      const admin = isAdmin(user);
       const success = true;
       res.render(page, {
         admin,
@@ -53,6 +74,8 @@ module.exports = {
         success,
         title,
         user,
+        start,
+        end,
       });
     } catch (err) {
       next(err);

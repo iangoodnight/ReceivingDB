@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "DEBUG=speak-and-spell:* nodemon ./bin/www",
-    "start": "node ./bin/www",
+    "dev": "DEBUG=speak-and-spell:* nodemon ./src/bin/www",
+    "start": "node ./src/bin/www",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest --collect-coverage"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

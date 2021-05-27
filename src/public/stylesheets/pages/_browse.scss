@@ -1,19 +1,60 @@
 @import "../abstracts/all";
 
+.browse {
+  padding-bottom: 4em;
+  h2 {
+    background-image: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.2));
+    font-weight: 500;
+    padding: .5em;
+  }
+  nav {
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: normal;
+    ul {
+      list-style: none;
+      text-align: right;
+      margin-bottom: 0;
+
+      li {
+        display: inline-block;
+        margin-left: 2em;
+        margin-right: .4em;
+
+        a {
+          &.disabled {
+            pointer-events: none;
+            color: grey;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
 .table-container {
   $table-radius: .5em;  
 
   table {
     table-layout: fixed;
     width: 100%;
-    /* border-spacing: 0; */
-    /* border: 2px solid $secondaryColor; */
     border-collapse: collapse;
     border-style: hidden;
     border-radius: $table-radius;
     box-shadow:
       0 0 0 2px $secondaryColor,
       3px 2em 6em 10px rgba(0,0,0,.33);
+
+    caption {
+      width: 100%;
+      padding-bottom: 1em;
+      letter-spacing: .1em;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
 
     thead {
       background-color: $primaryColor;
@@ -53,6 +94,7 @@
       &:focus {
         background-color: rgba(251, 255, 0, 0.5);
         color: #000;
+        outline: auto;
       }
     }
 

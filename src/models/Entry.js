@@ -114,6 +114,8 @@ const entrySchema = new Schema(
   schemaOptions
 );
 
+entrySchema.index({ date: -1 });
+
 const Entry = model('Entry', entrySchema);
 
 module.exports = Entry;
