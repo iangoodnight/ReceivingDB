@@ -59,6 +59,27 @@ app.engine(
         ] = friendlyTimeAndDate(new Date(date));
         return `${friendlyDate} @ ${friendlyTime}`;
       },
+      dateNowInput: () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        return `${year}-${
+          month < 10 ? '0' + month: month
+        }-${
+          day < 10 ? '0' + day: day
+        }`;
+      },
+      timeNowInput: () => {
+        const now = new Date();
+        const hours = now.getHours().toString();
+        const minutes = now.getMinutes().toString();
+        return `${
+          hours.length < 2 ? '0' + hours: hours
+        }:${
+          minutes.length < 2 ? '0' + minutes: minutes
+        }`;
+      },
     },
   })
 );

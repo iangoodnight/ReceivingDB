@@ -97,7 +97,7 @@ const entrySchema = new Schema(
       uppercase: true,
     },
     receivedBy: {
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       trim: true,
       type: String,

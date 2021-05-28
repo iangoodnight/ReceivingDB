@@ -50,7 +50,11 @@
     </thead>
     <tbody>
     {{#each data}}
-      <tr tabindex="{{math @index "+" 8}}" data-entry="{{_id}}">
+      <tr
+        data-entry="{{_id}}"
+        id="{{_id}}-{{@index}}"
+        tabindex="{{math @index "+" 8}}"
+      >
         <td>{{item}}</td>
         <td class="priority-3">{{vendor}}</td>
         <td class="priority-5">{{carrier}}</td>

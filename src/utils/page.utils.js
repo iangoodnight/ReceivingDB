@@ -24,6 +24,13 @@ module.exports = {
     page: 'login',
     title: 'Login | Receiving Log | BANE',
   },
+  newEntry: {
+    bodyClass: 'new',
+    mainClass: 'new',
+    path: '/new',
+    page: 'new',
+    title: 'New Entry | Receiving Log | BANE',
+  },
   view: {
     bodyClass: 'view',
     mainClass: 'view',

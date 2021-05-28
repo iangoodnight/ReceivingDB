@@ -5,8 +5,8 @@
 'use strict';
 
 const router = require('express').Router();
-const { page } = require('../../utils');
-const { index, login } = page;
+const { page, route: { generatePageDetails } } = require('../../utils');
+const { index, login, newEntry } = page;
 const {
   entry: { findLastNDays, findByIdAndRender },
 } = require('../../controllers');
@@ -21,13 +21,21 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  const { bodyClass, mainClass, page, title } = login;
-  const { user } = req;
-  res.render(page, { bodyClass, mainClass, title, user });
+  try {
+    const [ page, pageDetails ] = generatePageDetails(req, login);
+    res.render(page, pageDetails);
+  } catch (err) { next(err); }
 });
 
 router.get('/browse', findLastNDays);
 
 router.get('/view/:id', findByIdAndRender);
+
+router.get('/new', (req, res, next) => {
+  try {
+    const [ page, pageDetails ] = generatePageDetails(req, newEntry);
+    res.render(page, pageDetails);
+  } catch (err) { next(err); }
+});
 
 module.exports = router;

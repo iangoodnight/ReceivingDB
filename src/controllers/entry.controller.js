@@ -39,16 +39,9 @@ module.exports = {
       console.log(entry);
       const { user } = req;
       const admin = isAdmin(user);
-      const { bodyClass, mainClass, page, title } = view;
-      res.render('entry', {
-        admin,
-        bodyClass,
-        data: entry,
-        mainClass,
-        success: true,
-        title,
-        user,
-      });
+      const { page } = view;
+      const pageDetails = { ...view, admin, user, data: entry };
+      res.render(page, pageDetails);
     } catch (err) {
       next(err);
     }
@@ -62,21 +55,11 @@ module.exports = {
     try {
       const entries = await Entry.find(query);
       const data = flatten(entries);
-      const { bodyClass, mainClass, page, title } = browse;
+      const { page } = browse;
       const { user } = req;
       const admin = isAdmin(user);
-      const success = true;
-      res.render(page, {
-        admin,
-        bodyClass,
-        data,
-        mainClass,
-        success,
-        title,
-        user,
-        start,
-        end,
-      });
+      const pageDetails = { ...browse, admin, user, data, start, end };
+      res.render(page, pageDetails);
     } catch (err) {
       next(err);
     }

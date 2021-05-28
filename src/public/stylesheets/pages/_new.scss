@@ -1,0 +1,49 @@
+@import "../abstracts/all";
+
+.new {
+  form {
+    width: 100%;
+    min-height: 50vh;
+    border: 2px solid $secondaryColor;
+    box-shadow: $boxShadow;
+    border-radius: 1em;
+    padding: 1em;
+
+    input {
+      padding: .5em;
+    }
+
+    div.form-row {
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+
+      .form-group {
+        input,
+        label {
+          display: block;
+          min-width: 180px;
+        }
+
+        input {
+          border-left: none;
+          border-top: none;
+          border-right: none;
+          border-bottom: 2px solid $secondaryColor;
+        }
+
+        label {
+          color: $secondaryColor;
+        }
+      }
+
+      &.flex-right {
+        justify-content: flex-end;
+
+        .form-group {
+          margin-left: 1em;
+        }
+      }
+    }
+  }
+}

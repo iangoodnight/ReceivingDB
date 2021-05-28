@@ -9,7 +9,7 @@
     <ul>
       <li><a href="/browse?start=6">Browse</a></li>
       <li><a href="#">Search</a></li>
-      <li><a href="#">New</a></li>
+      <li><a href="/new">New</a></li>
       {{#if admin}}
           <li><a href="#">Users</a></li>
       {{/if}}
@@ -35,7 +35,7 @@
     });
     const response = await logoutRequest.json();
     const { success } = response;
-    if (success) window.location.reload();
+    if (success) window.location.replace('/');
   }
 
   if (logout) logout.addEventListener('click', handleLogout, false);

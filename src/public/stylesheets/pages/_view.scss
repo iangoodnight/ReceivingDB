@@ -29,17 +29,72 @@ section {
       cursor: pointer;
     }
   }
+
+  &.received {
+    justify-content: flex-end;
+    padding-top: 0;
+  }
 }
 
 div {
   &.items {
-    margin: 1em;
-    padding: 0 2em;
+    margin: 1em 1em 0;
+    padding: 0 .5em 1em;
     background-color: $betterWhite;
+    @include for-tablet-portrait-up {
+      padding: 0 2em 2em;
+    }
 
     h3 {
+      text-align: center;
+      text-decoration: underline;
+      font-size: 1.4em;
+      letter-spacing: .1em;
       text-transform: uppercase;
       font-weight: 500;
+      margin-bottom: .5em;
+    }
+
+    div.flex-row {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      width: 100%;
+      padding: 0 .4em;
+      @include for-tablet-portrait-up {
+        padding: 0 2em;
+      }
+
+      &.row-0 {
+        background-color: rgba(0,0,0,.1);
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: .5em;
+      }
+      span {
+        &.item {
+          font-weight: 500;
+        }
+        &.item-label {
+          text-transform: uppercase;
+          font-weight: 500;
+          font-size: .8em;
+          
+          @include for-tablet-portrait-up {
+            font-size: .9em;
+          }
+        }
+      }
+      .flex-col {
+        width: 100%;
+        padding-right: 1.4em;
+
+        @include for-tablet-portrait-up {
+          width: 50%;
+        }
+      }
     }
   }
 }

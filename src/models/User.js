@@ -6,6 +6,7 @@
 
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const { regex: { isAlphaNumeric } } = require('../utils');
 
 const SALT_ROUNDS = 10;
 
@@ -28,7 +29,7 @@ const userSchema = new Schema(
       validate: [
         (email) => {
           //eslint-disable-next-line
-        const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
           return re.test(email);
         },
         'Please use a valid email address',
@@ -38,6 +39,28 @@ const userSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    name: {
+      firstName: {
+        maxLength: 32,
+        required: true,
+        trim: true,
+        type: String,
+        validate: [
+          isAlphaNumeric,
+          'Name must be alphanumeric (a-z, -, ., _)',
+        ],
+      },
+      lastName: {
+        maxLength: 32,
+        required: true,
+        trim: true,
+        type: String,
+        validate: [
+          isAlphaNumeric,
+          'Name must be alphanumeric (a-z, -, ., _)',
+        ],
+      },
+    },
     password: {
       required: true,
       type: String,
@@ -46,7 +69,7 @@ const userSchema = new Schema(
     },
     roles: {
       type: [String],
-      enum: ['ADMIN', 'READ', 'WRITE'],
+      enum: ['ADMIN',  'AUDIT', 'READ', 'WRITE'],
       default: ['READ'],
     },
     username: {
@@ -57,10 +80,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       validate: [
-        (username) => {
-          const re = /[-_.0-9a-z]/i;
-          return re.test(username);
-        },
+        isAlphaNumeric,
         'Username must be alphanumeric (a-z, -, ., _)',
       ],
     },
