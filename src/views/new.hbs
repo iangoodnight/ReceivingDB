@@ -1,7 +1,7 @@
 <h2>New Entry</h2>
 
 <div>
-  <form>
+  <form id="new-items">
     <div class="form-row flex-right">
       <div class="form-group">
         <input
@@ -10,8 +10,12 @@
           name="date"
           type="date"
           value="{{dateNowInput}}"
+          max="{{dateNowInput}}"
+          min="{{thisYear}}"
         />
-        <label for="date" id="date-label">Date</label>
+        <label for="date" id="date-label">
+          Date<span class="errors"></span>
+        </label>
       </div>      
       <div class="form-group">
         <input
@@ -21,7 +25,9 @@
           type="time"
           value="{{timeNowInput}}"
         />
-        <label for="time" id="time-label">Time</label>
+        <label for="time" id="time-label">
+          Time<span class="errors"></span>
+        </label>
       </div>
     </div>
     <div class="form-row flex-split">
@@ -32,7 +38,9 @@
           name="vendor"
           type="text"
         />
-        <label for="vendor" id="vendor-label">Vendor</label>
+        <label for="vendor" id="vendor-label">
+          Vendor<span class="errors"></span>
+        </label>
       </div>
       <div class="form-group">
         <input
@@ -41,26 +49,396 @@
           name="po"
           type="text"
         />
-        <label for="po" id="po-label">Purchase Order</label>
+        <label for="po" id="po-label">
+          Purchase Order<span class="errors"></span>
+        </label>
       </div>
       <div class="form-group">
         <input
-          arialabelledby="carrier-label"
+          aria-labelledby="carrier-label"
           id="carrier"
           name="carrier"
           type="text"
         />
-        <label for="carrier" id="carrier-label">Carrier</label>
+        <label for="carrier" id="carrier-label">
+          Carrier<span class="errors"></span>
+        </label>
       </div>
       <div class="form-group">
         <input
-          arialabelledby="intendedFor-label"
+          aria-labelledby="intendedFor-label"
           id="intendedFor"
           name="intendedFor"
           type="text"
         />
-        <label for="intendedFor" id="intendedFor-label">Intended For</label>
+        <label for="intendedFor" id="intendedFor-label">
+          Intended For<span class="errors"></span>
+        </label>
+      </div>
+    </div>
+    <h3>Items</h3>
+    <div class="form-row flex-split">
+      <div class="form-group form-items">
+        <input
+          aria-labelledby="item1-label"
+          id="item1"
+          name="item1"
+          type="text"
+        />
+        <label for="item1" id="item1-label">
+          Item<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="nep1-label"
+          id="nep1"
+          name="nep1"
+          type="text"
+        />
+        <label for="nep1" id="nep1-label">
+          NEP #<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="vlot1-label"
+          id="vlot1"
+          name="vlot1"
+          type="text"
+        />
+        <label for="vlot1" id="vlot1-label">
+          Vendor Lot/Batch #<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="qty1-label"
+          id="qty1"
+          name="qty1"
+          type="number"
+        />
+        <label for="qty1" id="qty1-label">
+          Quantity<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="unit1-label"
+          id="unit1"
+          name="unit1"
+          type="text"
+        />
+        <label for="unit1" id="unit1-label">
+          Unit<span class="errors"></span>
+        </label>
+      </div>
+    </div>
+    <div class="form-row flex-split">
+      <div class="form-group form-items">
+        <input
+          aria-labelledby="item2-label"
+          id="item2"
+          name="item2"
+          type="text"
+        />
+        <label for="item2" id="item2-label">
+          Item<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="nep2-label"
+          id="nep2"
+          name="nep2"
+          type="text"
+        />
+        <label for="nep2" id="nep2-label">
+          NEP #<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="vlot2-label"
+          id="vlot2"
+          name="vlot2"
+          type="text"
+        />
+        <label for="vlot2" id="vlot2-label">
+          Vendor Lot/Batch #<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="qty2-label"
+          id="qty2"
+          name="qty2"
+          type="number"
+        />
+        <label for="qty2" id="qty2-label">
+          Quantity<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="unit2-label"
+          id="unit2"
+          name="unit2"
+          type="text"
+        />
+        <label for="unit2" id="unit2-label">
+          Unit<span class="errors"></span>
+        </label>
+      </div>
+    </div>
+    <div class="form-row flex-split">
+      <div class="form-group form-items">
+        <input
+          aria-labelledby="item3-label"
+          id="item3"
+          name="item3"
+          type="text"
+        />
+        <label for="item3" id="item3-label">
+          Item<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="nep3-label"
+          id="nep3"
+          name="nep3"
+          type="text"
+        />
+        <label for="nep3" id="nep3-label">
+          NEP #<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="vlot3-label"
+          id="vlot3"
+          name="vlot3"
+          type="text"
+        />
+        <label for="vlot3" id="vlot3-label">
+          Vendor Lot/Batch #<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="qty3-label"
+          id="qty3"
+          name="qty3"
+          type="number"
+        />
+        <label for="qty3" id="qty3-label">
+          Quantity<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="unit3-label"
+          id="unit3"
+          name="unit3"
+          type="text"
+        />
+        <label for="unit3" id="unit3-label">
+          Unit<span class="errors"></span>
+        </label>
+      </div>
+    </div>
+    <div class="form-row form-control">
+      <div class="button-group">
+        <button id="add-items" type="button">Add more items</button>
+        <input type="submit" />
       </div>
     </div>
   </form>
 </div>
+
+<script defer>
+  const count = { inputs: 3 };
+  const form = document.querySelector('form#new-items');
+  const addItemsButton = document.querySelector('button#add-items');
+  let errorElems = document.querySelectorAll('span.errors');
+
+  form.addEventListener('submit', handleSubmit, false);
+  addItemsButton.addEventListener('click', addInputGroup, false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    resetErrors();
+    const elements = form.elements;
+    const formErrs = new ErrorCollection();
+    const [
+      dayInput,
+      timeInput,
+      vendorInput,
+      purchaseOrderInput,
+      carrierInput,
+      intendedForInput,
+      ...itemInputs
+    ] = elements;
+    const { value: day } = dayInput;
+    const { value: time } = timeInput;
+    if (!day || day.length > 10) formErrs.setError(0);
+    if (!time) formErrs.setError(1);
+    const date = new Date(formatDate(day, time));
+    const vendor = validate(vendorInput) || formErrs.setError(2);
+    const purchaseOrder = validate(purchaseOrderInput) || formErrs.setError(3);
+    const carrier = validate(carrierInput) || formErrs.setError(4);
+    const intendedFor = validate(intendedForInput) || formErrs.setError(5);
+    const items = [];
+    let remainingInputs = [...itemInputs];
+    while (remainingInputs.length > 0) {
+      const [
+        itemInput,
+        nepInput,
+        vLotInput,
+        qtyInput,
+        unitInput,
+        ...rest
+      ] = remainingInputs;
+      const errorIdx = 6 + (items.length * 5)
+      const item = validate(itemInput);
+      if (item) {
+        const nepNumber = validate(nepInput) || formErrs.setError(errorIdx + 1);
+        const vendorLot = validate(vLotInput) || formErrs.setError(errorIdx + 2);
+        const number = validate(qtyInput) || formErrs.setError(errorIdx + 3);
+        const unit = validate(unitInput) || formErrs.setError(errorIdx + 4);
+        const quantity = { number, unit };
+        items.push({
+          item,
+          nepNumber,
+          quantity,
+          vendorLot
+        });      
+      } else if (items.length === 0) formErrs.setError(errorIdx);
+      remainingInputs = [...rest];
+    }
+    if (formErrs.isErrs) return setErrors(formErrs.errs);
+    // TEMPORARY
+    const receivedBy = 'FOO';
+    const data = {
+      carrier,
+      date,
+      intendedFor,
+      items,
+      purchaseOrder,
+      receivedBy,
+      vendor,
+    };
+    console.log({ data });
+    fetch('/api/entry', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(response => response.json())
+    .then(json => {
+      const { success } = json;
+      console.log(json);
+    })
+    .catch(err => console.log(err));
+  }
+
+  function formatDate(dateStr, timeStr) {
+   return `${dateStr}T${timeStr}:00.000+00:00`;
+  }
+
+  function ErrorCollection() {
+    this.errs = [];
+    this.isErrs = false;
+    this.setError = (index) => {
+      this.isErrs = true;
+      this.errs[index] = errorMessages[index] || defaultMsg;
+    };
+    const defaultMsg = '*This field is required';
+    const errorMessages = [
+      '*Please provide a valid date',
+      '*Please provide a valid time',
+    ];
+  }
+
+  function validate(elem) {
+    const { value } = elem;
+    if (value && value.length !== 0) return value;
+    return null;
+  }
+
+  function setErrors(errors = []) {
+    const errorSpans = Array.from(errorElems);
+    console.log('error spans length: ', errorSpans.length);
+    errorElems.forEach((elem, i) => {
+      if (errors[i]) elem.textContent = errors[i];
+      elem.classList.add('active');
+    });
+  }
+
+  function resetErrors() {
+    const errorElems = Array.from(document.querySelectorAll('span.errors'));
+    errorElems.forEach(elem => {
+      const { classList } = elem;
+      if (classList.contains('active')) classList.remove('active');
+    });
+  }
+
+  function addInputGroup(event) {
+    const { srcElement } = event;
+    const form = srcElement.closest('form');
+    const buttonRow = srcElement.closest('div.form-row');
+    const number = ++count.inputs;
+    const newInput = inputGroup(number);
+    form.insertBefore(newInput, buttonRow);
+    errorElems = document.querySelectorAll('span.errors');
+  }
+
+  function inputGroup(i = 4) {
+    const div = document.createElement('div');
+    div.classList.add('form-row', 'flex-split');
+    div.innerHTML = `
+      <div class="form-group form-items">
+        <input
+          aria-labelledby="item${i}-label"
+          id="item${i}"
+          name="item${i}"
+          type="text"
+        />
+        <label for="item${i}" id="item${i}-label">
+          Item<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="nep${i}-label"
+          id="nep${i}"
+          name="nep${i}"
+          type="text"
+        />
+        <label for="nep${i}" id="nep${i}-label">
+          NEP #<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="vlot${i}-label"
+          id="vlot${i}"
+          name="vlot${i}"
+          type="text"
+        />
+        <label for="vlot${i}" id="vlot${i}-label">
+          Vendor Lot/Batch #<span class="errors"></span>
+        </label>
+      </div>
+      <div class="form-group details">
+        <input
+          aria-labelledby="qty${i}-label"
+          id="qty${i}"
+          name="qty${i}"
+          type="number"
+        />
+        <label for="qty${i}" id="qty${i}-label">
+          Quantity<span class="errors"></span>
+        </label>
+        <input
+          aria-labelledby="unit${i}-label"
+          id="unit${i}"
+          name="unit${i}"
+          type="text"
+        />
+        <label for="unit${i}" id="unit${i}-label">
+          Unit<span class="errors"></span>
+        </label>
+      </div>`;
+    return div;
+  }
+  
+</script>

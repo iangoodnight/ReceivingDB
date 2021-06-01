@@ -80,6 +80,10 @@ app.engine(
           minutes.length < 2 ? '0' + minutes: minutes
         }`;
       },
+      thisYear: () => {
+        const now = new Date();
+        return `${now.getFullYear().toString()}-01-01`;
+      },
     },
   })
 );

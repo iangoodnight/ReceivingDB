@@ -346,17 +346,48 @@ main h2 {
   border: 2px solid #bb3e14;
   box-shadow: 3px 2em 6em 10px rgba(0, 0, 0, 0.33);
   border-radius: 1em;
-  padding: 1em; }
+  padding: 1em;
+  margin-bottom: 10em; }
   .new form input {
     padding: .5em; }
+  .new form h3 {
+    width: 100%;
+    color: #bb3e14;
+    text-transform: uppercase;
+    letter-spacing: .6em;
+    font-size: 1.4em;
+    text-align: center;
+    border-bottom: 2px solid #bb3e14;
+    font-weight: 500; }
+  @media all and (min-width: 1800px) {
+    .new form {
+      padding: 4em 20em; } }
   .new form div.form-row {
     display: flex;
     flex-flow: row wrap;
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 2em; }
     .new form div.form-row .form-group input,
     .new form div.form-row .form-group label {
       display: block;
-      min-width: 180px; }
+      min-width: 300px; }
+    .new form div.form-row .form-group.form-items input,
+    .new form div.form-row .form-group.form-items label {
+      min-width: 400px; }
+      @media all and (min-width: 1200px) {
+        .new form div.form-row .form-group.form-items input,
+        .new form div.form-row .form-group.form-items label {
+          min-width: 600px; } }
+    .new form div.form-row .form-group.details {
+      margin-left: auto; }
+    .new form div.form-row .form-group span.errors {
+      float: right;
+      font-size: .6em;
+      opacity: 0;
+      transition: opacity 1s ease;
+      color: red; }
+      .new form div.form-row .form-group span.errors.active {
+        opacity: 1; }
     .new form div.form-row .form-group input {
       border-left: none;
       border-top: none;
@@ -364,6 +395,29 @@ main h2 {
       border-bottom: 2px solid #bb3e14; }
     .new form div.form-row .form-group label {
       color: #bb3e14; }
+    .new form div.form-row.form-control {
+      justify-content: center;
+      margin-top: 4em; }
+      .new form div.form-row.form-control .button-group button,
+      .new form div.form-row.form-control .button-group input {
+        padding: .5em;
+        margin: 0 0 1em;
+        min-width: 8em;
+        color: #fff;
+        text-transform: uppercase;
+        background-color: #bb3e14;
+        letter-spacing: .2em;
+        border: none;
+        border-radius: 2px;
+        width: 100%; }
+        .new form div.form-row.form-control .button-group button[type=submit],
+        .new form div.form-row.form-control .button-group input[type=submit] {
+          background-color: #02a442;
+          min-width: 24em; }
+        @media all and (min-width: 600px) {
+          .new form div.form-row.form-control .button-group button,
+          .new form div.form-row.form-control .button-group input {
+            width: auto; } }
     .new form div.form-row.flex-right {
       justify-content: flex-end; }
       .new form div.form-row.flex-right .form-group {

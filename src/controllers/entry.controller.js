@@ -18,9 +18,11 @@ module.exports = {
   // CREATE
   create: async (req, res, next) => {
     try {
+      console.log(req.body);
       const newEntry = await Entry.create(req.body);
       res.json({ success: true, data: newEntry });
     } catch (err) {
+      console.log(err);
       next(err);
     }
   },

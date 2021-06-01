@@ -90,7 +90,7 @@ const entrySchema = new Schema(
     items: [itemSchema],
     purchaseOrder: {
       default: 'N/A',
-      maxLength: 16,
+      maxLength: 32,
       required: true,
       trim: true,
       type: String,

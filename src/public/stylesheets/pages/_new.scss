@@ -8,21 +8,65 @@
     box-shadow: $boxShadow;
     border-radius: 1em;
     padding: 1em;
+    margin-bottom: 10em;
 
     input {
       padding: .5em;
+    }
+
+    h3 {
+      width: 100%;
+      color: $secondaryColor;
+      text-transform: uppercase;
+      letter-spacing: .6em;
+      font-size: 1.4em;
+      text-align: center;
+      border-bottom: 2px solid $secondaryColor;
+      font-weight: 500;
+    }
+
+    @include for-big-desktop-up {
+      padding: 4em 20em;
     }
 
     div.form-row {
       display: flex;
       flex-flow: row wrap;
       width: 100%;
+      margin-bottom: 2em;
 
       .form-group {
         input,
         label {
           display: block;
-          min-width: 180px;
+          min-width: 300px;
+        }
+
+        &.form-items {
+          input,
+          label {
+            min-width: 400px;
+
+            @include for-desktop-up {
+              min-width: 600px;
+            }
+          }
+        }
+
+        &.details {
+          margin-left: auto;
+        }
+
+        span.errors {
+          float: right;
+          font-size: .6em;
+          opacity: 0;
+          transition: opacity 1s ease;
+          color: red;
+
+          &.active {
+            opacity: 1;
+          }
         }
 
         input {
@@ -34,6 +78,36 @@
 
         label {
           color: $secondaryColor;
+        }
+      }
+
+      &.form-control {
+        justify-content: center;
+        margin-top: 4em;
+
+        .button-group {
+          button,
+          input {
+            padding: .5em;
+            margin: 0 0 1em;
+            min-width: 8em;
+            color: #fff;
+            text-transform: uppercase;
+            background-color: $secondaryColor;
+            letter-spacing: .2em;
+            border: none;
+            border-radius: 2px;
+            width: 100%;
+
+            &[type=submit] {
+              background-color: #02a442;
+              min-width: 24em;
+            }
+
+            @include for-tablet-portrait-up {
+              width: auto;
+            }
+          }
         }
       }
 
