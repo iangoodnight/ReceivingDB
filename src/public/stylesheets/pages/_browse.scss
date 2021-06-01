@@ -111,6 +111,9 @@
       &.priority-4,
       &.priority-5 {
         display: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       @include for-phone-only {

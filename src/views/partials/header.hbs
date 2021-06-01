@@ -9,7 +9,9 @@
     <ul>
       <li><a href="/browse?start=6">Browse</a></li>
       <li><a href="#">Search</a></li>
-      <li><a href="/new">New</a></li>
+      {{#if user}}
+        <li><a href="/new">New</a></li>
+      {{/if}}
       {{#if admin}}
           <li><a href="#">Users</a></li>
       {{/if}}

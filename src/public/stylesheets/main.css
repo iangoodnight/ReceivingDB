@@ -225,7 +225,10 @@ main h2 {
     .table-container table td.priority-3,
     .table-container table td.priority-4,
     .table-container table td.priority-5 {
-      display: none; }
+      display: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
     @media all and (max-width: 500px) {
       .table-container table th,
       .table-container table td {
@@ -365,6 +368,8 @@ main h2 {
       justify-content: flex-end; }
       .new form div.form-row.flex-right .form-group {
         margin-left: 1em; }
+    .new form div.form-row.flex-split {
+      justify-content: space-between; }
 
 /* Generic breakpoints */
 /**
