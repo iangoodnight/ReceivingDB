@@ -14,8 +14,7 @@
               {{#unless end }}
                 class="disabled"
               {{/unless}}
-              href=
-                "/browse?start={{math start "-" "7"}}&end={{math end "-" "7"}}"  
+              href="/browse?start={{math end "-" "1"}}&end={{math end "-" "7"}}"  
               rel="noopener noreferrer"
             >
               Previous
@@ -24,7 +23,7 @@
           <li>
             <a
               href=
-                "/browse?start={{math start "+" "7"}}&end={{math end "+" "7"}}"
+                "/browse?start={{math start "+" "7"}}&end={{math start "+" "1"}}"
             >
               Next
             </a>
@@ -79,7 +78,7 @@
         {{#unless end }}
           class="disabled"
         {{/unless}}
-        href="/browse?start={{math start "-" "7"}}&end={{math end "-" "7"}}"  
+        href="/browse?start={{math end "-" "1"}}&end={{math end "-" "7"}}"  
         rel="noopener noreferrer"
       >
         Previous
@@ -87,7 +86,7 @@
     </li>
     <li>
       <a
-        href="/browse?start={{math start "+" "7"}}&end={{math end "+" "7"}}"
+        href="/browse?start={{math start "+" "7"}}&end={{math start "+" "1"}}"
       >
         Next
       </a>

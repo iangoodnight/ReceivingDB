@@ -1,0 +1,103 @@
+@import "../abstracts/all";
+
+.search {
+  
+  span.errors {
+    float: right;
+  }
+
+  .search-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 1em 1em 3em;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+
+    .search-label {
+      text-transform: uppercase;
+      font-weight: 500;
+      width: 200px;
+      margin-bottom: 1em;
+    }
+    .search-inputs {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+
+      button {
+        min-width: 200px;
+        height: 2em;
+        margin: 0 auto;
+        display: block;
+        background-color: #02a442;
+        color: #fff;
+        padding: .2em;
+        border: none;
+        border-radius: .2em;
+        text-transform: uppercase;
+        font-weight: 500;
+
+        @include for-tablet-portrait-up {
+          margin: 0 1em 0 auto;
+        }
+      }
+
+      .input-group {
+        width: 100%;
+        margin-bottom: 1em;
+
+        label {
+          font-size: .8em;
+        }
+
+        input,
+        label {
+          display: block;
+          min-width: 200px;
+          width: 100%;
+          margin: 0 .5em;
+          padding: .3em;
+        }
+        
+        @include for-tablet-portrait-up {
+          width: 46%;
+        }
+        @include for-desktop-up {
+          width: 30%;
+          margin: 0 auto;
+        }
+        &.po-input {
+          @include for-tablet-portrait-up {
+            width: 100%;
+          }
+          @include for-desktop-up {
+            width: 60%;
+          }
+        }
+      }
+      @include for-tablet-portrait-up {
+        &:nth-child(2) {
+          justify-content: space-between;
+        }
+      }
+      @include for-desktop-up {
+        width: 70%;
+      }
+      &.one {
+        @include for-tablet-portrait-up {
+          width: 98%;
+        }
+        @include for-tablet-landscape-up {
+          width: 70%;
+
+          .input-group {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+    @include for-big-desktop-up {
+      padding: 4em 10em;
+    }
+  }
+}

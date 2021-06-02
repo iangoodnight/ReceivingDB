@@ -1,0 +1,117 @@
+<div>
+  <h2>Search</h2>
+  <div class="search-row">
+    <div class="search-label">By date range:</div>
+    <div class="search-inputs">
+      <div class="input-group">
+        <input
+          aria-labelledby="bydate-start-label"
+          id="bydate-start"
+          name="bydate-start"
+          type="date"
+          value="{{lastWeek}}"
+          max="{{dateNowInput}}"
+        />
+        <label for="bydate-start" id="bydate-start-label">
+          From<span class="errors"></span>
+        </label>
+      </div>
+      <div class="input-group">
+        <input
+          aria-labelledby="bydate-end-label"
+          id="bydate-end"
+          name="bydate-end"
+          type="date"
+          value="{{dateNowInput}}"
+          max="{{dateNowInput}}"
+        />
+        <label for="bydate-end" id="bydate-end-label">
+          Through<span class="errors"></span>
+        </label>
+      </div>
+      <button id="bydate-search">Search</button>
+    </div>
+  </div>
+  <div class="search-row">
+    <div class="search-label">By Purchase Order:</div>
+    <div class="search-inputs one">
+      <div class="input-group po-input">
+        <input
+          aria-labelledby="po-label"
+          id="po"
+          maxLength="64"
+          name="po"
+          type="text"
+        />
+        <label for="po" id="po-label">
+          PO #<span class="errors"></span>
+        </label>
+      </div>
+      <button id="po-view">Search</button>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  const searchByDate = document.querySelector('button#bydate-search');
+
+  const searchByPo = document.querySelector('button#po-view');
+
+  searchByDate.addEventListener('click', handleSearchByDate, false);
+
+  searchByPo.addEventListener('click', handleSearchByPo, false);
+
+  function handleSearchByDate() {
+    clearErrs();
+    const startElem = document.querySelector('input#bydate-start');
+    const endElem = document.querySelector('input#bydate-end');
+    const startValue = startElem.value;
+    const endValue = endElem.value;
+    if (!startValue) return setInputError(startElem, '*Date required');
+    if (!endValue) return setInputError(endElem, '*Date required');
+    const startDate = new Date(startValue);
+    const endDate = new Date(endValue);
+    if (startDate > endDate) {
+      setInputError(startElem, '*Invalid range');
+      return setInputError(endElem, '*Invalid range');
+    }
+    const today = new Date();
+    startDate.setHours(0, 0, 0, 0);
+    endDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0 ,0); 
+    const startDay = daysBetween(today, startDate); 
+    const endDay = daysBetween(today, endDate);
+    window.location = `/browse?start=${startDay - 1}&end=${endDay - 1}`;
+  }
+
+  function handleSearchByPo() {
+    clearErrs();
+    const inputElem = document.querySelector('input#po');
+    const inputVal = inputElem.value;
+    if (!inputVal || !inputVal.length) {
+      return setInputError(inputElem, '*Required');
+    }
+    window.location = `/view/po/${inputVal}`;
+  }
+
+  function setInputError(input, msg) {
+    const inputGroup = input.closest('div.input-group');
+    const errorSpan = inputGroup.querySelector('span.errors');
+    errorSpan.innerText = msg;
+    errorSpan.classList.add('active');
+  }
+
+  function clearErrs() {
+    const errorSpans = Array.from(document.querySelectorAll('span.errors'));
+    errorSpans.forEach(span => {
+      span.classList.remove('active');
+      span.innerText = '';
+    });
+  }
+
+  function daysBetween(date1, date2) {
+    const timeDifference = date1.getTime() - date2.getTime();
+    return timeDifference / (24 * 60 * 60 * 1_000);
+  }
+
+</script>

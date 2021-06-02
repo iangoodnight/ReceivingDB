@@ -2,50 +2,55 @@
 
 <div>
   {{#if data}}
-    <section class="date-label">
-      <button>Back to browse</button>
-      <span>Received: {{friendlyDateTime data.date}}</span>
-    </section>
-    <section class="header-label">
-      <span>PO #{{data.purchaseOrder}}</span>
-      <span>{{data.vendor}}</span>
-    </section>
-    <div class="items">
-      <h3>Items</h3>
-      {{#each data.items}}
-        <div class="flex-row row-{{math @index "%" "2"}}">
-          <div class="flex-col">
-            <span class="item">{{item}}</span>
+    {{#each data}}
+      <section class="date-label">
+        <button class="browse instance-{{@index}}">Back to browse</button>
+        <span>Received: {{friendlyDateTime date}}</span>
+      </section>
+      <section class="header-label">
+        <span>PO #{{purchaseOrder}}</span>
+        <span>{{vendor}}</span>
+      </section>
+      <div class="items">
+        <h3>Items</h3>
+        {{#each items}}
+          <div class="flex-row row-{{math @index "%" "2"}}">
+            <div class="flex-col">
+              <span class="item">{{item}}</span>
+            </div>
+            <div class="flex-col">
+              <p>
+                <span class="item-label">NEP #:</span>
+                <span class="item-value">{{nepNumber}}</span>
+              </p>
+              <p>
+                <span class="item-label">Vendor Lot/Batch #:</span>
+                <span class="item-value">{{vendorLot}}</span>
+              </p>
+              <p>
+                <span class="item-label">Lot #:</span>
+                <span class="item-value">{{lot}}</span>
+              </p>
+              <p>
+                <span class="item-label">Quantity:</span>
+                <span class="item-value">
+                  {{quantity.number}} {{quantity.unit}}
+                </span>
+              </p>
+            </div>
           </div>
-          <div class="flex-col">
-            <p>
-              <span class="item-label">NEP #:</span>
-              <span class="item-value">{{nepNumber}}</span>
-            </p>
-            <p>
-              <span class="item-label">Vendor Lot/Batch #:</span>
-              <span class="item-value">{{vendorLot}}</span>
-            </p>
-            <p>
-              <span class="item-label">Lot #:</span>
-              <span class="item-value">{{lot}}</span>
-            </p>
-            <p>
-              <span class="item-label">Quantity:</span>
-              <span class="item-value">
-                {{quantity.number}} {{quantity.unit}}
-              </span>
-            </p>
-          </div>
-        </div>
-      {{/each}}
-    </div>
-    <section class="footer-details">
-      <span>Carrier: {{data.carrier}}</span>
-      <span>Intended for: {{data.intendedFor}}</span>
-    </section>
-    <section class="received">
-      <span>Received by: {{data.receivedBy}}</span>
-    </section>
+        {{/each}}
+      </div>
+      <section class="footer-details">
+        <span>Carrier: {{carrier}}</span>
+        <span>Intended for: {{intendedFor}}</span>
+      </section>
+      <section class="received">
+        <span>Received by: {{receivedBy}}</span>
+      </section>
+    {{/each}}
+  {{else}}
+    <h3>No results found</h3>
+    <a href="#">Back</a>
   {{/if}}
 </div>

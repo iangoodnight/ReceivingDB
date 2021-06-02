@@ -24,7 +24,7 @@ module.exports = {
   isWrite: (req, res, next) => {
     if (!req.user) return unauthorized(res);
     const { roles = [] } = req.user;
-    if (!roles.includes(role.write)) return unauthorized(res);
+    if (!roles.includes('WRITE')) return unauthorized(res);
     next();
   },
 };

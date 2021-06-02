@@ -8,22 +8,26 @@ const { Entry } = require('../models');
 const {
   date: { subtractDaysFromToday },
   entry: { flatten },
-} = require('../utils');
-const {
   page: { browse, view },
   role: { isAdmin },
+  route: { generatePageDetails },
 } = require('../utils');
 
 module.exports = {
   // CREATE
-  create: async (req, res, next) => {
+  create: async (req, res) => {
     try {
-      console.log(req.body);
-      const newEntry = await Entry.create(req.body);
+      const { body } = req;
+      const {
+        user: {
+          name: { firstName, lastName },
+        },
+      } = req;
+      body.receivedBy = `${firstName} ${lastName}`;
+      const newEntry = await Entry.create(body);
       res.json({ success: true, data: newEntry });
     } catch (err) {
-      console.log(err);
-      next(err);
+      res.json({ success: false, data: err });
     }
   },
   // READ
@@ -38,11 +42,23 @@ module.exports = {
   findByIdAndRender: async (req, res, next) => {
     try {
       const entry = await Entry.findById(req.params.id).lean();
-      console.log(entry);
       const { user } = req;
       const admin = isAdmin(user);
       const { page } = view;
-      const pageDetails = { ...view, admin, user, data: entry };
+      const pageDetails = { ...view, admin, user, data: [entry] };
+      res.render(page, pageDetails);
+    } catch (err) {
+      next(err);
+    }
+  },
+  findByPoAndRender: async (req, res, next) => {
+    try {
+      const purchaseOrder = req.params.purchaseOrder;
+      const filter = { purchaseOrder };
+      const entries = await Entry.find(filter).lean();
+      const [page, pageDetails] = generatePageDetails(req, view);
+      pageDetails.data = entries;
+      pageDetails.success = true;
       res.render(page, pageDetails);
     } catch (err) {
       next(err);

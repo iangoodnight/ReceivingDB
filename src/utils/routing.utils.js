@@ -11,7 +11,7 @@ module.exports = {
     const { user } = req;
     const admin = isAdmin(user);
     const { page } = pageObject;
-    return [ page, { ...pageObject, user, admin } ];
+    return [page, { ...pageObject, user, admin }];
   },
   unauthorized: (res, msg = null) => {
     const message = 'Unauthorized' + (msg ? `: ${msg.toString()}` : '');

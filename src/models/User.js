@@ -6,7 +6,9 @@
 
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const { regex: { isAlphaNumeric } } = require('../utils');
+const {
+  regex: { isAlphaNumeric },
+} = require('../utils');
 
 const SALT_ROUNDS = 10;
 
@@ -45,20 +47,14 @@ const userSchema = new Schema(
         required: true,
         trim: true,
         type: String,
-        validate: [
-          isAlphaNumeric,
-          'Name must be alphanumeric (a-z, -, ., _)',
-        ],
+        validate: [isAlphaNumeric, 'Name must be alphanumeric (a-z, -, ., _)'],
       },
       lastName: {
         maxLength: 32,
         required: true,
         trim: true,
         type: String,
-        validate: [
-          isAlphaNumeric,
-          'Name must be alphanumeric (a-z, -, ., _)',
-        ],
+        validate: [isAlphaNumeric, 'Name must be alphanumeric (a-z, -, ., _)'],
       },
     },
     password: {
@@ -69,7 +65,7 @@ const userSchema = new Schema(
     },
     roles: {
       type: [String],
-      enum: ['ADMIN',  'AUDIT', 'READ', 'WRITE'],
+      enum: ['ADMIN', 'AUDIT', 'READ', 'WRITE'],
       default: ['READ'],
     },
     username: {

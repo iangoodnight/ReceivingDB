@@ -349,7 +349,10 @@ main h2 {
   padding: 1em;
   margin-bottom: 10em; }
   .new form input {
-    padding: .5em; }
+    padding: .5em;
+    font-size: 1.1em; }
+  .new form button {
+    font-size: 1.1em; }
   .new form h3 {
     width: 100%;
     color: #bb3e14;
@@ -366,7 +369,12 @@ main h2 {
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    margin-bottom: 2em; }
+    margin-bottom: 2em;
+    opacity: 1;
+    transition: opacity 2s ease, height 2s ease; }
+    .new form div.form-row.hidden {
+      opacity: 0;
+      height: 0; }
     .new form div.form-row .form-group input,
     .new form div.form-row .form-group label {
       display: block;
@@ -425,6 +433,125 @@ main h2 {
     .new form div.form-row.flex-split {
       justify-content: space-between; }
 
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  opacity: 0;
+  transition: opacity 1s ease; }
+  #loader.loading {
+    opacity: 1; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.errors {
+  color: red;
+  opacity: 0;
+  transition: opacity 1s ease; }
+  .errors.active {
+    opacity: 1; }
+
+/* Generic breakpoints */
+/**
+ * abstracts/_variables.scss
+ */
+/* colors */
+/* defaults */
+.search span.errors {
+  float: right; }
+
+.search .search-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 1em 1em 3em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+  .search .search-row .search-label {
+    text-transform: uppercase;
+    font-weight: 500;
+    width: 200px;
+    margin-bottom: 1em; }
+  .search .search-row .search-inputs {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start; }
+    .search .search-row .search-inputs button {
+      min-width: 200px;
+      height: 2em;
+      margin: 0 auto;
+      display: block;
+      background-color: #02a442;
+      color: #fff;
+      padding: .2em;
+      border: none;
+      border-radius: .2em;
+      text-transform: uppercase;
+      font-weight: 500; }
+      @media all and (min-width: 600px) {
+        .search .search-row .search-inputs button {
+          margin: 0 1em 0 auto; } }
+    .search .search-row .search-inputs .input-group {
+      width: 100%;
+      margin-bottom: 1em; }
+      .search .search-row .search-inputs .input-group label {
+        font-size: .8em; }
+      .search .search-row .search-inputs .input-group input,
+      .search .search-row .search-inputs .input-group label {
+        display: block;
+        min-width: 200px;
+        width: 100%;
+        margin: 0 .5em;
+        padding: .3em; }
+      @media all and (min-width: 600px) {
+        .search .search-row .search-inputs .input-group {
+          width: 46%; } }
+      @media all and (min-width: 1200px) {
+        .search .search-row .search-inputs .input-group {
+          width: 30%;
+          margin: 0 auto; } }
+      @media all and (min-width: 600px) {
+        .search .search-row .search-inputs .input-group.po-input {
+          width: 100%; } }
+      @media all and (min-width: 1200px) {
+        .search .search-row .search-inputs .input-group.po-input {
+          width: 60%; } }
+    @media all and (min-width: 600px) {
+      .search .search-row .search-inputs:nth-child(2) {
+        justify-content: space-between; } }
+    @media all and (min-width: 1200px) {
+      .search .search-row .search-inputs {
+        width: 70%; } }
+    @media all and (min-width: 600px) {
+      .search .search-row .search-inputs.one {
+        width: 98%; } }
+    @media all and (min-width: 900px) {
+      .search .search-row .search-inputs.one {
+        width: 70%; }
+        .search .search-row .search-inputs.one .input-group {
+          margin-left: auto; } }
+  @media all and (min-width: 1800px) {
+    .search .search-row {
+      padding: 4em 10em; } }
+
 /* Generic breakpoints */
 /**
  * abstracts/_variables.scss
@@ -456,7 +583,8 @@ section {
       cursor: pointer; }
   section.received {
     justify-content: flex-end;
-    padding-top: 0; }
+    padding-top: 0;
+    margin-bottom: 4em; }
 
 div.items {
   margin: 1em 1em 0;
@@ -502,5 +630,14 @@ div.items {
       @media all and (min-width: 600px) {
         div.items div.flex-row .flex-col {
           width: 50%; } }
+
+button.browse {
+  visibility: hidden; }
+  button.browse.instance-0 {
+    visibility: visible; }
+
+main.view h3 {
+  display: block;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

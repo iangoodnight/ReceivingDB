@@ -19,7 +19,7 @@ const schemaOptions = {
 const itemSchema = new Schema(
   {
     item: {
-      maxLength: 128,
+      maxLength: 96,
       required: true,
       trim: true,
       type: String,
@@ -90,6 +90,7 @@ const entrySchema = new Schema(
     items: [itemSchema],
     purchaseOrder: {
       default: 'N/A',
+      index: true,
       maxLength: 32,
       required: true,
       trim: true,
@@ -115,6 +116,8 @@ const entrySchema = new Schema(
 );
 
 entrySchema.index({ date: -1 });
+entrySchema.index({ 'items.nepNumber': 1, date: -1 });
+entrySchema.index({ vendor: 1, date: -1 });
 
 const Entry = model('Entry', entrySchema);
 

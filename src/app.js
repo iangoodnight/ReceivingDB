@@ -5,9 +5,9 @@ const path = require('path');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const { passport: passportMiddleware } = require('./middleware');
-const { date: {
-  subtractDaysFromToday, friendlyTimeAndDate
-}} = require('./utils');
+const {
+  date: { subtractDaysFromToday, friendlyTimeAndDate },
+} = require('./utils');
 
 require('dotenv').config();
 
@@ -53,10 +53,9 @@ app.engine(
         return `${sMonth}/${sDay}/${sYear} - ${eMonth}/${eDay}/${eYear}`;
       },
       friendlyDateTime: function (date) {
-        const [
-          friendlyDate,
-          friendlyTime
-        ] = friendlyTimeAndDate(new Date(date));
+        const [friendlyDate, friendlyTime] = friendlyTimeAndDate(
+          new Date(date)
+        );
         return `${friendlyDate} @ ${friendlyTime}`;
       },
       dateNowInput: () => {
@@ -64,20 +63,34 @@ app.engine(
         const year = now.getFullYear();
         const month = now.getMonth() + 1;
         const day = now.getDate();
-        return `${year}-${
-          month < 10 ? '0' + month: month
-        }-${
-          day < 10 ? '0' + day: day
+        return `${year}-${month < 10 ? '0' + month : month}-${
+          day < 10 ? '0' + day : day
         }`;
+      },
+      lastWeek: () => {
+        const now = new Date();
+        const lastWeek = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate() - 6
+        );
+        const year = lastWeek.getFullYear().toString();
+        const month =
+          lastWeek.getMonth() + 1 < 10
+            ? `0${lastWeek.getMonth() + 1}`
+            : lastWeek.getMonth() + 1 + '';
+        const day =
+          lastWeek.getDate() < 10
+            ? `0${lastWeek.getDate()}`
+            : lastWeek.getDate().toString();
+        return `${year}-${month}-${day}`;
       },
       timeNowInput: () => {
         const now = new Date();
         const hours = now.getHours().toString();
         const minutes = now.getMinutes().toString();
-        return `${
-          hours.length < 2 ? '0' + hours: hours
-        }:${
-          minutes.length < 2 ? '0' + minutes: minutes
+        return `${hours.length < 2 ? '0' + hours : hours}:${
+          minutes.length < 2 ? '0' + minutes : minutes
         }`;
       },
       thisYear: () => {

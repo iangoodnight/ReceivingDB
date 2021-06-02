@@ -9,4 +9,4 @@ module.exports = {
     const re = /[-_.0-9a-z]/i;
     return re.test(string);
   },
-}
+};

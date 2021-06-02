@@ -33,6 +33,7 @@ section {
   &.received {
     justify-content: flex-end;
     padding-top: 0;
+    margin-bottom: 4em;
   }
 }
 
@@ -99,3 +100,17 @@ div {
   }
 }
 
+button.browse {
+  visibility: hidden;
+
+  &.instance-0 {
+    visibility: visible;
+  }
+}
+
+main.view {
+  h3 {
+    display: block;
+    text-align: center;
+  }
+}

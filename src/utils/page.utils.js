@@ -31,6 +31,13 @@ module.exports = {
     page: 'new',
     title: 'New Entry | Receiving Log | BANE',
   },
+  search: {
+    bodyClass: 'search',
+    mainClass: 'search',
+    path: '/search',
+    page: 'search',
+    title: 'Search | Receiving Log | BANE',
+  },
   view: {
     bodyClass: 'view',
     mainClass: 'view',
