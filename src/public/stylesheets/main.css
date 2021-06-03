@@ -136,6 +136,8 @@ footer {
   margin: auto; }
   footer div {
     text-align: right; }
+  footer h3 {
+    color: #a5a5a5; }
 
 main h2 {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
@@ -159,6 +161,9 @@ main h2 {
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
     font-weight: 500;
     padding: .5em; }
+  .browse p {
+    margin: 0;
+    color: #bb3e14; }
   .browse nav {
     font-size: 1em;
     font-weight: 500;
@@ -173,7 +178,7 @@ main h2 {
         margin-right: .4em; }
         .browse nav ul li a.disabled {
           pointer-events: none;
-          color: grey; }
+          color: #5a5a5a; }
         .browse nav ul li a:hover {
           text-decoration: underline; }
 
@@ -420,7 +425,7 @@ main h2 {
         width: 100%; }
         .new form div.form-row.form-control .button-group button[type=submit],
         .new form div.form-row.form-control .button-group input[type=submit] {
-          background-color: #02a442;
+          background-color: #008635;
           min-width: 24em; }
         @media all and (min-width: 600px) {
           .new form div.form-row.form-control .button-group button,
@@ -476,6 +481,10 @@ main h2 {
  */
 /* colors */
 /* defaults */
+.search div#search-options > div:nth-child(3),
+.search div#search-options > div:nth-child(5) {
+  background-color: #f7f7f7; }
+
 .search span.errors {
   float: right; }
 
@@ -499,12 +508,13 @@ main h2 {
       height: 2em;
       margin: 0 auto;
       display: block;
-      background-color: #02a442;
+      background-color: #008635;
       color: #fff;
       padding: .2em;
       border: none;
       border-radius: .2em;
       text-transform: uppercase;
+      font-size: 14px;
       font-weight: 500; }
       @media all and (min-width: 600px) {
         .search .search-row .search-inputs button {
@@ -527,7 +537,7 @@ main h2 {
       @media all and (min-width: 1200px) {
         .search .search-row .search-inputs .input-group {
           width: 30%;
-          margin: 0 auto; } }
+          margin: 0 auto 1em; } }
       @media all and (min-width: 600px) {
         .search .search-row .search-inputs .input-group.po-input {
           width: 100%; } }
@@ -548,9 +558,80 @@ main h2 {
         width: 70%; }
         .search .search-row .search-inputs.one .input-group {
           margin-left: auto; } }
+    @media all and (min-width: 600px) {
+      .search .search-row .search-inputs.three div:nth-child(1) {
+        width: 98%; }
+      .search .search-row .search-inputs.three button {
+        margin: 0 2em 0 auto; } }
+    @media all and (min-width: 900px) {
+      .search .search-row .search-inputs.three {
+        width: 70%; }
+        .search .search-row .search-inputs.three div:nth-child(1) {
+          width: 100%; }
+        .search .search-row .search-inputs.three button {
+          margin: 0 1em 0 auto; } }
+    @media all and (min-width: 1200px) {
+      .search .search-row .search-inputs.three div:nth-child(1) {
+        width: 60%; }
+      .search .search-row .search-inputs.three div.flex-break {
+        min-width: 200px;
+        margin: 0 1em 0 auto; } }
   @media all and (min-width: 1800px) {
     .search .search-row {
       padding: 4em 10em; } }
+
+/* Generic breakpoints */
+/**
+ * abstracts/_variables.scss
+ */
+/* colors */
+/* defaults */
+main.user {
+  padding-bottom: 4em; }
+  main.user nav {
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: normal; }
+    main.user nav ul {
+      list-style: none;
+      text-align: right;
+      margin-bottom: 0; }
+      main.user nav ul li {
+        display: inline-block;
+        margin-left: 2em;
+        margin-right: .4em; }
+        main.user nav ul li a:hover {
+          text-decoration: underline; }
+  @media all and (max-width: 500px) {
+    main.user .table-container table th:nth-child(1) {
+      border-top-right-radius: .5em; } }
+  @media all and (min-width: 600px) {
+    main.user .table-container table th:nth-child(1),
+    main.user .table-container table td:nth-child(1) {
+      width: auto; }
+    main.user .table-container table th:nth-child(3) {
+      border-top-right-radius: .5em; } }
+  @media all and (min-width: 900px) {
+    main.user .table-container table th:nth-child(3) {
+      border-top-right-radius: unset; }
+    main.user .table-container table th:nth-child(4) {
+      border-top-right-radius: .5em; } }
+  @media all and (min-width: 1200px) {
+    main.user .table-container table th:nth-child(4) {
+      border-top-right-radius: unset; }
+    main.user .table-container table th:nth-child(5) {
+      border-top-right-radius: .5em; } }
+  @media all and (min-width: 1800px) {
+    main.user .table-container table th:nth-child(5) {
+      border-top-right-radius: unset; }
+    main.user .table-container table th:nth-child(6) {
+      border-top-right-radius: .5em; }
+    main.user .table-container table th.enabled {
+      width: 5%; }
+    main.user .table-container table td.enabled {
+      font-weight: 600;
+      font-size: 1.1em;
+      width: 5%; } }
 
 /* Generic breakpoints */
 /**

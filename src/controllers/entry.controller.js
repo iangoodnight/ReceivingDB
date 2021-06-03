@@ -9,7 +9,6 @@ const {
   date: { subtractDaysFromToday },
   entry: { flatten },
   page: { browse, view },
-  role: { isAdmin },
   route: { generatePageDetails },
 } = require('../utils');
 
@@ -42,10 +41,9 @@ module.exports = {
   findByIdAndRender: async (req, res, next) => {
     try {
       const entry = await Entry.findById(req.params.id).lean();
-      const { user } = req;
-      const admin = isAdmin(user);
-      const { page } = view;
-      const pageDetails = { ...view, admin, user, data: [entry] };
+      const [page, pageDetails] = generatePageDetails(req, view);
+      pageDetails.data = [entry];
+      pageDetails.success = true;
       res.render(page, pageDetails);
     } catch (err) {
       next(err);
@@ -67,16 +65,38 @@ module.exports = {
   findLastNDays: async (req, res, next) => {
     const start = req.query.start || 1;
     const end = +req.query.end || 0;
+    const filter = req.query.filter || null;
+    const value = decodeURI(req.query.value) || null;
+    const filterString =
+      filter === 'vendor'
+        ? filter
+        : filter === 'nepNumber'
+        ? 'items.nepNumber'
+        : null;
     const startDate = subtractDaysFromToday(start);
     const endDate = end === 0 ? Date.now() : subtractDaysFromToday(end - 1);
-    const query = { date: { $gte: startDate, $lte: endDate } };
+    const dateQuery = { date: { $gte: startDate, $lte: endDate } };
+    const compoundQuery = {
+      [filterString]: value,
+      date: { $gte: startDate, $lte: endDate },
+    };
     try {
+      const query = filter ? compoundQuery : dateQuery;
+      console.log(query);
       const entries = await Entry.find(query);
-      const data = flatten(entries);
-      const { page } = browse;
-      const { user } = req;
-      const admin = isAdmin(user);
-      const pageDetails = { ...browse, admin, user, data, start, end };
+      const flattened = flatten(entries);
+      const [page, pageDetails] = generatePageDetails(req, browse);
+      let data;
+      if (filter === 'nepNumber') {
+        data = flattened.filter((line) => line.nepNumber === value);
+      } else {
+        data = [...flattened];
+      }
+      pageDetails.start = start;
+      pageDetails.end = end <= 0 ? 0 : end;
+      pageDetails.count = data.length;
+      pageDetails.data = data;
+      pageDetails.success = true;
       res.render(page, pageDetails);
     } catch (err) {
       next(err);

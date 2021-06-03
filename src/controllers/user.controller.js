@@ -5,6 +5,10 @@
 'use strict';
 
 const { User } = require('../models');
+const {
+  page: { user: userPage },
+  route: { generatePageDetails },
+} = require('../utils');
 
 module.exports = {
   // CREATE
@@ -29,9 +33,22 @@ module.exports = {
   },
   findAll: async (req, res, next) => {
     try {
-      console.log(req.user);
       const users = await User.find({});
       res.json({ success: true, data: users });
+    } catch (err) {
+      next(err);
+    }
+  },
+  findAndRender: async (req, res, next) => {
+    try {
+      const enabled = req.query.enabled || true;
+      const query = { enabled };
+      const users = await User.find(query).lean();
+      const [page, pageDetails] = generatePageDetails(req, userPage);
+      pageDetails.success = true;
+      pageDetails.enabled = enabled === 'false' ? false : true;
+      pageDetails.data = users;
+      res.render(page, pageDetails);
     } catch (err) {
       next(err);
     }

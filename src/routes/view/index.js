@@ -9,18 +9,16 @@ const {
   page,
   route: { generatePageDetails },
 } = require('../../utils');
-const { index, login, newEntry, search } = page;
+const { index, login, newEntry, userForm, search } = page;
+const { rbac } = require('../../middleware');
 const {
   entry: { findLastNDays, findByIdAndRender, findByPoAndRender },
+  user: { findAndRender },
 } = require('../../controllers');
 
 router.get('/', (req, res, next) => {
-  const { bodyClass, mainClass, page, title } = index;
-  const { user } = req;
-  const { roles } = user || { roles: [] };
-  const admin = roles.indexOf('ADMIN') !== -1;
-  console.log(admin);
-  res.render(page, { admin, bodyClass, mainClass, title, user });
+  const [page, pageDetails] = generatePageDetails(req, index);
+  res.render(page, pageDetails);
 });
 
 router.get('/login', (req, res, next) => {
@@ -33,6 +31,17 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/browse', findLastNDays);
+
+router.get('/user', rbac.isAdmin, findAndRender);
+
+router.get('/user/new', rbac.isAdmin, (req, res, next) => {
+  try {
+    const [page, pageDetails] = generatePageDetails(req, userForm);
+    res.render(page, pageDetails);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get('/view/:id', findByIdAndRender);
 

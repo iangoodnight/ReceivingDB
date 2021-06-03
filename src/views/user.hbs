@@ -1,0 +1,60 @@
+<h2>Users</h2>
+<div
+  aria-labelledby="table-caption"
+  class="table-container"
+  role="region"
+>
+  <table>
+    <caption id="table-caption">
+      Bulk Apothecary/Natural Essentials receiving log users
+      <nav>
+        <ul>
+          <li>
+            <a href="/user/new">New</a>
+          </li>
+          {{#unless enabled}}
+            <li>
+              <a href="/user?enabled=true">Active</a>
+            </li>
+          {{else}}
+            <li>
+              <a href="/user?enabled=false">Disabled</a>
+            </li>
+          {{/unless}}
+        </ul>
+      </nav>
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th class="priority-2" scope="col">Last</th>
+        <th class="priority-2" scope="col">First</th>
+        <th class="priority-3" scope="col">Email</th>
+        <th class="priority-4" scope="col">Roles</th>
+        <th class="enabled priority-5" scope="col">Enabled</th>
+      </tr>
+      <tbody>
+        {{#each data}}
+          <tr id="{{_id}}" tabindex="0">
+            <td>{{username}}</td>
+            <td class="priority-2">{{name.lastName}}</td>
+            <td class="priority-2">{{name.firstName}}</td>
+            <td class="priority-3">{{email}}</td>
+            <td class="priority-4">
+              {{#each roles}}
+                {{this}}
+              {{/each}}
+            </td>
+            <td class="enabled priority-5">
+              {{#if enabled}}
+                &#10003;
+              {{else}}
+                &#10007;
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </thead>
+  </table>
+</div>

@@ -1,4 +1,4 @@
-<div>
+<div id="search-options">
   <h2>Search</h2>
   <div class="search-row">
     <div class="search-label">By date range:</div>
@@ -39,7 +39,7 @@
         <input
           aria-labelledby="po-label"
           id="po"
-          maxLength="64"
+          maxLength="32"
           name="po"
           type="text"
         />
@@ -50,6 +50,97 @@
       <button id="po-view">Search</button>
     </div>
   </div>
+  <div class="search-row">
+    <div class="search-label">By Part Number:</div>
+    <div class="search-inputs three">
+      <div class="input-group">
+        <input
+          aria-labelledby="part-number-label"
+          id="part-number"
+          maxLength="32"
+          name="part-number"
+          type="text"
+        />
+        <label for="part-number" id="part-number-label">
+          Part Number<span class="errors"></span>
+        </label>
+      </div>
+      <div class="flex-break"></div>
+      <div class="input-group">
+        <input
+          aria-labelledby="part-number-from-label"
+          id="part-number-from"
+          name="part-number-from"
+          max="{{dateNowInput}}"
+          type="date"
+          value="{{monthsBack "6"}}"
+        />
+        <label for="part-number-from" id="part-number-from-label">
+          From<span class="errors"></span>
+        </label>
+      </div>
+      <div class="input-group">
+        <input
+          aria-labelledby="part-number-through-label"
+          id="part-number-through"
+          name="part-number-through"
+          max="{{dateNowInput}}"
+          type="date"
+          value="{{dateNowInput}}"
+        />
+        <label for="part-number-through" id="part-number-through-label">
+          Through<span class="errors"></span>
+        </label>
+      </div>
+      <button id="part-number-search">Search</button>
+    </div>
+  </div>
+  <div class="search-row">
+    <div class="search-label">By Vendor:</div>
+    <div class="search-inputs three">
+      <div class="input-group">
+        <input
+          aria-labelledby="vendor-label"
+          id="vendor"
+          maxLength="64"
+          name="vendor"
+          type="text"
+        />
+        <label for="vendor" id="vendor-label">
+          Vendor<span class="errors"></span>
+        </label>
+      </div>
+      <div class="flex-break"></div>
+      <div class="input-group">
+        <input
+          aria-labelledby="vendor-from-label"
+          id="vendor-from"
+          name="vendor-from"
+          max="{{dateNowInput}}"
+          type="date"
+          value="{{monthsBack "2"}}"
+        />
+        <label for="vendor-from" id="vendor-from-label">
+          From<span class="errors"></span>
+        </label>
+      </div>
+      <div class="input-group">
+        <input
+          aria-labelledby="vendor-through-label"
+          id="vendor-through"
+          name="vendor-through"
+          max="{{dateNowInput}}"
+          type="date"
+          value="{{dateNowInput}}"
+        />
+        <label for="vendor-through" id="vendor-through-label">
+          Through<span class="errors"></span>
+        </label>
+      </div>
+      <button id="vendor-search">Search</button>
+    </div>
+  </div>
+
 </div>
 
 <script defer>
@@ -57,27 +148,29 @@
 
   const searchByPo = document.querySelector('button#po-view');
 
+  const searchByPartNo = document.querySelector('button#part-number-search');
+
+  const searchByVendor = document.querySelector('button#vendor-search');
+
   searchByDate.addEventListener('click', handleSearchByDate, false);
 
   searchByPo.addEventListener('click', handleSearchByPo, false);
+
+  searchByPartNo.addEventListener('click', handleSearchByPartNo, false);
+
+  searchByVendor.addEventListener('click', handleSearchByVendor, false);
 
   function handleSearchByDate() {
     clearErrs();
     const startElem = document.querySelector('input#bydate-start');
     const endElem = document.querySelector('input#bydate-end');
-    const startValue = startElem.value;
-    const endValue = endElem.value;
-    if (!startValue) return setInputError(startElem, '*Date required');
-    if (!endValue) return setInputError(endElem, '*Date required');
-    const startDate = new Date(startValue);
-    const endDate = new Date(endValue);
+    const startDate = parseDateInput(startElem);
+    const endDate = parseDateInput(endElem);
     if (startDate > endDate) {
       setInputError(startElem, '*Invalid range');
       return setInputError(endElem, '*Invalid range');
     }
     const today = new Date();
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0 ,0); 
     const startDay = daysBetween(today, startDate); 
     const endDay = daysBetween(today, endDate);
@@ -91,8 +184,63 @@
     if (!inputVal || !inputVal.length) {
       return setInputError(inputElem, '*Required');
     }
-    window.location = `/view/po/${inputVal}`;
+    window.location = `/view/po/${inputVal.trim()}`;
   }
+
+  function handleSearchByPartNo() {
+    clearErrs();
+    const startElem = document.querySelector('input#part-number-from');
+    const endElem = document.querySelector('input#part-number-through');
+    const inputElem = document.querySelector('input#part-number');
+    const startDate = parseDateInput(startElem);
+    const endDate = parseDateInput(endElem);
+    if (startDate > endDate) {
+      setInputError(startElem, '*Invalid range');
+      return setInputError(endElem, '*Invalid range');
+    }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const startDay = daysBetween(today, startDate);
+    const endDay = daysBetween(today, endDate);
+    const { value } = inputElem;
+    if (!value) return setInputError(inputElem, '*Required');
+    const partNumber = encodeURI(value);
+    return window.location =`/browse?start=${
+      startDay - 1
+    }&end=${
+      endDay - 1
+    }&filter=nepNumber&value=${
+      partNumber.trim()
+    }`;
+  }
+
+  function handleSearchByVendor() {
+    clearErrs();
+    const startElem = document.querySelector('input#vendor-from');
+    const endElem = document.querySelector('input#vendor-through');
+    const inputElem = document.querySelector('input#vendor');
+    const startDate = parseDateInput(startElem);
+    const endDate = parseDateInput(endElem);
+    if (startDate > endDate) {
+      setInputError(startElem, '*Invalid range');
+      return setInputError(endElem, '*Invalid range');
+    }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const startDay = daysBetween(today, startDate);
+    const endDay = daysBetween(today, endDate);
+    const { value } = inputElem;
+    if (!value) return setInputError(inputElem, '*Required');
+    const vendor = encodeURI(value);
+    return window.location =`/browse?start=${
+      startDay - 1
+    }&end=${
+      endDay - 1
+    }&filter=vendor&value=${
+      vendor.trim()
+    }`;
+  }
+
 
   function setInputError(input, msg) {
     const inputGroup = input.closest('div.input-group');
@@ -109,9 +257,17 @@
     });
   }
 
+  function parseDateInput(inputElem) {
+    const { value } = inputElem;
+    if (!value) return setInputError(inputElem, '*Date required');
+    const date = new Date(value);
+    date.setHours(0, 0, 0, 0);
+    return date;
+  }
+
   function daysBetween(date1, date2) {
     const timeDifference = date1.getTime() - date2.getTime();
-    return timeDifference / (24 * 60 * 60 * 1_000);
+    return Math.round(timeDifference / (24 * 60 * 60 * 1_000));
   }
 
 </script>

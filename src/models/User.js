@@ -41,6 +41,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    lastLogin: {
+      type: Date,
+      default: Date.now,
+    },
     name: {
       firstName: {
         maxLength: 32,
@@ -62,6 +66,10 @@ const userSchema = new Schema(
       type: String,
       select: false,
       maxLength: 32,
+    },
+    resetRequired: {
+      type: Boolean,
+      default: false,
     },
     roles: {
       type: [String],
@@ -99,6 +107,12 @@ userSchema.pre('save', async function save(next) {
 
 userSchema.methods.validatePassword = async function validatePassword(data) {
   return bcrypt.compare(data, this.password);
+};
+
+userSchema.statics.login = function login(id /*callback*/) {
+  const query = { $set: { lastLogin: Date.now() } };
+  const options = { new: true };
+  return this.findByIdAndUpdate(id, query, options /* callback*/);
 };
 
 const User = model('User', userSchema);

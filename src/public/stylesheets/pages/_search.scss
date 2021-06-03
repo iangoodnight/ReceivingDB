@@ -1,6 +1,12 @@
 @import "../abstracts/all";
 
 .search {
+
+  div#search-options > div:nth-child(3),
+  div#search-options > div:nth-child(5) {
+    background-color: #f7f7f7;
+
+  }
   
   span.errors {
     float: right;
@@ -29,12 +35,13 @@
         height: 2em;
         margin: 0 auto;
         display: block;
-        background-color: #02a442;
+        background-color: #008635;
         color: #fff;
         padding: .2em;
         border: none;
         border-radius: .2em;
         text-transform: uppercase;
+        font-size: 14px;
         font-weight: 500;
 
         @include for-tablet-portrait-up {
@@ -64,7 +71,7 @@
         }
         @include for-desktop-up {
           width: 30%;
-          margin: 0 auto;
+          margin: 0 auto 1em;
         }
         &.po-input {
           @include for-tablet-portrait-up {
@@ -92,6 +99,34 @@
 
           .input-group {
             margin-left: auto;
+          }
+        }
+      }
+      &.three {
+        @include for-tablet-portrait-up {
+          div:nth-child(1) {
+            width: 98%
+          }
+          button {
+            margin: 0 2em 0 auto;
+          }
+        }
+        @include for-tablet-landscape-up {
+          width: 70%;
+          div:nth-child(1) {
+            width: 100%;
+          }
+          button {
+            margin: 0 1em 0 auto;
+          }
+        }
+        @include for-desktop-up {
+          div:nth-child(1) {
+            width: 60%;
+          }
+          div.flex-break {
+            min-width: 200px;
+            margin: 0 1em 0 auto;
           }
         }
       }

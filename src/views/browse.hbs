@@ -7,6 +7,7 @@
   <table>
     <caption id="table-caption">
       Bulk Apothecary/Natural Essentials receiving log {{dateRange start end}}
+      <p>{{count}} records retrieved</p> 
       <nav>
         <ul>
           <li>
@@ -23,7 +24,7 @@
           <li>
             <a
               href=
-                "/browse?start={{math start "+" "7"}}&end={{math start "+" "1"}}"
+              "/browse?start={{math start "+" "7"}}&end={{math start "+" "1"}}"
             >
               Next
             </a>
@@ -52,7 +53,7 @@
       <tr
         data-entry="{{_id}}"
         id="{{_id}}-{{@index}}"
-        tabindex="{{math @index "+" 8}}"
+        tabindex="0"
       >
         <td>{{item}}</td>
         <td class="priority-3">{{vendor}}</td>

@@ -1,0 +1,76 @@
+<h2>
+  {{#unless data}}
+    New User
+  {{else}}
+    {{data.user.name.firstName}} {{data.user.name.lastName}}
+  {{/unless}}
+</h2>
+
+<form class="user-form">
+  <div class="form-group">
+    <input
+      aria-labelledby="username-label"
+      id="username"
+      maxLength="32"
+      name="username"
+      pattern="[-_.0-9a-zA-Z]+"
+      type="text"
+      {{#if data.user.username}}
+        value="{{this}}"
+      {{/if}}
+    />
+    <label for="username" id="username-label">
+      Username<span class="errors"></span>
+    </label>
+  </div>
+  <div class="form-group">
+    <input
+      aria-labelledby="firstname-label"
+      id="firstname"
+      maxLength="32"
+      name="firstname"
+      pattern="[-_.0-9a-zA-Z]+"
+      type="text"
+      {{#if data.user.name.firstName}}
+        value="{{this}}"
+      {{/if}}
+    />
+    <label for="firstname" id="firstname-label">
+      First name<span class="errors"></span>
+    </label>
+  </div>
+  <div class="form-group">
+    <input
+      aria-labelledby="lastname-label"
+      id="lastname"
+      maxLength="32"
+      name="lastname"
+      pattern="[-_.0-9a-zA-Z]+"
+      type="text"
+      {{#if data.user.name.lastName}}
+        value="{{this}}"
+      {{/if}}
+    />
+    <label for="lastname" id="lastname-label">
+      Last name<span class="errors"></span>
+    </label>
+  </div>
+  <div class="form-group">
+    <input
+      aria-labelledby="email-label"
+      id="email"
+      maxLength="64"
+      name="email"
+      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+      type="email"
+      {{#if data.user.email}}
+        value="{{this}}"
+      {{/if}}
+    />
+    <label for="email" id="email-label">
+      Email<span class="errors"></span>
+    </label>
+  </div>
+  <div class="form-group">
+  </div>
+</form>

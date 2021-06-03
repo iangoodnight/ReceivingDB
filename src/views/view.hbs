@@ -51,6 +51,15 @@
     {{/each}}
   {{else}}
     <h3>No results found</h3>
-    <a href="#">Back</a>
+    <button class="browse">Back to browse</a>
   {{/if}}
 </div>
+
+<script defer>
+  const backButtons = Array.from(document.querySelectorAll('button.browse'));
+
+  backButtons.map(button => {
+    button.addEventListener('click', () => history.back(), false);
+  });
+
+</script>

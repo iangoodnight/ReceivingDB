@@ -7,6 +7,10 @@
     font-weight: 500;
     padding: .5em;
   }
+  p {
+    margin: 0;
+    color: $secondaryColor;
+  }
   nav {
     font-size: 1em;
     font-weight: 500;
@@ -24,7 +28,7 @@
         a {
           &.disabled {
             pointer-events: none;
-            color: grey;
+            color: #5a5a5a;
           }
           &:hover {
             text-decoration: underline;

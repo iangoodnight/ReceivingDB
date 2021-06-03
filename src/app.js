@@ -85,6 +85,31 @@ app.engine(
             : lastWeek.getDate().toString();
         return `${year}-${month}-${day}`;
       },
+      monthsBack: (month) => {
+        const nMonthsBack = parseInt(month);
+        const getDaysInMonth = (year, month) => {
+          return new Date(year, month, 0).getDate();
+        };
+        const newDate = new Date();
+        newDate.setDate(1);
+        newDate.setMonth(newDate.getMonth() - nMonthsBack);
+        const now = new Date();
+        newDate.setDate(
+          Math.min(
+            now.getDate(),
+            getDaysInMonth(now.getFullYear(), now.getMonth() + 1)
+          )
+        );
+        return `${newDate.getFullYear()}-${
+          newDate.getMonth() + 1 < 10
+            ? '0' + (newDate.getMonth() + 1)
+            : newDate.getMonth() + 1
+        }-${
+          newDate.getDate() < 10
+            ? '0' + newDate.getDate().toString()
+            : newDate.getDate()
+        }`;
+      },
       timeNowInput: () => {
         const now = new Date();
         const hours = now.getHours().toString();

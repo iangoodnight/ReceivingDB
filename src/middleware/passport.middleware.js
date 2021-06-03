@@ -40,7 +40,7 @@ module.exports = (app) => {
 
   passport.deserializeUser(async (userId, done) => {
     try {
-      const user = await User.findById(userId);
+      const user = await User.login(userId);
       done(null, user);
     } catch (err) {
       done(err);
