@@ -18,7 +18,7 @@ db.once('open', () => {
     .then(() => {
       console.log('Seeded entries');
     })
-    .catch(err => {
+    .catch((err) => {
       exit = 1;
       console.log('Something went wrong: ', err);
     })

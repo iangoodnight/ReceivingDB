@@ -13,7 +13,7 @@ const { index, login, newEntry, userForm, search } = page;
 const { rbac } = require('../../middleware');
 const {
   entry: { findLastNDays, findByIdAndRender, findByPoAndRender },
-  user: { findAndRender },
+  user: { findAndRender, findOneAndRender },
 } = require('../../controllers');
 
 router.get('/', (req, res, next) => {
@@ -42,6 +42,8 @@ router.get('/user/new', rbac.isAdmin, (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/user/:id', rbac.isAdmin, findOneAndRender);
 
 router.get('/view/:id', findByIdAndRender);
 

@@ -71,4 +71,4 @@ module.exports = {
     'example llc',
     'shipping co',
   ],
-}
+};

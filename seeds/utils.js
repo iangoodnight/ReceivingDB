@@ -7,14 +7,14 @@
 const { adjectives, nouns, vendors } = require('./lists');
 
 const randomNumber = (min = 0, max = 24) => {
- return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const generateItem = () => {
   const adjective = adjectives[randomNumber(0, 24)];
   const noun = nouns[randomNumber(0, 24)];
   const coinToss = randomNumber(0, 1);
-  const entropy = coinToss ? (adjectives[randomNumber(0, 24)]) + ' ' : '';
+  const entropy = coinToss ? adjectives[randomNumber(0, 24)] + ' ' : '';
   return `${entropy}${adjective} ${noun}`;
 };
 

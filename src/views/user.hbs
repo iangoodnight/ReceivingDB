@@ -35,7 +35,7 @@
       </tr>
       <tbody>
         {{#each data}}
-          <tr id="{{_id}}" tabindex="0">
+          <tr id="{{_id}}" data-id="{{_id}}" tabindex="0">
             <td>{{username}}</td>
             <td class="priority-2">{{name.lastName}}</td>
             <td class="priority-2">{{name.firstName}}</td>
@@ -58,3 +58,25 @@
     </thead>
   </table>
 </div>
+
+<script defer>
+
+  const tableRows = Array.from(document.querySelectorAll('tbody > tr'));
+
+  tableRows.forEach(row => {
+    row.addEventListener('dblclick', navigateToUserPage, false);
+    row.addEventListener('keypress', navigateToUserPage, false);
+  });
+
+  function navigateToUserPage(event) {
+    const { target, type } = event;
+    if (type === 'keypress') {
+      const { key } = event;
+      if (key !== 'Enter') return;
+    }
+    const row = target.closest('tr');
+    const { dataset: { id } } = row;
+    window.location = `/user/${id}`;
+  }
+
+</script>

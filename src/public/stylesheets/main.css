@@ -639,6 +639,134 @@ main.user {
  */
 /* colors */
 /* defaults */
+main.user-form div.lastLogin {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.2em;
+  color: #bb3e14;
+  letter-spacing: .1em; }
+  main.user-form div.lastLogin p {
+    margin: 0; }
+
+main.user-form div#submission-errors {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2em;
+  color: red; }
+
+main.user-form form {
+  padding: 1em;
+  margin-bottom: 6em; }
+  main.user-form form span.errors {
+    float: right;
+    font-size: .9em;
+    opacity: 0;
+    transition: opacity 1s ease;
+    margin-right: 18em; }
+    main.user-form form span.errors.active {
+      opacity: 1; }
+  main.user-form form div.form-group {
+    margin-bottom: 2em; }
+    main.user-form form div.form-group label {
+      color: #bb3e14; }
+    main.user-form form div.form-group input {
+      padding: .5em; }
+    @media all and (max-width: 500px) {
+      main.user-form form div.form-group input[type="checkbox"] {
+        width: 2em;
+        height: 2em;
+        border-radius: 5px; } }
+    @media all and (min-width: 600px) {
+      main.user-form form div.form-group input[type="checkbox"] {
+        width: 1.8em;
+        height: 1.8em; } }
+    main.user-form form div.form-group input[type="text"],
+    main.user-form form div.form-group input[type="email"],
+    main.user-form form div.form-group input[type="password"],
+    main.user-form form div.form-group label {
+      display: block;
+      min-width: 400px;
+      margin-bottom: .2em; }
+      @media all and (min-width: 600px) {
+        main.user-form form div.form-group input[type="text"],
+        main.user-form form div.form-group input[type="email"],
+        main.user-form form div.form-group input[type="password"],
+        main.user-form form div.form-group label {
+          min-width: 450px; } }
+      @media all and (min-width: 900px) {
+        main.user-form form div.form-group input[type="text"],
+        main.user-form form div.form-group input[type="email"],
+        main.user-form form div.form-group input[type="password"],
+        main.user-form form div.form-group label {
+          min-width: 500px; } }
+      @media all and (min-width: 1200px) {
+        main.user-form form div.form-group input[type="text"],
+        main.user-form form div.form-group input[type="email"],
+        main.user-form form div.form-group input[type="password"],
+        main.user-form form div.form-group label {
+          min-width: 700px; } }
+      main.user-form form div.form-group input[type="text"]#reset-label,
+      main.user-form form div.form-group input[type="email"]#reset-label,
+      main.user-form form div.form-group input[type="password"]#reset-label,
+      main.user-form form div.form-group label#reset-label {
+        display: unset; }
+    main.user-form form div.form-group.roles-group input,
+    main.user-form form div.form-group.roles-group label {
+      margin-right: 4em; }
+    main.user-form form div.form-group.roles-group label {
+      min-width: 4em; }
+    main.user-form form div.form-group.action {
+      margin-top: 2em; }
+  main.user-form form fieldset {
+    box-shadow: 3px 2em 6em 10px rgba(0, 0, 0, 0.33);
+    margin-bottom: 2em;
+    border-radius: .5em;
+    border: 2px solid #bb3e14;
+    background-color: #f6f4f2;
+    padding: 1em 1em; }
+    @media all and (min-width: 900px) {
+      main.user-form form fieldset {
+        padding: 1em 4em; } }
+    @media all and (min-width: 1200px) {
+      main.user-form form fieldset {
+        padding: 1em 8em; } }
+    @media all and (min-width: 1800px) {
+      main.user-form form fieldset {
+        padding: 2em 30em; } }
+  main.user-form form fieldset[name="roles"] {
+    display: flex;
+    justify-content: flex-start; }
+  main.user-form form fieldset.action {
+    border: none;
+    padding: 1em 0;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0); }
+    main.user-form form fieldset.action input {
+      min-width: 180px;
+      margin: 0 auto;
+      display: block;
+      background-color: #008635;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      min-width: 24em;
+      color: #fff;
+      border: none;
+      border-radius: .2em;
+      font-size: 1.2em; }
+  main.user-form form legend {
+    color: #bb3e14;
+    font-weight: 500;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 1em; }
+
+/* Generic breakpoints */
+/**
+ * abstracts/_variables.scss
+ */
+/* colors */
+/* defaults */
 section {
   display: flex;
   flex-flow: row wrap;

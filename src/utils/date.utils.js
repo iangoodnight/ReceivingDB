@@ -14,7 +14,8 @@ module.exports = {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
-    const hour = date.getUTCHours() + 4;
+    const offset = date.getTimezoneOffset() / 60;
+    const hour = date.getUTCHours() - offset;
     const rawMinutes = date.getMinutes();
     const minutes = `${rawMinutes}`.length < 2 ? `0${rawMinutes}` : rawMinutes;
     const dayTime = hour >= 13 ? 'PM' : 'AM';

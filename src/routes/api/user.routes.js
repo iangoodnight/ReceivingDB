@@ -14,7 +14,7 @@ router.post('/', rbac.isAdmin, user.create);
 router.get('/', rbac.isAdmin, user.findAll);
 router.get('/:id', user.findById);
 // UPDATE
-router.put('/:id', user.update);
+router.put('/:id', rbac.isAdmin, user.update);
 // DELETE
 router.delete('/:id', rbac.isAdmin, user.delete);
 

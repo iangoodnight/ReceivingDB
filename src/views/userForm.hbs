@@ -5,72 +5,316 @@
     {{data.user.name.firstName}} {{data.user.name.lastName}}
   {{/unless}}
 </h2>
-
-<form class="user-form">
-  <div class="form-group">
-    <input
-      aria-labelledby="username-label"
-      id="username"
-      maxLength="32"
-      name="username"
-      pattern="[-_.0-9a-zA-Z]+"
-      type="text"
-      {{#if data.user.username}}
-        value="{{this}}"
-      {{/if}}
-    />
-    <label for="username" id="username-label">
-      Username<span class="errors"></span>
-    </label>
+{{#if data.user.lastLogin}}
+  <div class="lastLogin">
+    <p>Last login:
+      <span>{{friendlyDateTime data.user.lastLogin}}</span>
+    </p>
   </div>
-  <div class="form-group">
-    <input
-      aria-labelledby="firstname-label"
-      id="firstname"
-      maxLength="32"
-      name="firstname"
-      pattern="[-_.0-9a-zA-Z]+"
-      type="text"
-      {{#if data.user.name.firstName}}
-        value="{{this}}"
-      {{/if}}
-    />
-    <label for="firstname" id="firstname-label">
-      First name<span class="errors"></span>
-    </label>
-  </div>
-  <div class="form-group">
-    <input
-      aria-labelledby="lastname-label"
-      id="lastname"
-      maxLength="32"
-      name="lastname"
-      pattern="[-_.0-9a-zA-Z]+"
-      type="text"
-      {{#if data.user.name.lastName}}
-        value="{{this}}"
-      {{/if}}
-    />
-    <label for="lastname" id="lastname-label">
-      Last name<span class="errors"></span>
-    </label>
-  </div>
-  <div class="form-group">
-    <input
-      aria-labelledby="email-label"
-      id="email"
-      maxLength="64"
-      name="email"
-      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-      type="email"
-      {{#if data.user.email}}
-        value="{{this}}"
-      {{/if}}
-    />
-    <label for="email" id="email-label">
-      Email<span class="errors"></span>
-    </label>
-  </div>
-  <div class="form-group">
-  </div>
+{{/if}}
+<form class="user-form" data-id="{{data.user._id}}">
+  <fieldset name="login">
+    <legend>Login</legend>
+    <div class="form-group">
+      <input
+        aria-labelledby="username-label"
+        id="username"
+        maxLength="32"
+        name="username"
+        pattern="^[-_.0-9a-zA-Z]+$"
+        type="text"
+        {{#if data.user.username}}
+          value="{{data.user.username}}"
+        {{/if}}
+      />
+      <label for="username" id="username-label">
+        Username<span class="errors"></span>
+      </label>
+    </div>
+    <div class="form-group">
+      <input
+        aria-labelledby="password-label"
+        id="password"
+        maxLength="32"
+        minLength="8"
+        name="password"
+        type="password"
+        {{#if data.user}}
+          value="****************"
+        {{/if}}
+      />
+      <label for="password" id="password-label">
+        Password<span class="errors"></span>
+      </label>
+    </div>
+    <div class="form-group">
+      <input
+        aria-labelledby="reset-label"
+        id="reset"
+        name="reset"
+        type="checkbox"
+        value=true
+        {{#unless data.user}}
+          checked
+        {{/unless}}
+      />
+      <label for="reset" id="reset-label">
+        Require password reset on next login
+      </label>
+    </div>
+  </fieldset>
+  <fieldset name="user details">
+    <legend>User details</legend>
+    <div class="form-group">
+      <input
+        aria-labelledby="firstname-label"
+        id="firstname"
+        maxLength="32"
+        name="firstname"
+        pattern="^[-_.0-9a-zA-Z]+$"
+        type="text"
+        {{#if data.user.name.firstName}}
+          value="{{data.user.name.firstName}}"
+        {{/if}}
+      />
+      <label for="firstname" id="firstname-label">
+        First name<span class="errors"></span>
+      </label>
+    </div>
+    <div class="form-group">
+      <input
+        aria-labelledby="lastname-label"
+        id="lastname"
+        maxLength="32"
+        name="lastname"
+        pattern="^[-_.0-9a-zA-Z]+$"
+        type="text"
+        {{#if data.user.name.lastName}}
+          value="{{data.user.name.lastName}}"
+        {{/if}}
+      />
+      <label for="lastname" id="lastname-label">
+        Last name<span class="errors"></span>
+      </label>
+    </div>
+    <div class="form-group">
+      <input
+        aria-labelledby="email-label"
+        id="email"
+        maxLength="64"
+        name="email"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        type="email"
+        {{#if data.user.email}}
+          value="{{data.user.email}}"
+        {{/if}}
+      />
+      <label for="email" id="email-label">
+        Email<span class="errors"></span>
+      </label>
+    </div>
+  </fieldset>
+  <fieldset name="roles">
+    <legend>Roles</legend>
+    <div class="form-group roles-group">
+      <label for="write" id="write-label">Write</label>
+      <input
+        aria-labelledby="write-label"
+        id="write"
+        name="role write"
+        type="checkbox"
+        value="WRITE"
+        {{#if data.user.write}}
+          checked
+        {{/if}}
+      />
+    </div>
+    <div class="form-group roles-group">
+      <label for="audit" id="audit-label">Audit</label>
+      <input
+        aria-labelledby="audit-label"
+        id="audit"
+        name="role audit"
+        type="checkbox"
+        value="AUDIT"
+        {{#if data.user.audit}}
+          checked
+        {{/if}}
+      />
+    </div>
+    <div class="form-group roles-group">
+      <label for="admin" id="admin-label">Admin</label>
+      <input
+        aria-labelledby="admin-label"
+        id="admin"
+        name="role admin"
+        type="checkbox"
+        value="ADMIN"
+        {{#if data.user.admin}}
+          checked
+        {{/if}}
+      />
+    </div>
+    <div class="form-group roles-group">
+      <label for="disabled" id="disabled-label">Disabled</label>
+      <input
+        aria-labelledby="disabled-label"
+        id="disabled"
+        name="disabled"
+        type="checkbox"
+        value="disabled"
+        {{#if data.user}}
+          {{#unless data.user.enabled}}
+            checked
+          {{/unless}}
+        {{/if}}
+      />
+    </div>
+    <span class="errors"></span>
+  </fieldset>
+  <fieldset class="action">
+    <div class="form-group">
+      <input
+        id="submit"
+        type="submit"
+        {{#if data.user}}
+          value="Update"
+        {{else}}
+          value="Save"
+        {{/if}}
+      />
+    </div>
+  </fieldset>
+  <div id="submission-errors"></div>
 </form>
+
+<script defer>
+  
+  const userForm = document.querySelector('form.user-form');
+
+  const passwordInput = userForm.querySelector('input#password');
+
+  const submissionError = userForm.querySelector('div#submission-errors');
+
+  userForm.addEventListener('submit', handleFormSubmit, false);
+
+  passwordInput.addEventListener('change', () => {
+    passwordInput.dataset.changed = true;
+  }, false);
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    clearErrs();
+
+    const usernameElem = document.querySelector('input#username');
+    const passwordElem = document.querySelector('input#password');
+    const firstnameElem = document.querySelector('input#firstname');
+    const lastnameElem = document.querySelector('input#lastname');
+    const emailElem = document.querySelector('input#email');
+
+    const username = valueOrError(usernameElem);
+    const password = valueOrError(passwordElem);
+    const firstName = valueOrError(firstnameElem);
+    const lastName = valueOrError(lastnameElem);
+    const email = valueOrError(emailElem);
+
+    const required = [username, password, firstName, lastName, email];
+    const firstError = document.querySelector('span.errors.active')
+      ?.closest('div.form-group').querySelector('input');
+
+    if (required.indexOf(null) !== -1) return firstError.focus();
+
+    const roles = Array.from(
+      document.querySelectorAll('div.roles-group input')
+    ).reduce((selected, input) => {
+      const { checked = false, value = null } = input;
+      if (checked) selected.push(value);
+      return selected;
+    }, []);
+
+    const enabled = roles.indexOf('disabled') === -1;
+    if (!enabled) roles.pop();
+
+    const name = { firstName, lastName };
+    const userData = { username, password, name, email, roles, enabled };
+    const isUpdate = !!document.querySelector('form').dataset.id.length;
+    if (!isUpdate) return postNewUser(userData);
+    const userId = userForm.dataset.id;
+    const passwordChanged = passwordElem.dataset.changed;
+    if (!passwordChanged) delete userData.password;
+    return updateUser(userId, userData);
+  }
+
+  async function postNewUser(userData) {
+    const request = await fetch('/api/user', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData),
+    });
+    const response = await request.json();
+    if (response.success) return window.location = '/user';
+    handleMongoErrs(response); 
+  }
+
+  async function updateUser(id, userData) {
+    const request = await fetch(`/api/user/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+    const response = await request.json();
+    if (response.success) return window.location = '/user';
+    handleMongoErrs(response); 
+  }
+
+  function valueOrError(elem) {
+    const { value } = elem;
+    if (!value || !value.length) {
+      const inputGroup = elem.closest('div.form-group');
+      const errorSpan = inputGroup.querySelector('span.errors');
+      errorSpan.innerText = '*Required';
+      errorSpan.classList.add('active');
+      return null;
+    }
+    return value;
+  }
+
+  function handleMongoErrs(response) {
+    const err = parseMongoErrs(response);
+    submissionError.innerText = err;
+  }
+
+  function parseMongoErrs(response) {
+    const { message } = response;
+    console.log(message);
+    const { name } = message;
+    if (name === 'ValidationError') {
+      const { message: err } = message;
+      return err;
+    }
+    if (name === 'MongoError') {
+      const { code, keyPattern } = message;
+      const keys = Object.keys(keyPattern);
+      const err = code === 1100 ?
+        `MongoError: ${keys.join(' ')} must be unique` :
+        'MongoError: something went wrong';
+      return err;
+    }
+    return 'Something went wrong';
+  }
+
+  function clearErrs() {
+    const activeErrorSpans =
+      Array.from(document.querySelectorAll('span.errors.active'));
+    activeErrorSpans.forEach(span => {
+      span.innerText = '';
+      span.classList.remove('active');
+    });
+    submissionError.innerText = '';
+  }
+  
+</script>

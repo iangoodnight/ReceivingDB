@@ -1,0 +1,144 @@
+@import "../abstracts/all";
+
+main.user-form {
+  div.lastLogin {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1.2em;
+    color: $secondaryColor;
+    letter-spacing: .1em;
+
+    p {
+      margin: 0;
+    }
+  }
+  div#submission-errors {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: red;
+  }
+  form {
+    padding: 1em;
+    margin-bottom: 6em;
+
+    span.errors {
+      float: right;
+      font-size: .9em;
+      opacity: 0;
+      transition: opacity 1s ease;
+      margin-right: 18em;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+
+    div.form-group {
+      margin-bottom: 2em;
+
+      label {
+        color: $secondaryColor;
+      }
+      input {
+        padding: .5em;
+      }
+      input[type="checkbox"] {
+        
+        @include for-phone-only {
+          width: 2em;
+          height: 2em;
+          border-radius: 5px;
+        }
+        @include for-tablet-portrait-up {
+          width: 1.8em;
+          height: 1.8em;
+        }
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      label {
+        display: block;
+        min-width: 400px;
+        margin-bottom: .2em;
+
+        @include for-tablet-portrait-up {
+          min-width: 450px;
+        }
+        @include for-tablet-landscape-up {
+          min-width: 500px;
+        }
+        @include for-desktop-up {
+          min-width: 700px;
+        }
+
+        &#reset-label {
+          display: unset;
+        }
+      }
+      &.roles-group {
+        input,
+        label {
+          margin-right: 4em;
+        }
+        label {
+          min-width: 4em;
+        }
+      }
+      &.action {
+        margin-top: 2em;
+      }
+    }
+    fieldset {
+      box-shadow: $boxShadow;
+      margin-bottom: 2em;
+      border-radius: .5em;
+      border: 2px solid $secondaryColor;
+      background-color: $betterWhite;
+      padding: 1em 1em;
+
+      @include for-tablet-landscape-up {
+        padding: 1em 4em;
+      }
+      @include for-desktop-up {
+        padding: 1em 8em;
+      }
+      @include for-big-desktop-up {
+        padding: 2em 30em;
+      }
+    }
+    fieldset[name="roles"] {
+      display: flex;
+      justify-content: flex-start;
+    }
+    fieldset.action {
+      border: none;
+      padding: 1em 0;
+      box-shadow: none;
+      background-color: rgba(0,0,0,0);
+
+      input {
+        min-width: 180px;
+        margin: 0 auto;
+        display: block;
+        background-color: $successGreen;
+        text-transform: uppercase;
+        letter-spacing: .2em;
+        min-width: 24em;
+        color: #fff;
+        border: none;
+        border-radius: .2em;
+        font-size: 1.2em;
+      }
+    }
+    legend {
+      color: $secondaryColor;
+      font-weight: 500;
+      font-size: 1.4em;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 1em;
+    }
+  }
+}

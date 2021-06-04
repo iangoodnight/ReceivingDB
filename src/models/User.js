@@ -65,7 +65,7 @@ const userSchema = new Schema(
       required: true,
       type: String,
       select: false,
-      maxLength: 32,
+      maxLength: 64,
     },
     resetRequired: {
       type: Boolean,
@@ -103,6 +103,24 @@ userSchema.pre('save', async function save(next) {
   } catch (err) {
     return next(err);
   }
+});
+
+userSchema.pre('findOneAndUpdate', async function update(next) {
+  const user = this;
+  const {
+    _update: { $set },
+  } = user;
+  const { password } = $set;
+  if (password) {
+    try {
+      const salt = await bcrypt.genSalt(SALT_ROUNDS);
+      this._update.password = await bcrypt.hash(password, salt);
+      return next();
+    } catch (err) {
+      return next(err);
+    }
+  }
+  return next();
 });
 
 userSchema.methods.validatePassword = async function validatePassword(data) {
