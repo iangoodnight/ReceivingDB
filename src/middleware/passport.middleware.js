@@ -18,7 +18,11 @@ module.exports = (app) => {
     session({
       cookie: {
         maxAge: 1 * 24 * 60 * 60 * 1_000,
-        secure: false /* requires https */,
+        secure:
+          process.env.NODE_ENV === 'production'
+            ? true
+            : false /* requires https */,
+        sameSite: 'strict',
       },
       name: 'speak_and_spell',
       resave: false,
