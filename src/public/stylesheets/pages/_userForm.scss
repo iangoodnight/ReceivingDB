@@ -29,6 +29,10 @@ main.user-form {
       transition: opacity 1s ease;
       margin-right: 18em;
 
+      @include for-phone-only {
+        margin-right: 1.4em;
+      }
+
       &.active {
         opacity: 1;
       }
@@ -60,7 +64,8 @@ main.user-form {
       input[type="password"],
       label {
         display: block;
-        min-width: 400px;
+        min-width: 200px;
+        max-width: 100%;
         margin-bottom: .2em;
 
         @include for-tablet-portrait-up {
@@ -84,6 +89,13 @@ main.user-form {
         }
         label {
           min-width: 4em;
+        }
+        @include for-phone-only {
+          input,
+          label {
+            margin-right: 2em;
+            min-width: 1em;
+          }
         }
       }
       &.action {
@@ -111,6 +123,7 @@ main.user-form {
     fieldset[name="roles"] {
       display: flex;
       justify-content: flex-start;
+      flex-flow: row wrap;
     }
     fieldset.action {
       border: none;
@@ -119,7 +132,6 @@ main.user-form {
       background-color: rgba(0,0,0,0);
 
       input {
-        min-width: 180px;
         margin: 0 auto;
         display: block;
         background-color: $successGreen;
@@ -130,6 +142,11 @@ main.user-form {
         border: none;
         border-radius: .2em;
         font-size: 1.2em;
+
+        @include for-phone-only {
+          min-width: 180px;
+          max-width: 100%;
+        }
       }
     }
     legend {

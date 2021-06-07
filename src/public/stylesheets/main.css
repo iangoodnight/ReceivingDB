@@ -679,6 +679,9 @@ main.user-form form {
     opacity: 0;
     transition: opacity 1s ease;
     margin-right: 18em; }
+    @media all and (max-width: 500px) {
+      main.user-form form span.errors {
+        margin-right: 1.4em; } }
     main.user-form form span.errors.active {
       opacity: 1; }
   main.user-form form div.form-group {
@@ -701,7 +704,8 @@ main.user-form form {
     main.user-form form div.form-group input[type="password"],
     main.user-form form div.form-group label {
       display: block;
-      min-width: 400px;
+      min-width: 200px;
+      max-width: 100%;
       margin-bottom: .2em; }
       @media all and (min-width: 600px) {
         main.user-form form div.form-group input[type="text"],
@@ -731,6 +735,11 @@ main.user-form form {
       margin-right: 4em; }
     main.user-form form div.form-group.roles-group label {
       min-width: 4em; }
+    @media all and (max-width: 500px) {
+      main.user-form form div.form-group.roles-group input,
+      main.user-form form div.form-group.roles-group label {
+        margin-right: 2em;
+        min-width: 1em; } }
     main.user-form form div.form-group.action {
       margin-top: 2em; }
   main.user-form form fieldset {
@@ -751,14 +760,14 @@ main.user-form form {
         padding: 2em 30em; } }
   main.user-form form fieldset[name="roles"] {
     display: flex;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    flex-flow: row wrap; }
   main.user-form form fieldset.action {
     border: none;
     padding: 1em 0;
     box-shadow: none;
     background-color: rgba(0, 0, 0, 0); }
     main.user-form form fieldset.action input {
-      min-width: 180px;
       margin: 0 auto;
       display: block;
       background-color: #008635;
@@ -769,6 +778,10 @@ main.user-form form {
       border: none;
       border-radius: .2em;
       font-size: 1.2em; }
+      @media all and (max-width: 500px) {
+        main.user-form form fieldset.action input {
+          min-width: 180px;
+          max-width: 100%; } }
   main.user-form form legend {
     color: #bb3e14;
     font-weight: 500;

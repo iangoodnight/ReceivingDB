@@ -20,6 +20,7 @@ module.exports = {
       if (err) return next(err);
       if (!user) return unauthorized(res, 'user not found');
       const { enabled = false } = user;
+      console.log(user);
       if (!enabled) return unauthorized(res, 'user is disabled');
       req.logIn(user, (err) => {
         if (err) return next(err);
