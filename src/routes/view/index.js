@@ -30,6 +30,10 @@ router.get('/login', (req, res, next) => {
   }
 });
 
+router.get('/reset', (req, res, next) => {
+  res.render('reset');
+});
+
 router.get('/browse', findLastNDays);
 
 router.get('/user', rbac.isAdmin, findAndRender);

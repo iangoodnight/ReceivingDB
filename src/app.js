@@ -121,6 +121,12 @@ app.engine(
         const now = new Date();
         return `${now.getFullYear().toString()}-01-01`;
       },
+      copyright: () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        if (year > 2020) return `-${year.toString()}`;
+        return '';
+      },
     },
   })
 );
