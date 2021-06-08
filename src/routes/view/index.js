@@ -9,10 +9,15 @@ const {
   page,
   route: { generatePageDetails },
 } = require('../../utils');
-const { index, login, newEntry, userForm, search } = page;
+const { index, login, newEntry, reset, userForm, search } = page;
 const { rbac } = require('../../middleware');
 const {
-  entry: { findLastNDays, findByIdAndRender, findByPoAndRender },
+  entry: {
+    findLastNDays,
+    findByIdAndRender,
+    findByPoAndRender,
+    findForAuditAndRender,
+  },
   user: { findAndRender, findOneAndRender },
 } = require('../../controllers');
 
@@ -30,9 +35,12 @@ router.get('/login', (req, res, next) => {
   }
 });
 
-router.get('/reset', (req, res, next) => {
-  res.render('reset');
+router.get('/reset', rbac.isLoggedIn, (req, res, next) => {
+  const [page, pageDetails] = generatePageDetails(req, reset);
+  res.render(page, pageDetails);
 });
+
+router.get('/audit/:id', rbac.isAudit, findForAuditAndRender);
 
 router.get('/browse', findLastNDays);
 
@@ -53,9 +61,10 @@ router.get('/view/:id', findByIdAndRender);
 
 router.get('/view/po/:purchaseOrder', findByPoAndRender);
 
-router.get('/new', (req, res, next) => {
+router.get('/new', rbac.isWrite, (req, res, next) => {
   try {
     const [page, pageDetails] = generatePageDetails(req, newEntry);
+    delete pageDetails.audit;
     res.render(page, pageDetails);
   } catch (err) {
     next(err);

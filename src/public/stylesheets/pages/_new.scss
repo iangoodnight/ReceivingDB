@@ -52,12 +52,20 @@
         label {
           display: block;
           min-width: 300px;
+
+          @include for-phone-only {
+            min-width: 200px;
+          }
         }
 
         &.form-items {
           input,
           label {
             min-width: 400px;
+
+            @include for-phone-only {
+              min-width: 200px;
+            }
 
             @include for-desktop-up {
               min-width: 600px;
@@ -114,6 +122,10 @@
             &[type=submit] {
               background-color: #008635;
               min-width: 24em;
+
+              @include for-phone-only {
+                min-width: unset;
+              }
             }
 
             @include for-tablet-portrait-up {

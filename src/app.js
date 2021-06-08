@@ -57,6 +57,22 @@ app.engine(
         );
         return `${friendlyDate} @ ${friendlyTime}`;
       },
+      friendlyDate: function (date) {
+        const newDate = new Date(date);
+        const offset = newDate.getTimezoneOffset();
+        const friendlyDate = new Date(newDate.getTime() - offset * 60 * 1_000);
+        return friendlyDate.toISOString().split('T')[0];
+      },
+      friendlyTime: function (date) {
+        console.log(date);
+        const thisDate = new Date(date);
+        console.log(thisDate);
+        const hours = thisDate.getHours().toString();
+        const minutes = thisDate.getMinutes().toString();
+        return `${hours.length < 2 ? '0' + hours : hours}:${
+          minutes.length < 2 ? '0' + minutes : minutes
+        }`;
+      },
       dateNowInput: () => {
         const now = new Date();
         const year = now.getFullYear();

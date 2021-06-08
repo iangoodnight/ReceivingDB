@@ -48,6 +48,11 @@
       <section class="received">
         <span>Received by: {{receivedBy}}</span>
       </section>
+      {{#if ../audit}}
+        <section class="audit">
+          <a href="/audit/{{_id}}">Audit</a>
+        </section>
+      {{/if}}
     {{/each}}
   {{else}}
     <h3>No results found</h3>

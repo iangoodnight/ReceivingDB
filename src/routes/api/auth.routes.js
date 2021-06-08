@@ -11,5 +11,7 @@ const { auth } = require('../../controllers');
 router.post('/', auth.login);
 // LOGOUT
 router.delete('/', auth.logout);
+// RESET
+router.put('/', auth.reset);
 
 module.exports = router;

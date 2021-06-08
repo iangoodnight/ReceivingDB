@@ -235,8 +235,11 @@
     const enabled = roles.indexOf('disabled') === -1;
     if (!enabled) roles.pop();
 
+    const resetRequired = document.querySelector('input#reset').value;
+
     const name = { firstName, lastName };
-    const userData = { username, password, name, email, roles, enabled };
+    const userData =
+      { username, password, name, email, roles, enabled, resetRequired };
     const isUpdate = !!document.querySelector('form').dataset.id.length;
     if (!isUpdate) return postNewUser(userData);
     const userId = userForm.dataset.id;

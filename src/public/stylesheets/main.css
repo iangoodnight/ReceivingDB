@@ -4,11 +4,21 @@
  */
 /* colors */
 /* defaults */
+/* Generic breakpoints */
+/**
+ * abstracts/_variables.scss
+ */
+/* colors */
+/* defaults */
 * {
   box-sizing: border-box; }
 
 body {
   margin: 0; }
+
+@media all and (max-width: 500px) {
+  input[type="submit"] {
+    -webkit-appearance: none; } }
 
 body {
   color: #464646;
@@ -412,9 +422,17 @@ main div.page-status {
     .new form div.form-row .form-group label {
       display: block;
       min-width: 300px; }
+      @media all and (max-width: 500px) {
+        .new form div.form-row .form-group input,
+        .new form div.form-row .form-group label {
+          min-width: 200px; } }
     .new form div.form-row .form-group.form-items input,
     .new form div.form-row .form-group.form-items label {
       min-width: 400px; }
+      @media all and (max-width: 500px) {
+        .new form div.form-row .form-group.form-items input,
+        .new form div.form-row .form-group.form-items label {
+          min-width: 200px; } }
       @media all and (min-width: 1200px) {
         .new form div.form-row .form-group.form-items input,
         .new form div.form-row .form-group.form-items label {
@@ -455,6 +473,10 @@ main div.page-status {
         .new form div.form-row.form-control .button-group input[type=submit] {
           background-color: #008635;
           min-width: 24em; }
+          @media all and (max-width: 500px) {
+            .new form div.form-row.form-control .button-group button[type=submit],
+            .new form div.form-row.form-control .button-group input[type=submit] {
+              min-width: unset; } }
         @media all and (min-width: 600px) {
           .new form div.form-row.form-control .button-group button,
           .new form div.form-row.form-control .button-group input {
@@ -502,6 +524,73 @@ main div.page-status {
   transition: opacity 1s ease; }
   .errors.active {
     opacity: 1; }
+
+/* Generic breakpoints */
+/**
+ * abstracts/_variables.scss
+ */
+/* colors */
+/* defaults */
+@media all and (min-width: 1200px) {
+  main.reset form {
+    padding: 1em 8em; }
+    main.reset form fieldset {
+      padding: 2em 0; } }
+
+@media all and (min-width: 1800px) {
+  main.reset form {
+    padding: 2em 20em; }
+    main.reset form fieldset {
+      padding: 8em 0; } }
+
+main.reset fieldset {
+  border: 2px solid #bb3e14;
+  border-radius: .5em;
+  box-shadow: 3px 2em 6em 10px rgba(0, 0, 0, 0.33);
+  max-width: 100%; }
+  main.reset fieldset legend {
+    color: #bb3e14;
+    font-weight: 500;
+    font-size: 1.2em;
+    max-width: 100%; }
+
+main.reset label,
+main.reset input {
+  display: block;
+  padding: .5em;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto; }
+  @media all and (min-width: 600px) {
+    main.reset label,
+    main.reset input {
+      width: 70%; } }
+  @media all and (min-width: 900px) {
+    main.reset label,
+    main.reset input {
+      width: 60%; } }
+
+main.reset label {
+  margin-bottom: .5em;
+  font-size: .9em; }
+
+main.reset input[type="submit"] {
+  width: 100%;
+  background-color: #bb3e14;
+  color: #fff;
+  border-radius: .5em;
+  text-transform: uppercase;
+  outline: none; }
+  @media all and (min-width: 600px) {
+    main.reset input[type="submit"] {
+      width: 70%; } }
+  @media all and (min-width: 900px) {
+    main.reset input[type="submit"] {
+      width: 60%; } }
+
+main.reset span.errors {
+  display: block;
+  text-align: center; }
 
 /* Generic breakpoints */
 /**
@@ -742,6 +831,12 @@ main.user-form form {
       main.user-form form div.form-group input[type="password"]#reset-label,
       main.user-form form div.form-group label#reset-label {
         display: unset; }
+        @media all and (max-width: 500px) {
+          main.user-form form div.form-group input[type="text"]#reset-label,
+          main.user-form form div.form-group input[type="email"]#reset-label,
+          main.user-form form div.form-group input[type="password"]#reset-label,
+          main.user-form form div.form-group label#reset-label {
+            display: block; } }
     main.user-form form div.form-group.roles-group input,
     main.user-form form div.form-group.roles-group label {
       margin-right: 4em; }
@@ -833,8 +928,13 @@ section {
       cursor: pointer; }
   section.received {
     justify-content: flex-end;
-    padding-top: 0;
-    margin-bottom: 4em; }
+    padding-top: 0; }
+  section.audit {
+    margin-bottom: 2em; }
+    section.audit a {
+      display: block;
+      text-align: right;
+      width: 100%; }
 
 div.items {
   margin: 1em 1em 0;

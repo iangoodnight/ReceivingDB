@@ -8,7 +8,7 @@ const { Entry } = require('../models');
 const {
   date: { subtractDaysFromToday },
   entry: { flatten },
-  page: { browse, view },
+  page: { browse, newEntry, view },
   route: { generatePageDetails },
 } = require('../utils');
 
@@ -62,6 +62,18 @@ module.exports = {
       next(err);
     }
   },
+  findForAuditAndRender: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const entry = await Entry.findById(id).lean();
+      const [page, pageDetails] = generatePageDetails(req, newEntry);
+      pageDetails.data = entry;
+      pageDetails.success = true;
+      res.render(page, pageDetails);
+    } catch (err) {
+      next(err);
+    }
+  },
   findLastNDays: async (req, res, next) => {
     const start = req.query.start || 1;
     const end = +req.query.end || 0;
@@ -82,7 +94,6 @@ module.exports = {
     };
     try {
       const query = filter ? compoundQuery : dateQuery;
-      console.log(query);
       const entries = await Entry.find(query);
       const flattened = flatten(entries);
       const [page, pageDetails] = generatePageDetails(req, browse);
@@ -100,6 +111,33 @@ module.exports = {
       res.render(page, pageDetails);
     } catch (err) {
       next(err);
+    }
+  },
+  // UPDATE
+  auditEntry: async (req, res, next) => {
+    try {
+      const updates = req.body;
+      const _id = req.params.id;
+      const { user } = req;
+      const {
+        name: { firstName, lastName },
+      } = user;
+      console.log('Updated', updates);
+      const audited = { by: firstName + ' ' + lastName, date: Date.now() };
+      const entry = await Entry.findOne({ _id });
+      for (const update in updates) {
+        if (Object.prototype.hasOwnProperty.call(updates, update)) {
+          entry[update] = updates[update];
+        }
+      }
+      entry.audited = audited;
+      console.log('Entry', entry);
+      const doc = await entry.save();
+      console.log('Doc', doc);
+      res.json({ success: false, data: { message: 'J/K' } });
+    } catch (err) {
+      console.log(err);
+      res.json({ success: false, data: { message: 'Something went wrong' } });
     }
   },
 };

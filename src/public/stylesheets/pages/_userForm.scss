@@ -80,6 +80,10 @@ main.user-form {
 
         &#reset-label {
           display: unset;
+
+          @include for-phone-only {
+            display: block;
+          }
         }
       }
       &.roles-group {

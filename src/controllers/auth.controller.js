@@ -8,6 +8,7 @@ const passport = require('passport');
 const {
   route: { unauthorized },
 } = require('../utils');
+const { User } = require('../models');
 
 module.exports = {
   info: (req, res) => {
@@ -38,5 +39,31 @@ module.exports = {
       success: true,
       message: 'Logged out',
     });
+  },
+  reset: async (req, res) => {
+    const { user = false } = req;
+    if (!user)
+      return res.json({
+        success: false,
+        message: 'Missing request.user, are you logged in?',
+      });
+    const {
+      body: { password },
+    } = req;
+    if (!password)
+      return res.json({
+        success: false,
+        message: 'Password must be changed',
+      });
+    const { _id } = user;
+    try {
+      const userDb = await User.findById(_id);
+      userDb.password = password;
+      userDb.resetRequired = false;
+      userDb.save();
+      res.json({ success: true });
+    } catch (err) {
+      res.json({ success: false, message: err });
+    }
   },
 };

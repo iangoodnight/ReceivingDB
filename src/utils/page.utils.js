@@ -37,6 +37,14 @@ module.exports = {
     page: 'new',
     title: 'New Entry | Receiving Log | BANE',
   },
+  reset: {
+    bodyClass: 'reset',
+    description: 'Please reset your password to continue',
+    mainClass: 'reset',
+    path: '/reset',
+    page: 'reset',
+    title: 'Password Reset | Receiving Log | BANE',
+  },
   search: {
     bodyClass: 'search',
     description: 'Search by date range, purchase order, part number, or vendor',

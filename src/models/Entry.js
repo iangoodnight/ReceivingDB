@@ -9,12 +9,28 @@ const mongoose = require('mongoose');
 const { model, Schema } = mongoose;
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
+mongoose.set('debug', true);
+
 const schemaOptions = {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
 };
+
+const auditSchema = new Schema(
+  {
+    auditor: {
+      trim: true,
+      type: String,
+    },
+    change: {
+      trim: true,
+      type: String,
+    },
+  },
+  schemaOptions
+);
 
 const itemSchema = new Schema(
   {
@@ -68,6 +84,17 @@ itemSchema.plugin(AutoIncrement, {
 
 const entrySchema = new Schema(
   {
+    audited: {
+      by: {
+        type: String,
+        trim: true,
+      },
+      date: {
+        default: Date.now,
+        type: Date,
+      },
+    },
+    audits: [auditSchema],
     carrier: {
       maxLength: 32,
       required: true,
@@ -118,6 +145,17 @@ const entrySchema = new Schema(
 entrySchema.index({ date: -1 });
 entrySchema.index({ 'items.nepNumber': 1, date: -1 });
 entrySchema.index({ vendor: 1, date: -1 });
+
+entrySchema.pre('save', async function save(next) {
+  try {
+    console.log('inside pre-save');
+    const entry = this;
+    console.log(entry);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+});
 
 const Entry = model('Entry', entrySchema);
 

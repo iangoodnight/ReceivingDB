@@ -1,17 +1,28 @@
 <h2>New Entry</h2>
 
 <div>
-  <form id="new-items">
+  <form
+    id="new-items"
+    {{#if audit}}
+      data-id="{{data._id}}"
+      class="audit-update"
+    {{/if}}
+  >
     <div class="form-row flex-right">
       <div class="form-group">
         <input
           aria-labelledby="date-label"
           id="date"
-          name="date"
-          type="date"
-          value="{{dateNowInput}}"
           max="{{dateNowInput}}"
           min="{{thisYear}}"
+          name="date"
+          type="date"
+          {{#if audit}}
+            value="{{friendlyDate data.date}}"
+            class="unaltered"
+          {{else}}
+            value="{{dateNowInput}}"
+          {{/if}}
         />
         <label for="date" id="date-label">
           Date<span class="errors"></span>
@@ -23,7 +34,12 @@
           id="time"
           name="time"
           type="time"
-          value="{{timeNowInput}}"
+          {{#if audit}}
+            class="unaltered"
+            value="{{friendlyTime data.date}}"
+          {{else}}
+            value="{{timeNowInput}}"
+          {{/if}}
         />
         <label for="time" id="time-label">
           Time<span class="errors"></span>
@@ -38,6 +54,10 @@
           maxLength="32"
           name="vendor"
           type="text"
+          {{#if audit}}
+            class="unaltered"
+            value="{{data.vendor}}"
+          {{/if}}
         />
         <label for="vendor" id="vendor-label">
           Vendor<span class="errors"></span>
@@ -50,6 +70,10 @@
           maxLength="32"
           name="po"
           type="text"
+          {{#if audit}}
+            class="unaltered"
+            value="{{data.purchaseOrder}}"
+          {{/if}}
         />
         <label for="po" id="po-label">
           Purchase Order<span class="errors"></span>
@@ -62,6 +86,10 @@
           maxLength="32"
           name="carrier"
           type="text"
+          {{#if audit}}
+            class="unaltered"
+            value="{{data.carrier}}"
+          {{/if}}
         />
         <label for="carrier" id="carrier-label">
           Carrier<span class="errors"></span>
@@ -74,6 +102,10 @@
           maxLength="32"
           name="intendedFor"
           type="text"
+          {{#if audit}}
+            class="unaltered"
+            value="{{data.intendedFor}}"
+          {{/if}}
         />
         <label for="intendedFor" id="intendedFor-label">
           Intended For<span class="errors"></span>
@@ -81,183 +113,258 @@
       </div>
     </div>
     <h3>Items</h3>
-    <div class="form-row flex-split">
-      <div class="form-group form-items">
-        <input
-          aria-labelledby="item1-label"
-          id="item1"
-          maxLength="96"
-          name="item1"
-          type="text"
-        />
-        <label for="item1" id="item1-label">
-          Item<span class="errors"></span>
-        </label>
+    {{#unless audit}}
+      <div class="form-row flex-split">
+        <div class="form-group form-items">
+          <input
+            aria-labelledby="item1-label"
+            id="item1"
+            maxLength="96"
+            name="item1"
+            type="text"
+          />
+          <label for="item1" id="item1-label">
+            Item<span class="errors"></span>
+          </label>
+        </div>
+        <div class="form-group details">
+          <input
+            aria-labelledby="nep1-label"
+            id="nep1"
+            maxlength="32"
+            name="nep1"
+            type="text"
+          />
+          <label for="nep1" id="nep1-label">
+            NEP #<span class="errors"></span>
+          </label>
+          <input
+            aria-labelledby="vlot1-label"
+            id="vlot1"
+            maxLength="32"
+            name="vlot1"
+            type="text"
+          />
+          <label for="vlot1" id="vlot1-label">
+            Vendor Lot/Batch #<span class="errors"></span>
+          </label>
+        </div>
+        <div class="form-group details">
+          <input
+            aria-labelledby="qty1-label"
+            id="qty1"
+            max="1000000"
+            min="1"
+            name="qty1"
+            type="number"
+          />
+          <label for="qty1" id="qty1-label">
+            Quantity<span class="errors"></span>
+          </label>
+          <input
+            aria-labelledby="unit1-label"
+            id="unit1"
+            maxLength="32"
+            name="unit1"
+            type="text"
+          />
+          <label for="unit1" id="unit1-label">
+            Unit<span class="errors"></span>
+          </label>
+        </div>
       </div>
-      <div class="form-group details">
-        <input
-          aria-labelledby="nep1-label"
-          id="nep1"
-          maxlength="32"
-          name="nep1"
-          type="text"
-        />
-        <label for="nep1" id="nep1-label">
-          NEP #<span class="errors"></span>
-        </label>
-        <input
-          aria-labelledby="vlot1-label"
-          id="vlot1"
-          maxLength="32"
-          name="vlot1"
-          type="text"
-        />
-        <label for="vlot1" id="vlot1-label">
-          Vendor Lot/Batch #<span class="errors"></span>
-        </label>
+      <div class="form-row flex-split">
+        <div class="form-group form-items">
+          <input
+            aria-labelledby="item2-label"
+            id="item2"
+            maxLength="96"
+            name="item2"
+            type="text"
+          />
+          <label for="item2" id="item2-label">
+            Item<span class="errors"></span>
+          </label>
+        </div>
+        <div class="form-group details">
+          <input
+            aria-labelledby="nep2-label"
+            id="nep2"
+            maxLength="32"
+            name="nep2"
+            type="text"
+          />
+          <label for="nep2" id="nep2-label">
+            NEP #<span class="errors"></span>
+          </label>
+          <input
+            aria-labelledby="vlot2-label"
+            id="vlot2"
+            maxLength="32"
+            name="vlot2"
+            type="text"
+          />
+          <label for="vlot2" id="vlot2-label">
+            Vendor Lot/Batch #<span class="errors"></span>
+          </label>
+        </div>
+        <div class="form-group details">
+          <input
+            aria-labelledby="qty2-label"
+            id="qty2"
+            max="1000000"
+            min="1"
+            name="qty2"
+            type="number"
+          />
+          <label for="qty2" id="qty2-label">
+            Quantity<span class="errors"></span>
+          </label>
+          <input
+            aria-labelledby="unit2-label"
+            id="unit2"
+            maxLength="32"
+            name="unit2"
+            type="text"
+          />
+          <label for="unit2" id="unit2-label">
+            Unit<span class="errors"></span>
+          </label>
+        </div>
       </div>
-      <div class="form-group details">
-        <input
-          aria-labelledby="qty1-label"
-          id="qty1"
-          max="1000000"
-          min="1"
-          name="qty1"
-          type="number"
-        />
-        <label for="qty1" id="qty1-label">
-          Quantity<span class="errors"></span>
-        </label>
-        <input
-          aria-labelledby="unit1-label"
-          id="unit1"
-          maxLength="32"
-          name="unit1"
-          type="text"
-        />
-        <label for="unit1" id="unit1-label">
-          Unit<span class="errors"></span>
-        </label>
+      <div class="form-row flex-split">
+        <div class="form-group form-items">
+          <input
+            aria-labelledby="item3-label"
+            id="item3"
+            maxLength="96"
+            name="item3"
+            type="text"
+          />
+          <label for="item3" id="item3-label">
+            Item<span class="errors"></span>
+          </label>
+        </div>
+        <div class="form-group details">
+          <input
+            aria-labelledby="nep3-label"
+            id="nep3"
+            maxLength="32"
+            name="nep3"
+            type="text"
+          />
+          <label for="nep3" id="nep3-label">
+            NEP #<span class="errors"></span>
+          </label>
+          <input
+            aria-labelledby="vlot3-label"
+            id="vlot3"
+            maxLength="32"
+            name="vlot3"
+            type="text"
+          />
+          <label for="vlot3" id="vlot3-label">
+            Vendor Lot/Batch #<span class="errors"></span>
+          </label>
+        </div>
+        <div class="form-group details">
+          <input
+            aria-labelledby="qty3-label"
+            id="qty3"
+            max="1000000"
+            min="1"
+            name="qty3"
+            type="number"
+          />
+          <label for="qty3" id="qty3-label">
+            Quantity<span class="errors"></span>
+          </label>
+          <input
+            aria-labelledby="unit3-label"
+            id="unit3"
+            maxLength="32"
+            name="unit3"
+            type="text"
+          />
+          <label for="unit3" id="unit3-label">
+            Unit<span class="errors"></span>
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="form-row flex-split">
-      <div class="form-group form-items">
-        <input
-          aria-labelledby="item2-label"
-          id="item2"
-          maxLength="96"
-          name="item2"
-          type="text"
-        />
-        <label for="item2" id="item2-label">
-          Item<span class="errors"></span>
-        </label>
-      </div>
-      <div class="form-group details">
-        <input
-          aria-labelledby="nep2-label"
-          id="nep2"
-          maxLength="32"
-          name="nep2"
-          type="text"
-        />
-        <label for="nep2" id="nep2-label">
-          NEP #<span class="errors"></span>
-        </label>
-        <input
-          aria-labelledby="vlot2-label"
-          id="vlot2"
-          maxLength="32"
-          name="vlot2"
-          type="text"
-        />
-        <label for="vlot2" id="vlot2-label">
-          Vendor Lot/Batch #<span class="errors"></span>
-        </label>
-      </div>
-      <div class="form-group details">
-        <input
-          aria-labelledby="qty2-label"
-          id="qty2"
-          max="1000000"
-          min="1"
-          name="qty2"
-          type="number"
-        />
-        <label for="qty2" id="qty2-label">
-          Quantity<span class="errors"></span>
-        </label>
-        <input
-          aria-labelledby="unit2-label"
-          id="unit2"
-          maxLength="32"
-          name="unit2"
-          type="text"
-        />
-        <label for="unit2" id="unit2-label">
-          Unit<span class="errors"></span>
-        </label>
-      </div>
-    </div>
-    <div class="form-row flex-split">
-      <div class="form-group form-items">
-        <input
-          aria-labelledby="item3-label"
-          id="item3"
-          maxLength="96"
-          name="item3"
-          type="text"
-        />
-        <label for="item3" id="item3-label">
-          Item<span class="errors"></span>
-        </label>
-      </div>
-      <div class="form-group details">
-        <input
-          aria-labelledby="nep3-label"
-          id="nep3"
-          maxLength="32"
-          name="nep3"
-          type="text"
-        />
-        <label for="nep3" id="nep3-label">
-          NEP #<span class="errors"></span>
-        </label>
-        <input
-          aria-labelledby="vlot3-label"
-          id="vlot3"
-          maxLength="32"
-          name="vlot3"
-          type="text"
-        />
-        <label for="vlot3" id="vlot3-label">
-          Vendor Lot/Batch #<span class="errors"></span>
-        </label>
-      </div>
-      <div class="form-group details">
-        <input
-          aria-labelledby="qty3-label"
-          id="qty3"
-          max="1000000"
-          min="1"
-          name="qty3"
-          type="number"
-        />
-        <label for="qty3" id="qty3-label">
-          Quantity<span class="errors"></span>
-        </label>
-        <input
-          aria-labelledby="unit3-label"
-          id="unit3"
-          maxLength="32"
-          name="unit3"
-          type="text"
-        />
-        <label for="unit3" id="unit3-label">
-          Unit<span class="errors"></span>
-        </label>
-      </div>
-    </div>
+    {{else}}
+      {{#each data.items}}
+        <div class="form-row flex-split">
+          <div class="form-group form-items">
+            <input
+              aria-labelledby="item{{@index}}-label"
+              data-id="{{_id}}"
+              class="unaltered"
+              id="item{{@index}}"
+              maxLength="96"
+              name="item{{@index}}"
+              type="text"
+              value="{{item}}"
+            />
+            <label for="item{{@index}}" id="item{{@index}}-label">
+              Item<span class="errors"></span>
+            </label>
+          </div>
+          <div class="form-group details">
+            <input
+              aria-labelledby="nep{{@index}}-label"
+              class="unaltered"
+              id="nep{{@index}}"
+              maxLength="32"
+              name="nep{{@index}}"
+              type="text"
+              value="{{nepNumber}}"
+            />
+            <label for="nep{{@index}}" id="nep{{@index}}-label">
+              NEP #<span class="errors"></span>
+            </label>
+            <input
+              aria-labelledby="vlot{{@index}}-label"
+              class="unaltered"
+              id="vlot{{@index}}"
+              maxLength="32"
+              name="vlot{{@index}}"
+              type="text"
+              value="{{vendorLot}}"
+            />
+            <label for="vlot{{@index}}" id="vlot{{@index}}-label">
+              Vendor Lot/Batch #<span class="errors"></span>
+            </label>
+          </div>
+          <div class="form-group details">
+            <input
+              aria-labelledby="qty{{@index}}-label"
+              class="unaltered"
+              id="qty{{@index}}"
+              max="1000000"
+              min="1"
+              name="qty"
+              type="number"
+              value="{{quantity.number}}"
+            />
+            <label for="qty{{@index}}" id="qty{{@index}}-label">
+              Quantity<span class="errors"></span>
+            </label>
+            <input
+              aria-labelledby="unit{{@index}}-label"
+              class="unaltered"
+              id="unit{{@index}}"
+              maxLength="32"
+              name="unit{{@index}}"
+              type="text"
+              value="{{quantity.unit}}"
+            />
+            <label for="unit{{@index}}" id="unit{{@index}}-label">
+              Unit<span class="errors"></span>
+            </label>
+          </div>
+        </div>
+      {{/each}}
+    {{/unless}}
     <div class="form-row form-control">
       <div class="button-group">
         <button id="add-items" type="button">Add more items</button>
@@ -273,12 +380,22 @@
   const count = { inputs: 3 };
   const form = document.querySelector('form#new-items');
   const addItemsButton = document.querySelector('button#add-items');
+  const auditInputs = Array.from(document.querySelectorAll('input.unaltered'));
   let errorElems = document.querySelectorAll('span.errors');
 
   form.addEventListener('submit', handleSubmit, false);
   addItemsButton.addEventListener('click', addInputGroup, false);
 
-  function handleSubmit(event) {
+  auditInputs.forEach(input => {
+    input.addEventListener('change', removeUnaltered, false);
+  });
+
+  function removeUnaltered(event) {
+    const element = event.target;
+    element.classList.remove('unaltered');
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
     toggleLoader();
     resetErrors();
@@ -294,8 +411,8 @@
       intendedForInput,
       ...itemInputs
     ] = elements;
-    const { value: day } = dayInput;
-    const { value: time } = timeInput;
+    const day = validate(dayInput);
+    const time = validate(timeInput);
     if (!day || day.length > 10) formErrs.setError(0);
     if (!time) formErrs.setError(1);
     const date = new Date(formatDate(day, time));
@@ -306,6 +423,8 @@
     const items = [];
     let remainingInputs = [...itemInputs];
     let itemCount = 0;
+    const isAudit = Array.from(form.classList).includes('audit-update');
+    const unaltered = 'UNALTERED';
     while (remainingInputs.length > 2) {
       const [
         itemInput,
@@ -321,21 +440,38 @@
       const vendorLot = validate(vLotInput);
       const number = validate(qtyInput);
       const unit = validate(unitInput);
-      if (item && nepNumber && vendorLot && number && unit) {
-        const quantity = { number, unit };
-        items.push({
-          item,
-          nepNumber,
-          quantity,
-          vendorLot
-        });      
-      }
+      const _id = isAudit ? itemInput.dataset.id : false;
       if (item || nepNumber || vendorLot || number || unit) {
         if (!item) formErrs.setError(errorIdx);
         if (!nepNumber) formErrs.setError(errorIdx + 1);
         if (!vendorLot) formErrs.setError(errorIdx + 2);
         if (!number) formErrs.setError(errorIdx + 3);
         if (!unit) formErrs.setError(errorIdx + 4);
+      }
+      if (item && nepNumber && vendorLot && number && unit) {
+        const itemData = {};
+        const quantity = {};        
+        let isAltered = false;
+        if (number !== unaltered) quantity.number = number;
+        if (unit !== unaltered) quantity.unit = unit;
+        if (number !== unaltered || unit !== unaltered) {
+          isAltered = true;
+          itemData.quantity = quantity;
+        } 
+        if (item !== unaltered) {
+          itemData.item = item;
+          isAltered = true;
+        }
+        if (vendorLot !== unaltered) {
+          itemData.vendorLot = vendorLot;
+          isAltered = true;
+        }
+        if (nepNumber !== unaltered) {
+          itemData.nepNumber = nepNumber;
+          isAltered = true;
+        }
+        if (isAltered && isAudit && _id) itemData._id = _id;
+        items.push(itemData);      
       }
       remainingInputs = [...rest];
       itemCount++;
@@ -344,35 +480,65 @@
       toggleLoader();
       return setErrors(formErrs.errs);
     }
-    const data = {
-      carrier,
-      date,
-      intendedFor,
-      items,
-      purchaseOrder,
-      vendor,
-    };
-    fetch('/api/entry', {
+    const data = {};
+    
+    if (items.length) data.items = items;
+    if (day !== unaltered || time !== unaltered) data.date = date;
+    if (carrier !== unaltered) data.carrier = carrier;
+    if (intendedFor !== unaltered) data.intendedFor = intendedFor;
+    if (purchaseOrder !== unaltered) data.purchaseOrder = purchaseOrder;
+    if (vendor !== unaltered) data.vendor = vendor;
+
+    let response;
+
+    if (isAudit) {
+      const { id } = form.dataset;
+      try {
+        response = await putAuditEntry(data, id);
+        const { success } = response;
+        if (success) window.location = `/view/${id}`;
+        const { data: { message } } = response;
+        formErrs.setError(errorElems.length - 1, message);
+      } catch (err) {
+        formErrs.setError(errorElems.length - 1, 'Something went wrong');
+      }
+    } else {
+      try {
+        response = await postNewEntry(data);
+        const { success } = response;
+        if (success) return window.location.replace('/browse?start=6');
+        const { data: { message } } = response;
+        formErrs.setError(errorElems.length - 1, message);
+      } catch (err) {
+        formErrs.setError(errorElems.length - 1, 'Something went wrong');
+      }
+    }
+    toggleLoader();
+  }
+
+  async function postNewEntry(data) {
+    const request = await fetch('/api/entry', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(response => response.json())
-    .then(json => {
-      const { success } = json;
-      if (success) window.location.replace('/browse?start=6');
-      const { data: { message } } = json;
-      formErrs.setError(errorElems.length - 1, message);
-      setErrors(formErrs.errs);
-    })
-    .catch(err => {
-      formErrs.setError(errorElems.length - 1, err);
-      setErrors(formErrs.errs);
-    })
-    .finally(() => {
-      toggleLoader(); 
     });
+    const response = await request.json();
+    return response;
+  }
+
+  async function putAuditEntry(data, id) {
+    data._id = id;
+    const request = await fetch(`/api/entry/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const response = await request.json();
+    return response;
   }
 
   function formatDate(dateStr, timeStr) {
@@ -397,7 +563,9 @@
 
   function validate(elem) {
     const { value } = elem;
-    if (value && value.length !== 0) return value;
+    const isUnaltered = Array.from(elem.classList).includes('unaltered');
+    if (value && value.length !== 0 && !isUnaltered) return value;
+    if (value && value.length !== 0 && isUnaltered) return 'UNALTERED';
     return null;
   }
 
