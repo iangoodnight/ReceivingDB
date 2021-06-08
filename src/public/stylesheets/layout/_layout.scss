@@ -10,6 +10,11 @@ body {
 		"header"
 		"main"
     "footer";
+
+    @include for-phone-only {
+      grid-template-columns: repeat(12, auto);
+      overflow-x: hidden;
+    }
 }
 
 header {

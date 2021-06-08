@@ -108,6 +108,9 @@
 
       &:nth-child(1) {
         width: 64%;
+        @include for-phone-only {
+          padding-left: 1em;
+        }
       }
 
       &.priority-2,

@@ -1,7 +1,15 @@
+@import "../abstracts/all";
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+}
+
+@include for-phone-only {
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
 }

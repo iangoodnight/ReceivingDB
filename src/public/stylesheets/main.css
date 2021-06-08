@@ -42,6 +42,10 @@ body {
   grid-template-columns: 5vw repeat(10, auto) 5vw;
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "header" "main" "footer"; }
+  @media all and (max-width: 500px) {
+    body {
+      grid-template-columns: repeat(12, auto);
+      overflow-x: hidden; } }
 
 header {
   grid-area: header;
@@ -103,6 +107,10 @@ header {
       margin: auto;
       padding-left: 10vw;
       padding-right: 10vw; }
+      @media all and (max-width: 500px) {
+        header div.hero .brand {
+          padding: 0;
+          text-align: center; } }
       header div.hero .brand a {
         color: #fff;
         opacity: 95%; }
@@ -241,6 +249,10 @@ main div.page-status {
     .table-container table th:nth-child(1),
     .table-container table td:nth-child(1) {
       width: 64%; }
+      @media all and (max-width: 500px) {
+        .table-container table th:nth-child(1),
+        .table-container table td:nth-child(1) {
+          padding-left: 1em; } }
     .table-container table th.priority-2, .table-container table th.priority-3, .table-container table th.priority-4, .table-container table th.priority-5,
     .table-container table td.priority-2,
     .table-container table td.priority-3,

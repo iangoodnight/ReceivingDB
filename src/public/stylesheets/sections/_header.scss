@@ -42,6 +42,11 @@ header {
       padding-left: 10vw;
       padding-right: 10vw;
 
+      @include for-phone-only {
+        padding: 0;
+        text-align: center;
+      }
+
       a {
         color: #fff;
         opacity: 95%;
