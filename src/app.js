@@ -64,9 +64,7 @@ app.engine(
         return friendlyDate.toISOString().split('T')[0];
       },
       friendlyTime: function (date) {
-        console.log(date);
         const thisDate = new Date(date);
-        console.log(thisDate);
         const hours = thisDate.getHours().toString();
         const minutes = thisDate.getMinutes().toString();
         return `${hours.length < 2 ? '0' + hours : hours}:${

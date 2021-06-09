@@ -3,6 +3,14 @@
  */
 
 module.exports = {
+  audit: {
+    bodyClass: '',
+    description: 'Audit entry details',
+    mainClass: 'new',
+    path: '/audit/:id',
+    page: 'new',
+    title: 'Audit | Receiving Log | BANE',
+  },
   browse: {
     bodyClass: '',
     description: 'Browse and view filtered receiving log entries by date range',

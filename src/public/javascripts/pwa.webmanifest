@@ -1,7 +1,7 @@
 {
   "name": "Receiving Log | BANE",
-  "short_name": "receiving-log",
-  "description": "Reciving log for Bulk Apothecary/Natural Essentials",
+  "short_name": "receivingDB",
+  "description": "Receiving log for Bulk Apothecary/Natural Essentials",
   "icons": [
     {
       "src": "/../images/splash-screen.png",

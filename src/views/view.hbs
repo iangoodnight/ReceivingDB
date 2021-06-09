@@ -51,6 +51,11 @@
       {{#if ../audit}}
         <section class="audit">
           <a href="/audit/{{_id}}">Audit</a>
+          <ul>
+            {{#each audits}}
+              <li>{{friendlyDateTime created_at}} {{auditor}}: {{change}}</li>
+            {{/each}}
+          </ul>
         </section>
       {{/if}}
     {{/each}}

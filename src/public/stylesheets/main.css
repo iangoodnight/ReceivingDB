@@ -930,11 +930,20 @@ section {
     justify-content: flex-end;
     padding-top: 0; }
   section.audit {
-    margin-bottom: 2em; }
+    margin-bottom: 2em;
+    font-weight: 400;
+    font-size: .9em; }
+    section.audit ul {
+      list-style: square; }
     section.audit a {
       display: block;
-      text-align: right;
-      width: 100%; }
+      text-align: center;
+      width: 100%;
+      font-size: 1.4em;
+      font-weight: 500;
+      letter-spacing: .1em; }
+      section.audit a:hover {
+        text-decoration: underline; }
 
 div.items {
   margin: 1em 1em 0;

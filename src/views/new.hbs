@@ -1,4 +1,4 @@
-<h2>New Entry</h2>
+<h2>{{#unless audit}}New Entry{{else}}Audit Entry{{/unless}}</h2>
 
 <div>
   <form
@@ -415,7 +415,8 @@
     const time = validate(timeInput);
     if (!day || day.length > 10) formErrs.setError(0);
     if (!time) formErrs.setError(1);
-    const date = new Date(formatDate(day, time));
+
+    const date = formatDate(day, time);
     const vendor = validate(vendorInput) || formErrs.setError(2);
     const purchaseOrder = validate(purchaseOrderInput) || formErrs.setError(3);
     const carrier = validate(carrierInput) || formErrs.setError(4);
@@ -542,7 +543,20 @@
   }
 
   function formatDate(dateStr, timeStr) {
-    return `${dateStr}T${timeStr}:00.000+00:00`;
+    const currDate = document.querySelector('input#date').value;
+    const currTime = document.querySelector('input#time').value;
+    if (dateStr === 'UNALTERED') dateStr = currDate;
+    if (timeStr === 'UNALTERED') timeStr = currTime;
+    const [ hours, minutes ] = timeStr.split(':');
+    const [ year, month, day ] = dateStr.split('-');
+    const formatted = new Date(
+      parseInt(year),
+      parseInt(month) - 1,
+      parseInt(day),
+      parseInt(hours),
+      parseInt(minutes)
+    );
+    return formatted;
   }
 
   function ErrorCollection() {

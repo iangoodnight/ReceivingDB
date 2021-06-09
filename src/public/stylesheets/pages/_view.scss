@@ -36,11 +36,24 @@ section {
   }
   &.audit {
     margin-bottom: 2em;
+    font-weight: 400;
+    font-size: .9em;
+
+    ul {
+      list-style: square;
+    }
 
     a {
       display: block;
-      text-align: right;
+      text-align: center;
       width: 100%;
+      font-size: 1.4em;
+      font-weight: 500;
+      letter-spacing: .1em;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

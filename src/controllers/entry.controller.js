@@ -8,7 +8,8 @@ const { Entry } = require('../models');
 const {
   date: { subtractDaysFromToday },
   entry: { flatten },
-  page: { browse, newEntry, view },
+  object: { isEmptyObject, mergeDeep },
+  page: { audit, browse, view },
   route: { generatePageDetails },
 } = require('../utils');
 
@@ -23,8 +24,8 @@ module.exports = {
         },
       } = req;
       body.receivedBy = `${firstName} ${lastName}`;
-      const newEntry = await Entry.create(body);
-      res.json({ success: true, data: newEntry });
+      await Entry.create(body);
+      res.json({ success: true });
     } catch (err) {
       res.json({ success: false, data: err });
     }
@@ -66,9 +67,10 @@ module.exports = {
     try {
       const { id } = req.params;
       const entry = await Entry.findById(id).lean();
-      const [page, pageDetails] = generatePageDetails(req, newEntry);
+      const [page, pageDetails] = generatePageDetails(req, audit);
       pageDetails.data = entry;
       pageDetails.success = true;
+      pageDetails.audit = true;
       res.render(page, pageDetails);
     } catch (err) {
       next(err);
@@ -117,26 +119,86 @@ module.exports = {
   auditEntry: async (req, res, next) => {
     try {
       const updates = req.body;
+      const audits = [];
       const _id = req.params.id;
       const { user } = req;
       const {
         name: { firstName, lastName },
       } = user;
-      console.log('Updated', updates);
-      const audited = { by: firstName + ' ' + lastName, date: Date.now() };
+      const auditor = `${firstName.toUpperCase()} ${lastName.toUpperCase()}`;
       const entry = await Entry.findOne({ _id });
-      for (const update in updates) {
-        if (Object.prototype.hasOwnProperty.call(updates, update)) {
-          entry[update] = updates[update];
+      // Copy item changes if present
+      const { items: updatedItems } = updates;
+      for (const updatedItem of updatedItems) {
+        const valid = !isEmptyObject(updatedItem);
+        if (!valid) continue;
+        const { _id: updateId = null } = updatedItem;
+        const originalItem = !updateId
+          ? {}
+          : entry.items.filter(
+              (original) => original._id.toString() === updateId
+            )[0];
+        for (const change in updatedItem) {
+          if (Object.prototype.hasOwnProperty.call(updatedItem, change)) {
+            let audit, message;
+            switch (change) {
+              case 'quantity':
+                message =
+                  'changed ' +
+                  originalItem.item +
+                  ' quantity from ' +
+                  originalItem.quantity.number.toString() +
+                  ' ' +
+                  originalItem.quantity.unit +
+                  ' to ' +
+                  (updatedItem[change].number
+                    ? updatedItem[change].number.toString()
+                    : originalItem.quantity.number.toString()) +
+                  ' ' +
+                  (updatedItem[change].unit
+                    ? updatedItem[change].unit
+                    : originalItem.unit);
+                audit = { auditor, change: message };
+                audits.push(audit);
+                break;
+              case 'item':
+                message = `changed item from ${originalItem.item} to ${updatedItem[change]}`;
+                audit = { auditor, change: message };
+                audits.push(audit);
+                break;
+              case 'nepNumber':
+                message = `changed ${originalItem.item} MPN from ${originalItem.nepNumber} to ${updatedItem[change]}`;
+                audit = { auditor, change: message };
+                audits.push(audit);
+                break;
+              case 'vendorLot':
+                message = `changed ${originalItem.item} vendor lot # from ${originalItem.nepNumber} to ${updatedItem[change]}`;
+                audit = { auditor, change: message };
+                audits.push(audit);
+                break;
+              default:
+                break;
+            }
+          }
+        }
+        mergeDeep(originalItem, updatedItem);
+      }
+      delete updates.items;
+      for (const remaining in updates) {
+        if (Object.prototype.hasOwnProperty.call(updates, remaining)) {
+          if (remaining === '_id') continue;
+          const msg = `changed ${remaining} ${entry[remaining] || ''} to ${
+            updates[remaining]
+          }`;
+          audits.push({ auditor, change: msg });
         }
       }
-      entry.audited = audited;
-      console.log('Entry', entry);
-      const doc = await entry.save();
-      console.log('Doc', doc);
-      res.json({ success: false, data: { message: 'J/K' } });
+      mergeDeep(entry, updates);
+      const { audits: pastAudits = [] } = entry;
+      entry.audits = [...pastAudits, ...audits];
+      await entry.save();
+      res.json({ success: true });
     } catch (err) {
-      console.log(err);
       res.json({ success: false, data: { message: 'Something went wrong' } });
     }
   },

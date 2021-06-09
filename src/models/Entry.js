@@ -84,16 +84,6 @@ itemSchema.plugin(AutoIncrement, {
 
 const entrySchema = new Schema(
   {
-    audited: {
-      by: {
-        type: String,
-        trim: true,
-      },
-      date: {
-        default: Date.now,
-        type: Date,
-      },
-    },
     audits: [auditSchema],
     carrier: {
       maxLength: 32,
@@ -145,17 +135,6 @@ const entrySchema = new Schema(
 entrySchema.index({ date: -1 });
 entrySchema.index({ 'items.nepNumber': 1, date: -1 });
 entrySchema.index({ vendor: 1, date: -1 });
-
-entrySchema.pre('save', async function save(next) {
-  try {
-    console.log('inside pre-save');
-    const entry = this;
-    console.log(entry);
-    return next();
-  } catch (err) {
-    return next(err);
-  }
-});
 
 const Entry = model('Entry', entrySchema);
 
