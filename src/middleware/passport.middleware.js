@@ -39,6 +39,8 @@ module.exports = (app) => {
     })
   );
 
+  if (process.env.NODE_ENV === 'production') app.set('trust proxy', 1);
+
   passport.serializeUser((user, done) => {
     done(null, user._id);
   });
