@@ -3,7 +3,11 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const { passport: passportMiddleware, forceSsl } = require('./middleware');
+const {
+  passport: passportMiddleware,
+  forceSsl,
+  validateIp,
+} = require('./middleware');
 const {
   date: { subtractDaysFromToday, friendlyTimeAndDate },
 } = require('./utils');
@@ -21,7 +25,10 @@ db.once('open', () => {
   console.log('\nSuccessfully connected to Mongo!\n');
 });
 
-if (process.env.NODE_ENV === 'production') app.use(forceSsl);
+if (process.env.NODE_ENV === 'production') {
+  app.use(forceSsl);
+  app.use(validateIp);
+}
 
 // view engine setup
 const exphbs = require('express-handlebars');
