@@ -6,7 +6,7 @@ const sassMiddleware = require('node-sass-middleware');
 const {
   passport: passportMiddleware,
   forceSsl,
-  /* validateIp, */
+  validateIp,
 } = require('./middleware');
 const {
   date: { subtractDaysFromToday, friendlyTimeAndDate },
@@ -27,8 +27,7 @@ db.once('open', () => {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(forceSsl);
-  //  need to figure out how to deal with heroku's proxy
-  //  app.use(validateIp);
+  app.use(validateIp);
 }
 
 // view engine setup
