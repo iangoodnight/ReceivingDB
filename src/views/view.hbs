@@ -65,11 +65,4 @@
   {{/if}}
 </div>
 
-<script defer>
-  const backButtons = Array.from(document.querySelectorAll('button.browse'));
-
-  backButtons.map(button => {
-    button.addEventListener('click', () => history.back(), false);
-  });
-
-</script>
+<script defer src="/javascripts/view.js"></script>

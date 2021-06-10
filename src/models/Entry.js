@@ -9,8 +9,6 @@ const mongoose = require('mongoose');
 const { model, Schema } = mongoose;
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-mongoose.set('debug', true);
-
 const schemaOptions = {
   timestamps: {
     createdAt: 'created_at',

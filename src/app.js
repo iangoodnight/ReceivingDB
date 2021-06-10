@@ -3,20 +3,25 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const { passport: passportMiddleware } = require('./middleware');
+const { passport: passportMiddleware, forceSsl } = require('./middleware');
 const {
   date: { subtractDaysFromToday, friendlyTimeAndDate },
 } = require('./utils');
+const helmet = require('helmet');
 
 require('dotenv').config();
 
 const app = express();
+
+app.use(helmet());
 // db setup
 const db = require('./services/db.service');
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 db.once('open', () => {
   console.log('\nSuccessfully connected to Mongo!\n');
 });
+
+if (process.env.NODE_ENV === 'production') app.use(forceSsl);
 
 // view engine setup
 const exphbs = require('express-handlebars');

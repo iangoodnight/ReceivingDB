@@ -129,7 +129,7 @@ userSchema.methods.validatePassword = async function validatePassword(data) {
 
 userSchema.statics.login = function login(id /*callback*/) {
   const query = { $set: { lastLogin: Date.now() } };
-  const options = { new: true };
+  const options = { upsert: true };
   return this.findByIdAndUpdate(id, query, options /* callback*/);
 };
 

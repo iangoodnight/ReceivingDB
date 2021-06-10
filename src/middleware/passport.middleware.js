@@ -17,6 +17,7 @@ module.exports = (app) => {
   app.use(
     session({
       cookie: {
+        httpOnly: true,
         maxAge: 1 * 24 * 60 * 60 * 1_000,
         secure:
           process.env.NODE_ENV === 'production'
