@@ -137,8 +137,12 @@ app.engine(
       },
       timeNowInput: () => {
         const now = new Date();
-        const hours = now.getHours().toString();
-        const minutes = now.getMinutes().toString();
+        const dateTimeString = now.toLocaleString('en-US', {
+          timeZone: 'America/New_York',
+        });
+        const timeString = dateTimeString.split(', ')[1];
+        const hours = timeString.split(':')[0];
+        const minutes = timeString.split(':')[1];
         return `${hours.length < 2 ? '0' + hours : hours}:${
           minutes.length < 2 ? '0' + minutes : minutes
         }`;
