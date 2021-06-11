@@ -258,7 +258,7 @@ document.addEventListener(
         <input
           aria-labelledby="item${i}-label"
           id="item${i}"
-          maxLength="96"
+          maxLength="128"
           name="item${i}"
           type="text"
         />
@@ -270,7 +270,7 @@ document.addEventListener(
         <input
           aria-labelledby="nep${i}-label"
           id="nep${i}"
-          maxLength="32"
+          maxLength="64"
           name="nep${i}"
           type="text"
         />
@@ -280,7 +280,7 @@ document.addEventListener(
         <input
           aria-labelledby="vlot${i}-label"
           id="vlot${i}"
-          maxLength="32"
+          maxLength="64"
           name="vlot${i}"
           type="text"
         />
@@ -303,7 +303,7 @@ document.addEventListener(
         <input
           aria-labelledby="unit${i}-label"
           id="unit${i}"
-          maxLength="32"
+          maxLength="64"
           name="unit${i}"
           type="text"
         />

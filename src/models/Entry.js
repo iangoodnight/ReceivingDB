@@ -33,7 +33,7 @@ const auditSchema = new Schema(
 const itemSchema = new Schema(
   {
     item: {
-      maxLength: 96,
+      maxLength: 128,
       required: true,
       trim: true,
       type: String,
@@ -44,7 +44,7 @@ const itemSchema = new Schema(
     },
     nepNumber: {
       default: 'N/A',
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       type: String,
       trim: true,
@@ -59,13 +59,13 @@ const itemSchema = new Schema(
       unit: {
         default: 'each',
         lowercase: true,
-        maxLength: 32,
+        maxLength: 64,
         trim: true,
         type: String,
       },
     },
     vendorLot: {
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       type: String,
       trim: true,
@@ -84,7 +84,7 @@ const entrySchema = new Schema(
   {
     audits: [auditSchema],
     carrier: {
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       trim: true,
       type: String,
@@ -96,7 +96,7 @@ const entrySchema = new Schema(
     },
     intendedFor: {
       default: 'Bulk',
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       trim: true,
       type: String,
@@ -106,7 +106,7 @@ const entrySchema = new Schema(
     purchaseOrder: {
       default: 'N/A',
       index: true,
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       trim: true,
       type: String,
@@ -120,7 +120,7 @@ const entrySchema = new Schema(
       uppercase: true,
     },
     vendor: {
-      maxLength: 32,
+      maxLength: 64,
       required: true,
       trim: true,
       type: String,
