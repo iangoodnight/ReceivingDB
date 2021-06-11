@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const mongoConnection = process.env.DEV_URI || process.env.MONGODB_URI;
 const mongoUri = encodeURI(mongoConnection);
 mongoose.Promise = global.Promise;
-mongoose.set('debug', true);
+
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

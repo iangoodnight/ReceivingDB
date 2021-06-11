@@ -297,7 +297,6 @@ document.addEventListener(
           aria-labelledby="qty${i}-label"
           id="qty${i}"
           max="1000000"
-          min="1"
           name="qty${i}"
           type="number"
         />

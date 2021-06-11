@@ -33,7 +33,7 @@ const auditSchema = new Schema(
 const itemSchema = new Schema(
   {
     item: {
-      maxLength: 128,
+      maxLength: 160,
       required: true,
       trim: true,
       type: String,
@@ -53,13 +53,12 @@ const itemSchema = new Schema(
       number: {
         default: 1,
         max: 1_000_000,
-        min: 1,
         type: Number,
       },
       unit: {
         default: 'each',
         lowercase: true,
-        maxLength: 64,
+        maxLength: 96,
         trim: true,
         type: String,
       },
