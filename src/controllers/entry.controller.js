@@ -141,6 +141,7 @@ module.exports = {
         for (const change in updatedItem) {
           if (Object.prototype.hasOwnProperty.call(updatedItem, change)) {
             let audit, message;
+            console.log(change);
             switch (change) {
               case 'quantity':
                 message =
