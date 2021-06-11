@@ -77,8 +77,13 @@ app.engine(
       },
       friendlyTime: function (date) {
         const thisDate = new Date(date);
-        const hours = thisDate.getHours().toString();
-        const minutes = thisDate.getMinutes().toString();
+        const dateTimeStr = thisDate.toLocaleString('en-US', {
+          timeZone: 'America/New_York',
+        });
+        const timeStr = dateTimeStr.split(', ')[1];
+        const [rawHours, minutes, remainder] = timeStr.split(':');
+        const amPm = remainder.split(' ')[1];
+        const hours = amPm === 'PM' ? parseInt(rawHours) + 12 + '' : rawHours;
         return `${hours.length < 2 ? '0' + hours : hours}:${
           minutes.length < 2 ? '0' + minutes : minutes
         }`;
