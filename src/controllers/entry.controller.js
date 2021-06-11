@@ -199,6 +199,7 @@ module.exports = {
       await entry.save();
       res.json({ success: true });
     } catch (err) {
+      console.log(err);
       res.json({ success: false, data: { message: 'Something went wrong' } });
     }
   },
