@@ -50,6 +50,10 @@ header {
       a {
         color: #fff;
         opacity: 95%;
+
+        span {
+          color: $secondaryColor;
+        }
       }
     }        
   }

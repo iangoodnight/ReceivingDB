@@ -5,6 +5,8 @@
 'use strict';
 
 const validateIp = function (req, res, next) {
+  if (!process.env.IP_WHITELIST) return next();
+
   const validIpList = process.env.IP_WHITELIST.split(';');
 
   const remoteConnection = req.headers['x-forwarded-for'];

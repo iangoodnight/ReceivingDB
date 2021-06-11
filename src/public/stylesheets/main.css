@@ -124,6 +124,8 @@ header {
       header div.hero .brand a {
         color: #fff;
         opacity: 95%; }
+        header div.hero .brand a span {
+          color: #bb3e14; }
   header nav {
     position: absolute;
     bottom: 0;
@@ -325,6 +327,47 @@ main div.page-status {
   .table-container table tbody td {
     font-size: .8em;
     min-width: 4em; }
+
+/* Generic breakpoints */
+/**
+ * abstracts/_variables.scss
+ */
+/* colors */
+/* defaults */
+main.home section.faq {
+  display: block;
+  text-transform: unset;
+  font-weight: unset;
+  background-color: #f6f4f2;
+  box-shadow: 3px 2em 6em 10px rgba(0, 0, 0, 0.33);
+  border: 2px solid #bb3e14;
+  border-radius: .5em;
+  margin-bottom: 2em; }
+  main.home section.faq h3 {
+    color: #bb3e14;
+    font-weight: 500;
+    letter-spacing: .2em;
+    padding: 0 2em; }
+  main.home section.faq p {
+    font-family: sans-serif;
+    line-height: 1.8em;
+    font-style: oblique; }
+    main.home section.faq p span {
+      color: #bb3e14;
+      font-style: normal; }
+  main.home section.faq ul {
+    font-style: oblique;
+    list-style: circle; }
+
+main.home p.logo {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 1.4em;
+  color: #bb3e14;
+  font-weight: 500;
+  margin-bottom: 2em; }
 
 /* Generic breakpoints */
 /**

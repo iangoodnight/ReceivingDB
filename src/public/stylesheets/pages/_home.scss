@@ -1,0 +1,49 @@
+@import "../abstracts/all";
+
+main.home {
+
+  section.faq {
+    display: block;
+    text-transform: unset;
+    font-weight: unset;
+    background-color: $betterWhite;
+    box-shadow: $boxShadow;
+    border: 2px solid $secondaryColor;
+    border-radius: .5em;
+    margin-bottom: 2em;
+
+    h3 {
+      color: $secondaryColor;
+      font-weight: 500;
+      letter-spacing: .2em;
+      padding: 0 2em;
+    }
+
+    p {
+      font-family: sans-serif;
+      line-height: 1.8em;
+      font-style: oblique;
+
+      span {
+        color: $secondaryColor;
+        font-style: normal;
+      }
+    }
+
+    ul {
+      font-style: oblique;
+      list-style: circle;
+    }
+  }
+
+  p.logo {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 1.4em;
+    color: $secondaryColor;
+    font-weight: 500;
+    margin-bottom: 2em;
+  }
+}
