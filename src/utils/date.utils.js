@@ -11,16 +11,14 @@ module.exports = {
     return today.setDate(today.getDate() - days);
   },
   friendlyTimeAndDate: (date = Date.now()) => {
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear();
-    const offset = date.getTimezoneOffset() / 60;
-    const hour = date.getUTCHours() - offset;
-    const rawMinutes = date.getMinutes();
-    const minutes = `${rawMinutes}`.length < 2 ? `0${rawMinutes}` : rawMinutes;
-    const dayTime = hour >= 13 ? 'PM' : 'AM';
-    const formattedDate = `${month}/${day}/${year}`;
-    const time = `${dayTime === 'PM' ? hour - 12 : hour}:${minutes} ${dayTime}`;
-    return [formattedDate, time];
+    const dateTimeStr = date.toLocaleString('en-US', {
+      timeZone: 'America/New_York',
+    });
+    const [dateStr, timeStr] = dateTimeStr.split(', ');
+    const [rawHour, minutes, remainder] = timeStr.split(':');
+    const hour = rawHour < 10 ? `0${rawHour}` : rawHour;
+    const label = remainder.split(' ')[1];
+    const time = `${hour}:${minutes} ${label}`;
+    return [dateStr, time];
   },
 };
