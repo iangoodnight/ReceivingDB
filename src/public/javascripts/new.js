@@ -128,8 +128,10 @@ document.addEventListener(
           const {
             data: { message },
           } = response;
+          console.log(response);
           formErrs.setError(errorElems.length - 1, message);
         } catch (err) {
+          console.log(err);
           formErrs.setError(errorElems.length - 1, 'Something went wrong');
         }
       } else {
@@ -140,8 +142,10 @@ document.addEventListener(
           const {
             data: { message },
           } = response;
+          console.log(response);
           formErrs.setError(errorElems.length - 1, message);
         } catch (err) {
+          console.log(err);
           formErrs.setError(errorElems.length - 1, 'Something went wrong');
         }
       }
