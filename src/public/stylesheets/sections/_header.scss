@@ -45,6 +45,7 @@ header {
       @include for-phone-only {
         padding: 0;
         text-align: center;
+        font-size: 2.2em;
       }
 
       a {

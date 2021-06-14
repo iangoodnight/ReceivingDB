@@ -45,5 +45,9 @@ main.home {
     color: $secondaryColor;
     font-weight: 500;
     margin-bottom: 2em;
+
+    @include for-phone-only {
+      font-size: 1.1em;
+    }
   }
 }
