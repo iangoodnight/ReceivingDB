@@ -22,12 +22,14 @@ document.addEventListener(
 
       try {
         const response = await putReset(data);
+        console.log(response);
         const { success } = response;
         if (!success) {
           const { message } = response;
           return handleErrors(message);
         }
-        return (window.location = '/');
+        alert('Password changed!');
+        window.location.replace('/');
       } catch (err) {
         handleErrors(err);
       }

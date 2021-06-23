@@ -135,4 +135,26 @@ userSchema.statics.login = function login(id /*callback*/) {
 
 const User = model('User', userSchema);
 
+User.find({})
+  .then((users) => {
+    if (users.length === 0) {
+      const defaultAdmin = new User();
+      defaultAdmin.email = 'no-reply@receivingDB.app';
+      defaultAdmin.enabled = true;
+      defaultAdmin.name = {
+        firstName: 'Default',
+        lastName: 'Admin',
+      };
+      defaultAdmin.password = '123admin456!';
+      defaultAdmin.resetRequired = true;
+      defaultAdmin.roles = ['ADMIN'];
+      defaultAdmin.username = 'admin';
+
+      return defaultAdmin.save();
+    }
+    return Promise.resolve('not required');
+  })
+  .then((defaultAdmin) => console.log('Default account', defaultAdmin))
+  .catch((err) => console.log(err));
+
 module.exports = User;

@@ -120,7 +120,8 @@ header {
       @media all and (max-width: 500px) {
         header div.hero .brand {
           padding: 0;
-          text-align: center; } }
+          text-align: center;
+          font-size: 2.2em; } }
       header div.hero .brand a {
         color: #fff;
         opacity: 95%; }
@@ -368,6 +369,9 @@ main.home p.logo {
   color: #bb3e14;
   font-weight: 500;
   margin-bottom: 2em; }
+  @media all and (max-width: 500px) {
+    main.home p.logo {
+      font-size: 1.1em; } }
 
 /* Generic breakpoints */
 /**
