@@ -9,7 +9,7 @@ module.exports = {
     mainClass: 'new',
     path: '/audit/:id',
     page: 'new',
-    title: 'Audit | Receiving Log | BANE',
+    title: 'Audit | ReceivingDB',
   },
   browse: {
     bodyClass: '',
@@ -25,7 +25,7 @@ module.exports = {
     mainClass: 'home',
     path: '/',
     page: 'index',
-    title: 'Receiving Log | BANE',
+    title: 'ReceivingDB',
   },
   login: {
     bodyClass: 'login',
@@ -34,7 +34,7 @@ module.exports = {
     mainClass: 'login',
     path: '/login',
     page: 'login',
-    title: 'Login | Receiving Log | BANE',
+    title: 'Login | ReceivingDB',
   },
   newEntry: {
     bodyClass: 'new',
@@ -43,7 +43,7 @@ module.exports = {
     mainClass: 'new',
     path: '/new',
     page: 'new',
-    title: 'New Entry | Receiving Log | BANE',
+    title: 'New Entry | ReceivingDB',
   },
   reset: {
     bodyClass: 'reset',
@@ -51,7 +51,7 @@ module.exports = {
     mainClass: 'reset',
     path: '/reset',
     page: 'reset',
-    title: 'Password Reset | Receiving Log | BANE',
+    title: 'Password Reset | ReceivingDB',
   },
   search: {
     bodyClass: 'search',
@@ -59,7 +59,7 @@ module.exports = {
     mainClass: 'search',
     path: '/search',
     page: 'search',
-    title: 'Search | Receiving Log | BANE',
+    title: 'Search | ReceivingDB',
   },
   user: {
     bodyClass: 'user',
@@ -69,7 +69,7 @@ module.exports = {
     mainClass: 'user',
     path: '/user',
     page: 'user',
-    title: 'Users | Receiving Log | BANE',
+    title: 'Users | ReceivingDB',
   },
   userForm: {
     bodyClass: 'user-form',
@@ -78,7 +78,7 @@ module.exports = {
     mainClass: 'user-form',
     path: '/user/[_id||new]',
     page: 'userForm',
-    title: 'Form | Users | Receiving Log | BANE',
+    title: 'Form | Users | ReceivingDB',
   },
   view: {
     bodyClass: 'view',
@@ -86,6 +86,6 @@ module.exports = {
     mainClass: 'view',
     path: '/view',
     page: 'view',
-    title: 'View | Receiving Log | BANE',
+    title: 'View | ReceivingDB',
   },
 };
