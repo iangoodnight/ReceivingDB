@@ -1,7 +1,7 @@
 {
   "name": "speak-and-spell",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "DEBUG=speak-and-spell:* nodemon ./src/bin/www",
     "start": "node ./src/bin/www",
