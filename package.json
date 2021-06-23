@@ -38,7 +38,7 @@
     "prettier": "2.2.1"
   },
   "engines": {
-    "node": ">=14.x"
+    "node": "14.x"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
