@@ -146,8 +146,9 @@ app.engine(
           timeZone: 'America/New_York',
         });
         const timeString = dateTimeString.split(', ')[1];
-        const hours = timeString.split(':')[0];
-        const minutes = timeString.split(':')[1];
+        const [rawHours, minutes, remainder] = timeString.split(':');
+        const amPm = remainder.split(' ')[1];
+        const hours = amPm === 'PM' ? parseInt(rawHours) + 12 + '' : rawHours;
         return `${hours.length < 2 ? '0' + hours : hours}:${
           minutes.length < 2 ? '0' + minutes : minutes
         }`;
