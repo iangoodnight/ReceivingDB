@@ -17,20 +17,19 @@ module.exports = {
     mainClass: 'browse',
     path: '/browse',
     page: 'browse',
-    title: 'Browse | Receving Log | BANE',
+    title: 'Browse | ReceivingDB ',
   },
   index: {
     bodyClass: '',
-    description: 'Bulk Apothecary/Natural Essentials receiving log',
+    description: 'ReceivingDB is where inventory control starts',
     mainClass: 'home',
     path: '/',
     page: 'index',
-    title: 'ReceivingDB',
+    title: 'Home | ReceivingDB',
   },
   login: {
     bodyClass: 'login',
-    description:
-      'Login page for Bulk Apothecary/Natural Essentials receiving log',
+    description: 'Login to ReceivingDB to access users or create new entries',
     mainClass: 'login',
     path: '/login',
     page: 'login',
@@ -38,8 +37,7 @@ module.exports = {
   },
   newEntry: {
     bodyClass: 'new',
-    description:
-      'Add new entries to the Bulk Apothecary/Natural Essentials receiving log',
+    description: 'Add new entries to the ReceivingDB',
     mainClass: 'new',
     path: '/new',
     page: 'new',
@@ -63,9 +61,7 @@ module.exports = {
   },
   user: {
     bodyClass: 'user',
-    description:
-      'Manage users and access for Bulk Apothecary/Natural Essentials ' +
-      'receiving log',
+    description: 'Manage users and access for ReceivingDB',
     mainClass: 'user',
     path: '/user',
     page: 'user',
@@ -73,8 +69,7 @@ module.exports = {
   },
   userForm: {
     bodyClass: 'user-form',
-    description:
-      'Edit/create users for Bulk Apothecary/Natural Essentials receiving log',
+    description: 'Edit/create users for ReceivingDB',
     mainClass: 'user-form',
     path: '/user/[_id||new]',
     page: 'userForm',
@@ -82,7 +77,7 @@ module.exports = {
   },
   view: {
     bodyClass: 'view',
-    description: 'Bulk Apothecary/Natural Essentials receiving log details',
+    description: 'ReceivingDB entry details',
     mainClass: 'view',
     path: '/view',
     page: 'view',
