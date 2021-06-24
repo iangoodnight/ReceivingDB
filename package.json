@@ -1,7 +1,26 @@
 {
-  "name": "speak-and-spell",
-  "version": "0.0.0",
-  "private": false,
+  "name": "receivingDB",
+  "version": "0.0.1",
+  "description":
+    "A searchable, auditable, write-protected receiving log meant to be extended as part of a greater resource-planning design.",
+  "keywords": [
+    "mongodb",
+    "express",
+    "receiving",
+    "erp",
+    "mrp",
+    "log",
+    "audit"
+  ],
+  "homepage": "https://iangoodnight.github.io/receivingDB",
+  "bugs": "https://github.com/iangoodnight/receivingDB/issues",
+  "license": "ISC",
+  "author": "Ian Goodnight <goodnight.ian@gmail.com>",
+  "main": "./src/bin/www",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iangoodnight/receivingDB"
+  },
   "scripts": {
     "dev": "DEBUG=speak-and-spell:* nodemon ./src/bin/www",
     "start": "node ./src/bin/www",
@@ -38,8 +57,10 @@
     "prettier": "2.2.1"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "npm": "6.x"
   },
+  "private": false,
   "lint-staged": {
     "*.js": "eslint --cache --fix"
   }
