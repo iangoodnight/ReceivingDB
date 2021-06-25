@@ -7,6 +7,7 @@
 module.exports = {
   date: require('./date.utils'),
   entry: require('./entry.utils'),
+  helpers: require('./handlebars.utils'),
   object: require('./object.utils'),
   page: require('./page.utils'),
   regex: require('./regex.utils'),

@@ -1,8 +1,7 @@
 {
   "name": "receivingDB",
   "version": "0.0.1",
-  "description":
-    "A searchable, auditable, write-protected receiving log meant to be extended as part of a greater resource-planning design.",
+  "description": "A searchable, auditable, write-protected receiving log meant to be extended as part of a greater resource-planning design.",
   "keywords": [
     "mongodb",
     "express",

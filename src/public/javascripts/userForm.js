@@ -52,7 +52,7 @@ document.addEventListener(
       const enabled = roles.indexOf('disabled') === -1;
       if (!enabled) roles.pop();
 
-      const resetRequired = document.querySelector('input#reset').value;
+      const resetRequired = document.querySelector('input#reset').checked;
 
       const name = { firstName, lastName };
       const userData = {

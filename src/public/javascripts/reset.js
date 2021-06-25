@@ -28,8 +28,7 @@ document.addEventListener(
           const { message } = response;
           return handleErrors(message);
         }
-        alert('Password changed!');
-        window.location.replace('/');
+        setTimeout(() => window.location.replace('/'), 1000);
       } catch (err) {
         handleErrors(err);
       }
