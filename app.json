@@ -24,7 +24,8 @@
       "description": "Option IP whitelist for web interface access"
     },
     "DEV_URI": {
-      "description": "Optional MongoDB connection string for development and testing"
+      "description": "Optional MongoDB connection string for development and testing",
+      "required": false
     }
   }
 }

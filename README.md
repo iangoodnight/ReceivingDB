@@ -16,3 +16,9 @@ for casual users, treats the log itself as a write-only interface, and still
 allows for versioned changes if required.  These controls allow for ReceivingDB
 to be a reliable, auditable, searchable cornerstone to a more comprehensive
 open-source inventory management and resource planning implementation.
+
+## Installation and getting started
+
+First, you'll need a MongoDb blah blah blah.  Then, click to deploy.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
