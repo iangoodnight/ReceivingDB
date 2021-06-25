@@ -21,7 +21,8 @@
       "value": "somethingSoLongNoOneEverGuessesUnlesssYouLeaveTheDefault"
     },
     "IP_WHITELIST": {
-      "description": "Option IP whitelist for web interface access"
+      "description": "Optional IP whitelist for web interface access",
+      "required": "false"
     },
     "DEV_URI": {
       "description": "Optional MongoDB connection string for development and testing",
