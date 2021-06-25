@@ -1,0 +1,30 @@
+{
+  "name": "ReceivingDB",
+  "description": "A server-side rendered progressive web app meant to be extended as part of a more comprehensive resource-planning design.",
+  "keywords": [
+    "resource-planning",
+    "inventory-management",
+    "mongodb",
+    "api",
+    "receiving-log"
+  ],
+  "website": "https://iangoodnight.github.io/receivingdb/",
+  "repository": "https://github.com/iangoodnight/ReceivingDB",
+  "logo": "https://iangoodnight.github.io/ReceivingDB/assets/ladybug.svg",
+  "success_url": "https://iangoodnight.github.io/ReceivingDB/",
+  "env": {
+    "MONGODB_URI": {
+      "description": "A MongoDB connection string for production access"
+    },
+    "COOKIE_SECRET": {
+      "description": "Secret key for cryptographically secure cookie storage",
+      "value": "somethingSoLongNoOneEverGuessesUnlesssYouLeaveTheDefault"
+    },
+    "IP_WHITELIST": {
+      "description": "Option IP whitelist for web interface access"
+    },
+    "DEV_URI": {
+      "description": "Optional MongoDB connection string for development and testing"
+    }
+  }
+}
