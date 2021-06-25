@@ -1,3 +1,5 @@
+![ReceivingDB banner](/assets/banner.png)
+
 # ReceivingDB
 
 Keeping a detailed, accurate receiving log is essential to reliable inventory
