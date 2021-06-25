@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# ReceivingDB
 
-You can use the [editor on GitHub](https://github.com/iangoodnight/receivingDB/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/iangoodnight/receivingDB/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Keeping a detailed, accurate receiving log is essential to reliable inventory
+management and effective resource planning.  It is vital that receiving log
+entries be detailed, searchable, and protected from changes.  Utilizing MongoDB
+on the back-end provides a scalable extensible database platform that has the
+ability to grow as business needs change.  Completely server-side rendered,
+mobile-friendly, and installable as a Progressive Web Application, pages load
+fast, getting the data needed for day-to-day operations closest to the people
+who own those processes.  ReceivingDB separates the ability to write (create
+new) entries from the ability to audit (makes changes to) entries with no user
+account required to search and browse the reciving log (though the entire web
+interface can still be restricted by IP address).  Defining role-based access
+in this manner saves on the overhead of creating and maintaining user accounts
+for casual users, treats the log itself as a write-only interface, and still
+allows for versioned changes if required.  These controls allow for ReceivingDB
+to be a reliable, auditable, searchable cornerstone to a more comprehensive
+open-source inventory management and resource planning implementation.
