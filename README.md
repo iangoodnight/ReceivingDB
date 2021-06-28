@@ -115,10 +115,9 @@ required to make changes to entries after they have been entered.  Only the
 
 ## Further Documentation
 
-Check the ![user guide](https://iangoodnight.github.io/ReceivingDB/) for
-detailed documentation and updates.
-
+Check the [user guide] for detailed documentation and updates.
 
 :sunglasses: Icons made by Freepik from www.flaticon.com
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
+[user guide]: https://iangoodnight.github.io/ReceivingDB/
