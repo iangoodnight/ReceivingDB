@@ -77,10 +77,26 @@ app and provide the required environment variables.
 | `IP_WHITELIST` | ✗ | A semicolon separated list of allowed IPs |
 | `MONGODB_URI` | ✓ | A MongoDB connection string |
 
-- Make sure to choose a long string for your `COOKIE_SECRET`.
-- `IP_WHITELIST` will optionally limit access to ReceivingDB to specific IP
-    addresses (ie: 171.216.30.2;171.216.30.3;171.216.30.4).
-- `MONGODB_URI` is the MongoDB connection string we set up previously.
+Make sure to choose a long string for your `COOKIE_SECRET`.  This secret will be
+used to sign your secure cookies and to keep your sessions private. The
+`IP_WHITELIST` will optionally limit access to ReceivingDB to specific IP
+addresses (ie: 171.216.30.2;171.216.30.3;171.216.30.4) and the `MONGODB_URI`
+is the MongoDB connection string we set up previously.
+
+### Check your installation
+
+You will see the build log reporting on the progress of your install.  Once the
+build process finishes, click "Manage app" and then "Open app" and you should
+find yourself on the landing page of ReceivingDB.
+
+![Landing page](/assets/landing.png)
+
+### Or, install locally
+
+If you prefer to install it locally, you can fork this repo, pull down the files
+from github, and install the dependencies with `npm install`.  You will need the
+same environment variables as described above, saved in the root of the
+application as `.env`.
 
 :sunglasses: Icons made by Freepik from www.flaticon.com
 
