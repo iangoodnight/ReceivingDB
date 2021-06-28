@@ -74,7 +74,7 @@ app and provide the required environment variables.
 | Var | Required | Description |
 | --- | -------- | ----------- |
 | `COOKIE_SECRET` | ✓ | A secret key to sign secure cookies |
-| `IP_WHITELIST` | ✗ | A semicolon separated list of allowed IPs |
+| `IP_WHITELIST` | ✗ | A semicolon-separated list of allowed IPs |
 | `MONGODB_URI` | ✓ | A MongoDB connection string |
 
 Make sure to choose a long string for your `COOKIE_SECRET`.  This secret will be
@@ -83,10 +83,10 @@ used to sign your secure cookies and to keep your sessions private. The
 addresses (ie: 171.216.30.2;171.216.30.3;171.216.30.4) and the `MONGODB_URI`
 is the MongoDB connection string we set up previously.
 
-### Check your installation
+#### Check your installation
 
 You will see the build log reporting on the progress of your install.  Once the
-build process finishes, click "Manage app" and then "Open app" and you should
+build process finishes, click "Manage app" and then "Open app," and you should
 find yourself on the landing page of ReceivingDB.
 
 ![Landing page](/assets/landing.png)
@@ -94,9 +94,22 @@ find yourself on the landing page of ReceivingDB.
 ### Or, install locally
 
 If you prefer to install it locally, you can fork this repo, pull down the files
-from github, and install the dependencies with `npm install`.  You will need the
-same environment variables as described above, saved in the root of the
-application as `.env`.
+from GitHub, and install the dependencies with `npm install`.  You will need the
+same environment variables as described above, saved in the application's root
+as `.env`.
+
+### Getting started
+
+ReceivingDB comes with a default admin account on installation.
+
+| username | password |
+| -------- | -------- |
+| `admin` | `123admin456!` |
+
+On your first login as the default admin, you are required to change the
+password.  A best practice is to use this account to create your own named admin
+accounts and then disable it.
+
 
 :sunglasses: Icons made by Freepik from www.flaticon.com
 
