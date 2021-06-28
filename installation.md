@@ -5,7 +5,7 @@ To get ReceivingDB up and running, you will need:
 1. A MongoDB instance
 2. A locally or cloud-hosted installation of ReceivingDB
 
-### Setting up MongoDB
+## Setting up MongoDB
 
 ReceivingDB requires a MongoDB connection string as an environment variable to
 set up database services.  A self-hosted MongoDB instance is an option, but for
@@ -36,7 +36,7 @@ assigned to your new database user, and replace `myFirstDatabase` with the name
 you would like used for the ReceivingDB collection ("receiving" would be a good
 choice).  Keep this connection string handy, as you will need it momentarily.
 
-### Install on Heroku
+## Install on Heroku
 
 Use the one-click deploy button below to deploy your instance of ReceivingDB.
 
@@ -48,7 +48,7 @@ app and provide the required environment variables.
 
 ![Name your app](/assets/deploy.png)
 
-#### Environmental Variables
+### Environmental Variables
 
 | Var | Required | Description |
 | --- | -------- | ----------- |
@@ -62,7 +62,7 @@ used to sign your secure cookies and to keep your sessions private. The
 addresses (ie: 171.216.30.2;171.216.30.3;171.216.30.4) and the `MONGODB_URI`
 is the MongoDB connection string we set up previously.
 
-#### Check your installation
+### Check your installation
 
 You will see the build log reporting on the progress of your install.  Once the
 build process finishes, click "Manage app" and then "Open app," and you should
@@ -70,14 +70,14 @@ find yourself on the landing page of ReceivingDB.
 
 ![Landing page](/assets/landing.png)
 
-### Or, install locally
+## Or, install locally
 
 If you prefer to install it locally, you can fork this repo, pull down the files
 from GitHub, and install the dependencies with `npm install`.  You will need the
 same environment variables as described above, saved in the application's root
-as `.env`.
+as `.env`.  Start the application with `npm start`.
 
-### Getting started
+## Getting started
 
 ReceivingDB comes with a default admin account on installation.
 
@@ -95,8 +95,6 @@ required to make changes to entries after they have been entered.  Only the
 ## Further Documentation
 
 Check the [user guide] for detailed documentation and updates.
-
-:sunglasses: Icons made by Freepik from www.flaticon.com
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
 [user guide]: https://iangoodnight.github.io/ReceivingDB/
