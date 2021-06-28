@@ -30,4 +30,4 @@ open-source inventory management and resource planning implementation.
 - ## Schema
 - ## API Docs (Coming soon)
 
-[Installation and getting started]: /ReceivingDB/installation.html
+[Installation and getting started]: /installation.md
