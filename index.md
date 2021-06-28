@@ -11,10 +11,15 @@ mobile-friendly, and installable as a Progressive Web Application, pages load
 fast, getting the data needed for day-to-day operations closest to the people
 who own those processes.  ReceivingDB separates the ability to write (create
 new) entries from the ability to audit (makes changes to) entries with no user
-account required to search and browse the reciving log (though the entire web
+account required to search and browse the receiving log (though the entire web
 interface can still be restricted by IP address).  Defining role-based access
 in this manner saves on the overhead of creating and maintaining user accounts
 for casual users, treats the log itself as a write-only interface, and still
 allows for versioned changes if required.  These controls allow for ReceivingDB
 to be a reliable, auditable, searchable cornerstone to a more comprehensive
 open-source inventory management and resource planning implementation.
+
+- ## Installation and getting started
+- ## User guide
+- ## Schema
+- ## API Docs (Coming soon)
