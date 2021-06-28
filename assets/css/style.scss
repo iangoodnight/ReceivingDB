@@ -6,3 +6,9 @@
 #main_content > p > img {
   max-width: 100%;
 }
+
+footer.inner > p.copyright::after {
+  content: "Icons made by Freepik from www.flaticon.com";
+  display: block;
+  margin-top: 10px;
+}
