@@ -108,7 +108,15 @@ ReceivingDB comes with a default admin account on installation.
 
 On your first login as the default admin, you are required to change the
 password.  A best practice is to use this account to create your own named admin
-accounts and then disable it.
+accounts and then disable it. You need at least one account with the `WRITE`
+role in able to be able to add data to ReceivingDB.  The `AUDIT` role is
+required to make changes to entries after they have been entered.  Only the
+`ADMIN` role can create and disable user accounts.
+
+## Further Documentation
+
+Check the ![user guide](https://iangoodnight.github.io/ReceivingDB/) for
+detailed documentation and updates.
 
 
 :sunglasses: Icons made by Freepik from www.flaticon.com
