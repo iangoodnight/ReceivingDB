@@ -59,7 +59,13 @@ module.exports = {
   findAndRender: async (req, res, next) => {
     try {
       const enabled = req.query.enabled || true;
-      const query = { enabled };
+      const query =
+        enabled === true
+          ? { enabled: true }
+          : enabled === 'true'
+          ? { enabled: true }
+          : { enabled: false };
+      console.log(query);
       const users = await User.find(query).lean();
       const [page, pageDetails] = generatePageDetails(req, userPage);
       pageDetails.success = true;
