@@ -59,8 +59,28 @@ choice).  Keep this connection string handy, as you will need it momentarily.
 
 ### Install on Heroku
 
+Use the one-click deploy button below to deploy your instance of ReceivingDB.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+You will be redirected to Heroku, where you will be asked to either sign in or
+create a free account.  Once authenticated, you will be prompted to name your
+app and provide the required environment variables.
+
+![Name your app](/assets/deploy.png)
+
+#### Environmental Variables
+
+| Var | Required | Description |
+| === | ======== | =========== |
+| `COOKIE_SECRET` | ✓ | A secret key to sign secure cookies |
+| `IP_WHITELIST` | ✗ | A semicolon separated list of allowed IPs |
+| `MONGODB_URI` | ✓ | A MongoDB connection string |
+
+- Make sure to choose a long string for your `COOKIE_SECRET`.
+- `IP_WHITELIST` will optionally limit access to ReceivingDB to specific IP
+    addresses (ie: 171.216.30.2;171.216.30.3;171.216.30.4).
+- `MONGODB_URI` is the MongoDB connection string we set up previously.
 
 :sunglasses: Icons made by Freepik from www.flaticon.com
 
