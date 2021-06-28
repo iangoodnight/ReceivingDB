@@ -59,8 +59,8 @@ app and provide the required environment variables.
 Make sure to choose a long string for your `COOKIE_SECRET`.  This secret will be
 used to sign your secure cookies and to keep your sessions private. The
 `IP_WHITELIST` will optionally limit access to ReceivingDB to specific IP
-addresses (ie: 171.216.30.2;171.216.30.3;171.216.30.4) and the `MONGODB_URI`
-is the MongoDB connection string we set up previously.
+addresses (i.e., 171.216.30.2;171.216.30.3;171.216.30.4). `MONGODB_URI` is the
+MongoDB connection string we set up previously.
 
 ### Check your installation
 
@@ -73,9 +73,13 @@ find yourself on the landing page of ReceivingDB.
 ## Or, install locally
 
 If you prefer to install it locally, you can fork this repo, pull down the files
-from GitHub, and install the dependencies with `npm install`.  You will need the
-same environment variables as described above, saved in the application's root
-as `.env`.  Start the application with `npm start`.
+from GitHub, and install the dependencies with `npm install`. Just as we saw
+with a Heroku deployment, you will need to set your environment variables.  In
+this case, save them in the format `<KEY>=<VALUE>` at your application's root,
+naming the file `.env`.  Refer to the `env.example` file that comes along with
+the repository as a template.  Start the application with npm start and navigate
+to http://localhost:3000 and verify that the application renders before moving
+on.
 
 ## Getting started
 
@@ -90,7 +94,9 @@ password.  A best practice is to use this account to create your own named admin
 accounts and then disable it. You need at least one account with the `WRITE`
 role in able to be able to add data to ReceivingDB.  The `AUDIT` role is
 required to make changes to entries after they have been entered.  Only the
-`ADMIN` role can create and disable user accounts.
+`ADMIN` role can create and disable user accounts.  Once you have created an
+admin account, you are free to create a user with the `WRITE` role and begin
+entering data.
 
 ## Further Documentation
 
@@ -98,6 +104,6 @@ required to make changes to entries after they have been entered.  Only the
 - **Return to the [documentation landing page].**
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
-[user guide]: https://iangoodnight.github.io/ReceivingDB/
+[user guide]: /user-guide.md
 [documentation landing page]: /
 
