@@ -23,8 +23,8 @@ open-source inventory management and resource planning implementation.
 
 To get ReceivingDB up and running, you will need:
 
-1.) A MongoDB instance
-2.) A locally or cloud-hosted installation of ReceivingDB
+1. A MongoDB instance
+2. A locally or cloud-hosted installation of ReceivingDB
 
 ### Setting up MongoDB
 
