@@ -35,8 +35,33 @@ set up a cluster there.
 
 ![Sign up for Atlas](/assets/mongo_atlas.png)
 
-> Icons made by Freepik from www.flaticon.com
+From "Security" > "Database Access," choose to "add new database user."
+ReceivingDB will use this database user account for connecting to your MongoDB
+cluster, so be sure to select a secure password.
+
+![Create a database user](/assets/dbuser.png)
+
+Once you've instantiated your first cluster, click on "Connect" and choose to
+"Connect your application."
+
+![Connect your application](/assets/connect_atlas.png)
+
+The connection string returned to you will look something like this:
+
+```
+mongodb+srv://<username>:<password>@testing.edbyi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+```
+
+Replace `<username>` and `<password>` with the username and password you've
+assigned to your new database user, and replace `myFirstDatabase` with the name
+you would like used for the ReceivingDB collection ("receiving" would be a good
+choice).  Keep this connection string handy, as you will need it momentarily.
+
+### Install on Heroku
+
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+:sunglasses: Icons made by Freepik from www.flaticon.com
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
