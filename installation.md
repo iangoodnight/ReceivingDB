@@ -104,6 +104,6 @@ entering data.
 - **Return to the [documentation landing page].**
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
-[user guide]: /ReceivingDB/user-guide.md
+[user guide]: /ReceivingDB/user.md
 [documentation landing page]: /ReceivingDB/
 
