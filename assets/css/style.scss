@@ -1,0 +1,8 @@
+---
+---
+
+@import "{{ site.them }}"
+
+#main_content > p > img {
+  max-width: 100%;
+}
