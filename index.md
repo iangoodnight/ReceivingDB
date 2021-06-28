@@ -22,6 +22,7 @@ open-source inventory management and resource planning implementation.
 -----
 
 - ## Installation and getting started
+  Everything you need to know to get ReceivingDB up and running on Heroku.
 - ## User guide
 - ## Schema
 - ## API Docs (Coming soon)
