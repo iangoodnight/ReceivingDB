@@ -25,7 +25,7 @@ open-source inventory management and resource planning implementation.
   Everything you need to know to get ReceivingDB up and running on Heroku.
   Including setting up MongoDB Atlas, deploying to Heroku, setting environment
   variables, and accessing the default admin account.
-- ## User guide
+- ## [User guide]
   Browsing, searching, logging, and auditing.  Everything that you need to know
   to use ReceivingDB effectively.
 - ## Schema
@@ -34,3 +34,4 @@ open-source inventory management and resource planning implementation.
 - ## API Docs (Coming soon)
 
 [Installation and getting started]: /installation.md
+[User guide]: /user.md
