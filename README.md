@@ -72,7 +72,7 @@ app and provide the required environment variables.
 #### Environmental Variables
 
 | Var | Required | Description |
-| === | ======== | =========== |
+| --- | -------- | ----------- |
 | `COOKIE_SECRET` | ✓ | A secret key to sign secure cookies |
 | `IP_WHITELIST` | ✗ | A semicolon separated list of allowed IPs |
 | `MONGODB_URI` | ✓ | A MongoDB connection string |
