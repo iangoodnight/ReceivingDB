@@ -30,7 +30,7 @@ To get ReceivingDB up and running, you will need:
 
 ReceivingDB requires a MongoDB connection string as an environment variable to
 set up database services.  A self-hosted MongoDB instance is an option, but for
-the quickest, most straightforward setup, create a ![MongoDB Atlas account] and
+the quickest, most straightforward setup, create a [MongoDB Atlas account] and
 set up a cluster there.
 
 ![Sign up for Atlas](/assets/mongo_atlas.png)
@@ -39,4 +39,4 @@ set up a cluster there.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[MongoDB Atlas account](https://account.mongodb.com/account/register)
+[MongoDB Atlas account]: https://account.mongodb.com/account/register
