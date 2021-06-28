@@ -40,7 +40,7 @@ choice).  Keep this connection string handy, as you will need it momentarily.
 
 Use the one-click deploy button below to deploy your instance of ReceivingDB.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/iangoodnight/ReceivingDB)
 
 You will be redirected to Heroku, where you will be asked to either sign in or
 create a free account.  Once authenticated, you will be prompted to name your
