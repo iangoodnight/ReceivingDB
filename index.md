@@ -19,6 +19,8 @@ allows for versioned changes if required.  These controls allow for ReceivingDB
 to be a reliable, auditable, searchable cornerstone to a more comprehensive
 open-source inventory management and resource planning implementation.
 
+-----
+
 - ## Installation and getting started
 - ## User guide
 - ## Schema
