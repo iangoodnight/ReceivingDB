@@ -84,4 +84,15 @@ custom period.
 
 ## Creating new entries
 
+Unlike browsing or searching, users must be logged in to a registered account
+with the "WRITE" permission to add entries to the receiving log.  Only users
+with the "WRITE" role will have access to the new entry form.
 
+![Create new entries](/assets/new.png)
+
+All top-level fields, date, time, vendor, purchase order, carrier, intended for,
+are required.
+
+![Top-level fields are required](assets/top-level.png)
+
+All item details 
