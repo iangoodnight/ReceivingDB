@@ -4,15 +4,16 @@
 
 'use strict';
 
-const { isAdmin, isAudit } = require('./roles.utils');
+const { isAdmin, isAudit, isWrite } = require('./roles.utils');
 
 module.exports = {
   generatePageDetails: (req, pageObject) => {
     const { user } = req;
     const admin = isAdmin(user);
     const audit = isAudit(user);
+    const write = isWrite(user);
     const { page } = pageObject;
-    return [page, { ...pageObject, user, admin, audit }];
+    return [page, { ...pageObject, user, admin, audit, write }];
   },
   unauthorized: (res, msg = null) => {
     const message = 'Unauthorized' + (msg ? `: ${msg.toString()}` : '');
