@@ -28,7 +28,7 @@ week, continuously until there are no more entries to be found.
 ![Use arrow keys to navigate](/assets/browse.png)
 
 Double-clicking on any row or pressing the enter key with a row selected will
-take usewrs to the entry details page.  From here, users can see items that were
+take users to the entry details page.  From here, users can see items that were
 shipped together as part of the same purchase order.
 
 ![View entry details](/assets/view.png)
@@ -43,7 +43,7 @@ ReceivingDB allows users to search by a custom date range, instead of looking
 at the last seven days at a time, by purchase order, part number over a date
 range, and vendor over a date range.
 
-### By date range
+#### By date range
 
 Entering in a custom date range lets users browse through any period.  For
 example,  to see all the receiving log entries from May of 2021, search by the
@@ -53,6 +53,35 @@ the last seven days.
 
 ![Search by date](/assets/date-range.png)
 
-### By purchase order
+#### By purchase order
 
-Soemtimes things sdgjdsfjl
+It might be the case that a purchase order comes in over several days, in
+multiple shipments.  Searching by purchase order retrieves these disparate
+entries and displays them all from the entry details page.  This combined entry
+details page allows users to check and see if their purchase order has been
+received in its entirety and as expected.
+
+![Search by purchase order](/assets/purchase-order.png)
+
+#### By part number
+
+Search by part number to track orders with a specific part number. For example,
+entering a part number and a date range brings the user back to the browse page
+filtered down to just entries that include the part number in question.  Users
+can adjust the date range to a custom period or leave it at the default, the
+last six months.
+
+![Search by part number](/assets/part-number.png)
+
+#### By vendor
+
+Searching by vendor returns the user to the browse page, filtered down to
+entries that match the search query.  By default, searches by vendor return
+matches from the last two months.  Users can enter a date range to search over a
+custom period.
+
+![Search by vendor](/assets/vendor.png)
+
+## Creating new entries
+
+
