@@ -23,9 +23,9 @@ answer here.
   - ###### [Passwords](#passwords)
   - ###### [Roles](#roles)
 - ##### [Troubleshooting](#troubleshooting)
-- ##### [Docs page]
 - ##### [Installation and getting started]
-- ##### [API Documentation]
+- ##### [API documentation]
+- ##### [Docs page]
 
 ## Browsing and searching
 
@@ -240,36 +240,33 @@ Granting the "DISABLED" role prevents a user from logging in or making changes.
 ## Troubleshooting
 
 - Form does not submit
-
-Both the receiving log entry and user forms are used to create and edit entries
-and users, respectively.  Input is validated client-side and server-side to
-prevent injection attacks.  If the form does not submit, you should see a
-corresponding error message in red.
+  Both the receiving log entry and user forms are used to create and edit
+  entries and users, respectively.  Input is validated client-side and
+  server-side to prevent injection attacks.  If the form does not submit,
+  you should see a corresponding error message in red.
 
 - Cannot access the web interface
-
-Double-check the IP_WHITELIST environment variable to verify that you are
-attempting access from a valid IP address.
+  Double-check the IP_WHITELIST environment variable to verify that you are
+  attempting access from a valid IP address.
 
 - Lost access to user accounts
-
-Dropping the `users` collection from your database and restarting the
-application will recreate the initial default admin account without affecting
-your receiving log entries or audit data.
+  Dropping the `users` collection from your database and restarting the
+  application will recreate the initial default admin account without affecting
+  your receiving log entries or audit data.
 
 - Any other issues
 
 [Please report any other issues] to the developer.
 
------
+## Further Documentation
 
-- ## [Docs page]
-  Return to the landing page for the ReceivingDB docs site
-- ## [Installation and getting started]
-- ## [API Documentation]
-  Coming soon
+- **Need help with [installation and getting started]?**
+- **Check out the [API documentation]**
+- **Return to the [documentation landing page]**
 
 [Please report any other issues]: https://github.com/iangoodnight/ReceivingDB/issues
-[Docs page]: /ReceivingDB/
+[installation and getting started]: /ReceivingDB/installation.md
 [Installation and getting started]: /ReceivingDB/installation.md
-[API Documentation]: /ReceivingDB/
+[API documentation]: /ReceivingDB/
+[documentation landing page]: /ReceivingDB/
+[Docs page]: /ReceivingDB/

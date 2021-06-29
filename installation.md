@@ -5,6 +5,16 @@ To get ReceivingDB up and running, you will need:
 1. A MongoDB instance
 2. A locally or cloud-hosted installation of ReceivingDB
 
+- ##### [Setting up MongoDB](#setting-up-mongodb)
+- ##### [Install on heroku](#install-on-heroku)
+  - ###### [Environmental Variable](#environmental-variables)
+  - ###### [Check your installation](#check-your-installation)
+- ##### [Or, install locally](#or-install-locally)
+- ##### [Getting started](#getting-started)
+- ##### [User guide](/ReceivingDB/user.html)
+- ##### [API Documentation](/ReceivingDB/)
+- ##### [Documentation landing page](/ReceivingDB/)
+
 ## Setting up MongoDB
 
 ReceivingDB requires a MongoDB connection string as an environment variable to
@@ -104,6 +114,6 @@ entering data.
 - **Return to the [documentation landing page].**
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
-[user guide]: /ReceivingDB/user.md
+[user guide]: /ReceivingDB/user.html
 [documentation landing page]: /ReceivingDB/
 
