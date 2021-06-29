@@ -143,4 +143,18 @@ after that fact.  With that in mind, some best practices:
 The permission required to edit an existing entry exists independently of that
 needed to create new entries.  Granting the role "Audit" to a user enables them
 to make changes to the receiving log, creating an audit trail to reflect these
-changes.
+changes.  Note that the "AUDIT" role does not grant the "WRITE" permissions
+required to create new entries, only to edit those that exist already.
+
+### Auditing entries
+
+With the "AUDIT" role enabled, viewing entry details will expose an "AUDIT"
+option at the bottom of page.  Following this link will open up the entry for
+editing similarly to the process for creating new entries.  The same required
+fields and best practices described in creating new entries apply here as well.
+
+[!The audit option appears on the details page](/assets/audit.png)
+
+### Audit trails
+
+
