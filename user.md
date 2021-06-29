@@ -82,13 +82,15 @@ custom period.
 
 ![Search by vendor](/assets/vendor.png)
 
-## Creating new entries
+## Creating entries and best practices
 
 Unlike browsing or searching, users must be logged in to a registered account
 with the "WRITE" permission to add entries to the receiving log.  Only users
 with the "WRITE" role will have access to the new entry form.
 
 ![Create new entries](/assets/new.png)
+
+### Creating new entries
 
 All top-level fields, date, time, vendor, purchase order, carrier, intended for,
 are required.
@@ -138,4 +140,7 @@ after that fact.  With that in mind, some best practices:
 
 ## Auditing and audit trails
 
-
+The permission required to edit an existing entry exists independently of that
+needed to create new entries.  Granting the role "Audit" to a user enables them
+to make changes to the receiving log, creating an audit trail to reflect these
+changes.
