@@ -28,9 +28,6 @@ open-source inventory management and resource planning implementation.
 - ## [User guide]
   Browsing, searching, logging, and auditing.  Everything that you need to know
   to use ReceivingDB effectively.
-- ## Schema
-  A brief overview of what is being stored in MongoDB and what keys we are
-  relying on.
 - ## API Docs (Coming soon)
 
 [Installation and getting started]: /installation.md
