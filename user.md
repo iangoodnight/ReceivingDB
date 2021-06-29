@@ -95,4 +95,47 @@ are required.
 
 ![Top-level fields are required](assets/top-level.png)
 
-All item details 
+All item details fields, item, MPN #, vendor lot/batch #, quantity, and unit,
+are required for each item being added.  Entering data into any item input makes
+the associated inputs necessary to submit the form.
+
+![Item fields are required](/assets/required.png)
+
+Fields only become required once users begin entering data. Though the form
+renders with inputs for three items, users can enter in less than three. So, for
+example, users cannot have an item without a unit and quantity, but they can
+create one item entry and leave the subsequent two instances blank.  Clicking on
+"add more items" at the bottom of the form will create additional entry inputs
+for receiving more than three items at a time.
+
+![Add more items](/assets/add.png)
+
+### Best practices for creating new entries
+
+There is a lot to be learned from past purchases and receiving log entries.
+Have the number of purchases from a particular vendor gone up or done in the
+last six months?  Are there items that are being ordered more than once a month?
+Which carrier shipped which specific purchase order?  The data being stored in
+ReceivingDB only has value if it is entered consistently enough to be searched
+after that fact.  With that in mind, some best practices:
+
+1. Be consistent in entering information.  Stick with either "UPS" or "United
+   Parcel Service," "pounds", or "lbs," don't go back and forth between two
+   similar options.
+2. Do your best to describe quantities in useable units.  Using the quantity "2"
+   and the unit "pallets" is vague as it is not clear how to quantify a pallet.
+   Choosing the quantity "2" and the unit "pallets of 100 each" is more specific
+   but difficult to use in future automation as it relies on parsing the string
+   "pallets of 100 each" to arrive at an actual quantity.  If each pallet
+   contains 100 each, and each unit is 1 lb, choosing the quantity "200" and the
+   unit "lbs" is the best choice, as it is clear and easy to parse when trying
+   to put together reports.
+3. Double-check entries before submitting.  ReceivingDB is designed to be a
+   write-once-read-many database.  Data shouldn't change after being entered.
+   By default, users with the permissions required to write new entries do not
+   have the permissions to edit them after the fact, so give everything a look
+   over before submitting.
+
+## Auditing and audit trails
+
+
