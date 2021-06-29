@@ -157,4 +157,69 @@ fields and best practices described in creating new entries apply here as well.
 
 ### Audit trails
 
+Once an entry has been audited, an audit trail will be visible to all users with
+the "AUDIT" role.  The audit trail can be found at the bottom of any entry
+details page, beneath the "AUDIT" option.
+
+![See an audit trail after edits](/assets/audit-details.png)
+
+The auditor will be mentioned by name in the audit trail. For example, in the
+image above, the auditor account has the first name "Audit" and the last name
+"Account," which is slightly less than helpful.
+
+## Administering accounts, users and roles
+
+Registered users with the role "ADMIN" have the permissions required to make new
+users, reset passwords, award roles, and disable accounts.
+
+### Users
+
+With the "ADMIN" role enabled, users gain access to the user management page.
+Navigate with arrows or the tab key, double click a row, or use the enter key on
+a selected row to see and edit user details.  Similarly to browsing the
+receiving log, details are omitted on smaller displays.  Active users are
+displayed by default.  Following the "disabled" link display, past users who
+have been disallowed from logging in.  Selecting "new" allows the opportunity
+for an admin to create additional registered user accounts.
+
+![View and administer user accounts](/assets/user.png)
+
+### Creating new users/editing users
+
+Creating new users and editing existing users are both achieved through the same
+user form.  All fields are required.
+
+![Create and edit users](/assets/new-user.png)
+
+#### Passwords
+
+Set a default password for your users.  When creating a new user, "require
+password reset on next login" is checked by default.  The "require password
+reset" option allows administrators to set an initial password for their users
+while allowing the end-user to create a secure password on their first login.
+Existing users can also be forced into a password reset by selecting this option
+and submitting the form.
+
+#### Roles
+
+Each role allows for specific web portal access.  All roles are disparate and
+non-overlapping.  So, for example, applying the "AUDIT" role to a user does not
+give them the permissions required to create new entries and vice-versa.
+Granting the "DISABLED" role prevents a user from logging in or making changes.
+
+| Role | Access |
+| ---- | ------ |
+| `WRITE` | Creates new receiving log entries, has access to "new" form |
+| `AUDIT` | Edits existing entries, has access to edit and to view audit trail |
+| `ADMIN` | Creates and administers users, has access to "user" table |
+| `DISABLED` | Prevented from logging in or affecting changes |
+
+## Troubleshooting
+
+- Form does not submit
+
+Both the receiving log
+
+
+
 
