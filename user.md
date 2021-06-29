@@ -265,8 +265,8 @@ Granting the "DISABLED" role prevents a user from logging in or making changes.
 - **Return to the [documentation landing page]**
 
 [Please report any other issues]: https://github.com/iangoodnight/ReceivingDB/issues
-[installation and getting started]: /ReceivingDB/installation.md
-[Installation and getting started]: /ReceivingDB/installation.md
+[installation and getting started]: /ReceivingDB/installation.html
+[Installation and getting started]: /ReceivingDB/installation.html
 [API documentation]: /ReceivingDB/
 [documentation landing page]: /ReceivingDB/
 [Docs page]: /ReceivingDB/
