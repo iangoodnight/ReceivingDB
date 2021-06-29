@@ -218,8 +218,33 @@ Granting the "DISABLED" role prevents a user from logging in or making changes.
 
 - Form does not submit
 
-Both the receiving log
+Both the receiving log entry and user forms are used to create and edit entries
+and users, respectively.  Input is validated client-side and server-side to
+prevent injection attacks.  If the form does not submit, you should see a
+corresponding error message in red.
 
+- Cannot access the web interface
 
+Double-check the IP_WHITELIST environment variable to verify that you are
+attempting access from a valid IP address.
 
+- Lost access to user accounts
 
+Dropping the `users` collection from your database and restarting the
+application will recreate the initial default admin account without affecting
+your receiving log entries or audit data.
+
+- Any other issues
+
+[Please report any other issues] to the developer.
+
+-----
+
+- ## [Docs page]
+  Return to the landing page for the ReceivingDB docs site
+- ## [API Documentation]
+  Coming soon
+
+[Please report any other isses]: https://github.com/iangoodnight/ReceivingDB/issues
+[Docs page]: /ReceivingDB/
+[API Documentation]: /ReceivingDB/
