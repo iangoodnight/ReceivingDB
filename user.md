@@ -14,6 +14,18 @@ answer here.
 - ##### [Creating entries and best practices](#creating-entries-and-best-practices)
   - ###### [Creating new entries](#creating-new-entries)
   - ###### [Best practices for creating new entries](#best-practices-for-creating-new-entries)
+- ##### [Auditing and audit trails](#auditing-and-audit-trails)
+  - ###### [Auditing entries](#auditing-entries)
+  - ###### [Audit trails](#audit-trails)
+- ##### [Administering accounts, users and roles](#administering-accounts-users-and-roles)
+  - ###### [Users](#users)
+  - ###### [Creating new users/editing users](#creating-new-usersediting-users)
+  - ###### [Passwords](#passwords)
+  - ###### [Roles](#roles)
+- ##### [Troubleshooting](#troubleshooting)
+- ##### [Docs page]
+- ##### [Installation and getting started]
+- ##### [API Documentation]
 
 ## Browsing and searching
 
@@ -164,7 +176,7 @@ option at the bottom of page.  Following this link will open up the entry for
 editing similarly to the process for creating new entries.  The same required
 fields and best practices described in creating new entries apply here as well.
 
-[!The audit option appears on the details page](/assets/audit.png)
+![The audit option appears on the details page](/assets/audit.png)
 
 ### Audit trails
 
@@ -193,7 +205,7 @@ displayed by default.  Following the "disabled" link display, past users who
 have been disallowed from logging in.  Selecting "new" allows the opportunity
 for an admin to create additional registered user accounts.
 
-![View and administer user accounts](/assets/user.png)
+![View and administer user accounts](/assets/users.png)
 
 ### Creating new users/editing users
 
@@ -253,9 +265,11 @@ your receiving log entries or audit data.
 
 - ## [Docs page]
   Return to the landing page for the ReceivingDB docs site
+- ## [Installation and getting started]
 - ## [API Documentation]
   Coming soon
 
-[Please report any other isses]: https://github.com/iangoodnight/ReceivingDB/issues
+[Please report any other issues]: https://github.com/iangoodnight/ReceivingDB/issues
 [Docs page]: /ReceivingDB/
+[Installation and getting started]: /ReceivingDB/installation.md
 [API Documentation]: /ReceivingDB/
