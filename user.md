@@ -4,16 +4,16 @@ Everything you need to know to successfully navigate ReceivingDB, from search
 and browsing to auditing and administrating user accounts, users can find the
 answer here.
 
-- ##### [Browsing and searching](/ReceivingDB/user.html#browsing-and-searching)
-  - ###### [Browsing](/ReceivingDB/user.html#browsing)
-  - ###### [Searching](/ReceivingDB/user.html#searching)
-    - ###### [By date range](/ReceivingDB/user.html#by-date-range)
-    - ###### [By purchase order](/ReceivingDB/user.html#by-purchase-order)
-    - ###### [By part number](/ReceivingDB/user.html#by-part-number)
-    - ###### [By vendor](/ReceivingDB/user.html#by-vendor)
-- ##### [Creating entries and best practices](/ReceivingDB/user.html#creating-entries-and-best-practices)
-  - ###### [Creating new entries](/ReceivingDB/user.html#creating-new-entries)
-  - ###### [Best practices for creating new entries](/ReceivingDB/user.html#best-practices-for-creating-new-entries)
+- ##### [Browsing and searching](#browsing-and-searching)
+  - ###### [Browsing](#browsing)
+  - ###### [Searching](#searching)
+    - ###### [By date range](#by-date-range)
+    - ###### [By purchase order](#by-purchase-order)
+    - ###### [By part number](#by-part-number)
+    - ###### [By vendor](#by-vendor)
+- ##### [Creating entries and best practices](#creating-entries-and-best-practices)
+  - ###### [Creating new entries](#creating-new-entries)
+  - ###### [Best practices for creating new entries](#best-practices-for-creating-new-entries)
 
 ## Browsing and searching
 
