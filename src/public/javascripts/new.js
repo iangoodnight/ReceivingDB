@@ -279,7 +279,7 @@ document.addEventListener(
           type="text"
         />
         <label for="nep${i}" id="nep${i}-label">
-          NEP #<span class="errors"></span>
+          MPN #<span class="errors"></span>
         </label>
         <input
           aria-labelledby="vlot${i}-label"
