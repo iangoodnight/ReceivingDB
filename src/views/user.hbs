@@ -6,7 +6,11 @@
 >
   <table>
     <caption id="table-caption">
-      Bulk Apothecary/Natural Essentials receiving log users
+      {{#unless enabled}}
+        Inactive receiving log users
+      {{else}}
+        Active receiving log users
+      {{/unless}}
       <nav>
         <ul>
           <li>

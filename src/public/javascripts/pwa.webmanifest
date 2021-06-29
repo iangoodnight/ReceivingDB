@@ -1,7 +1,7 @@
 {
-  "name": "Receiving Log | BANE",
-  "short_name": "receivingDB",
-  "description": "Receiving log for Bulk Apothecary/Natural Essentials",
+  "name": "Receiving Log | ReceivingDB",
+  "short_name": "ReceivingDB",
+  "description": "ReceivingDB is a server-rendered progressive web application built with MongoDB, Express, Handlebars, and NodeJS meant to be extended and used as part of a more comprehensive open-source inventory management and resource planning implementation.",
   "icons": [
     {
       "src": "/../images/splash-screen.png",
