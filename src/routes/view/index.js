@@ -37,7 +37,6 @@ router.get('/login', (req, res, next) => {
 
 router.get('/reset', rbac.isLoggedIn, (req, res, next) => {
   const [page, pageDetails] = generatePageDetails(req, reset);
-  console.log(req.user);
   res.render(page, pageDetails);
 });
 

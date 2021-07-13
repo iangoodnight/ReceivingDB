@@ -25,7 +25,7 @@ module.exports = (app) => {
             : false /* requires https */,
         sameSite: 'strict',
       },
-      name: 'speak_and_spell',
+      name: 'receiving_db',
       resave: false,
       rolling: true,
       saveUninitialized: false,
