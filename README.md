@@ -1,5 +1,7 @@
 # ReceivingDB
 
+[Check out the demo!]
+
 ![ReceivingDB Banner](/assets/banner.png)
 
 Keeping a detailed, accurate receiving log is essential to reliable inventory
@@ -121,3 +123,4 @@ Check the [user guide] for detailed documentation and updates.
 
 [MongoDB Atlas account]: https://account.mongodb.com/account/register
 [user guide]: https://iangoodnight.github.io/ReceivingDB/
+[Check out the demo!]: https://goodnight-receiving-db.herokuapp.com/
